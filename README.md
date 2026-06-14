@@ -5,4 +5,4 @@ Bicala is a programming language project developed by Bicadz, using the exclusiv
 ---
 
 ### Project Status: Work In Progress (WIP)
-*The core compiler and interpreter are currently under active development. This repository serves as the official registration and documentation hub for the `.bica` file ecosystem.*
+*The interpreter are currently under active development. This repository serves as the official registration and documentation hub for the `.bica` file ecosystem.*
