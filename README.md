@@ -1,8 +1,9 @@
-# Bicala
-
-Bicala is a programming language project developed by Bicadz, using the exclusive `.bica` file extension.
+# Bicala 
+Bicala is a programming language project developed by Bicadz, this language is written in Python, using the exclusive `.bica` file extension.
 
 ---
 
-### Project Status: Work In Progress (WIP)
-*The interpreter are currently under active development. This repository serves as the official registration and documentation hub for the `.bica` file ecosystem.*
+## Project Status: Archived (Legacy)
+Bicala is no longer under active development.
+
+The project is preserved as a historical reference and experimental foundation.
