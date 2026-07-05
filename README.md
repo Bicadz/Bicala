@@ -158,8 +158,9 @@ Bicala/
 │   ├── change.log          # Development log
 │   ├── error.doc           # Error reference
 │   ├── bicala.ebnf         # Grammar specification
-│   ├── bicala.syntax.spec.md  # Syntax guide
-│   └── bicala.sematic.spec.md  # Semantic rules
+│   ├── bicala.syntax.spec.md    # Syntax guide
+│   ├── bicala.sematic.spec.md   # Semantic rules
+│   └── bicala.structure.spec.md # Architectural & component structure
 ├── bicaide.py              # Built-in IDE
 ├── run.py                  # Main entry point
 └── README.md               # This file
