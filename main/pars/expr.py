@@ -365,7 +365,7 @@ def parse_expression_to_ast(tokens):
                     got=param_tok.value
                 )
             param = param_tok.value
-            
+
             # Check if parameter is a reserved keyword
             from tok import is_keyword
             if is_keyword(param):

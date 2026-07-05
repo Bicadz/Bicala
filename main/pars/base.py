@@ -12,7 +12,7 @@ from tok import (
     ASSIGNMENT_OPERATORS, COMPARISON_OPERATORS, ARITHMETIC_OPERATORS,
     LOGICAL_OPERATORS,
 )
-from ast import (
+from bicala_ast import (
     NumberNode, BooleanNode, StringNode, VarNode, ArrayNode, UnaryOpNode, BinaryOpNode,
     CompareNode, CallNode, IndexNode, SliceNode, TernaryNode, InlineIfNode, AttrNode, LambdaNode, TypeNode,
     NoneNode, NaNNode,

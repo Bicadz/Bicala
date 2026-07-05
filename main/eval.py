@@ -6,7 +6,7 @@
 
 import math
 from tok import ASSIGNMENT_OPERATORS, KEYWORDS, BUILTINS
-from main.ast import (
+from bicala_ast import (
     NumberNode, BooleanNode, StringNode, VarNode, ArrayNode, UnaryOpNode, BinaryOpNode,
     CompareNode, CallNode, IndexNode, SliceNode, TernaryNode, InlineIfNode, AttrNode, LambdaNode, TypeNode,
     NoneNode, NaNNode,
@@ -17,8 +17,8 @@ from main.ast import (
     CustomOperatorDef, CustomOperatorCall, SwitchNode, DelNode, DeferNode, PassNode, TryCatchNode
 )
 from env import (
-    Environment, BUILTIN_FUNCTIONS, 
-    register_module_alias, resolve_module_alias, 
+    Environment, BUILTIN_FUNCTIONS,
+    register_module_alias, resolve_module_alias,
     check_circular_import, clear_module_registry,
     register_module,
     register_custom_operator, get_custom_operator
