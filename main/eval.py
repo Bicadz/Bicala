@@ -5,7 +5,7 @@
 # ============================================================
 
 import math
-from tok import ASSIGNMENT_OPERATORS
+from tok import ASSIGNMENT_OPERATORS, KEYWORDS, BUILTINS
 from main.ast import (
     NumberNode, BooleanNode, StringNode, VarNode, ArrayNode, UnaryOpNode, BinaryOpNode,
     CompareNode, CallNode, IndexNode, SliceNode, TernaryNode, InlineIfNode, AttrNode, LambdaNode, TypeNode,
@@ -929,6 +929,10 @@ def execute_statement(node, env, functions=None):
                 target=type(target_name).__name__
             )
         
+        # Semantic validation: const reassignment check
+        from sem import validate_const_assignment
+        validate_const_assignment(node, env)
+        
         if not env.has(target_name):
             raise BicalaNameError(
                 code="N001",
@@ -981,11 +985,19 @@ def execute_statement(node, env, functions=None):
                 context="increment/decrement",
                 target=type(target_name).__name__
             )
+        
+        # Semantic validation: const reassignment check
+        from sem import validate_const_assignment
+        validate_const_assignment(node, env)
+        
         if not env.has(target_name):
             raise BicalaNameError(
                 code="N001",
                 line=node.line,
+                col=node.col,
+                name=target_name
             )
+        
         old_val = env.get(target_name)
         if node.op == '++':
             env.set(target_name, old_val + 1)
@@ -1216,6 +1228,16 @@ def execute_statement(node, env, functions=None):
     if isinstance(node, DelNode):
         # Delete statement: del identifier
         target_name = node.target.name if isinstance(node.target, VarNode) else node.target
+        
+        # Check if trying to delete a protected keyword or builtin
+        if target_name in KEYWORDS or target_name in BUILTINS:
+            raise BicalaNameError(
+                code="N003",
+                line=node.line, col=node.col, length=len(target_name),
+                name=target_name,
+                expected="user-defined variable or function", got=f"'{target_name}'",
+                hint=f"'{target_name}' is a protected language keyword or built-in function"
+            )
         
         # Check if identifier exists in current scope
         if not env.has_local(target_name) and target_name not in env.functions:

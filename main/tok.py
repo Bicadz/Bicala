@@ -560,3 +560,7 @@ class SyntaxConfig:
 
 # Global singleton — drop-in replacement for the old cfg.config
 config = SyntaxConfig()
+
+
+# Global singleton — drop-in replacement for the old cfg.config
+config = SyntaxConfig()

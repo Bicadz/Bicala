@@ -449,7 +449,7 @@ ERRORS = {
     },
     "N003": {
         "message": "Cannot delete '{name}'",
-        "hint": "Check if the name exists"
+        "hint": "'{name}' is a protected language keyword or built-in function"
     },
     "N004": {
         "message": "Variable '{name}' is not defined in string interpolation",

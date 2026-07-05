@@ -17,7 +17,7 @@ from pars.base import (
     _line_indent_level, _is_block_header, _split_statements, _find_block_range,
     BooleanNode, BinaryOpNode,
 )
-from main.ast import DeferNode, TryCatchNode
+from ast import DeferNode, TryCatchNode
 from pars.expr import parse_expression
 
 import re
