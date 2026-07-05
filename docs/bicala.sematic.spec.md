@@ -233,7 +233,7 @@ Runtime Execution
 
 ---
 
-## Future Extensions
+## Future Extensions (Cancelled due to project archive)
 
 ### Potential Type System Enhancements
 - Type inference for variables without explicit declarations
@@ -242,7 +242,7 @@ Runtime Execution
 - Type aliases
 - Interface/struct types
 
-### Potential Const Enhancements
+### Potential Const Enhancements (Defunct - Frozen at Beta 5.1.24.3)
 - Const expressions (compile-time evaluation)
 - Const propagation (optimization)
 - Const correctness analysis
