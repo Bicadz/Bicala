@@ -1,0 +1,139 @@
+# Test: The Three Tiers of Equality - Comprehensive
+# This file provides comprehensive testing of =, ==, === operators
+
+# =============================================================================
+# TIER 1: Loose Equality (.=)
+# Type coercion + case-insensitive strings
+# NOTE: Implementation uses .= instead of = as per actual token definition
+# =============================================================================
+
+say "=== TIER 1: LOOSE EQUALITY (.=) ==="
+
+# Case-insensitive string comparison
+say "a" .= "A"  # Expected: true
+say "Hello" .= "HELLO"  # Expected: true
+say "Bicala" .= "bicala"  # Expected: true
+
+# Boolean to string coercion
+say true .= "true"  # Expected: true
+say false .= "false"  # Expected: true
+
+# Numeric type coercion
+say 5 .= 5.0  # Expected: true (int to float)
+say 5 .= 5.00  # Expected: true
+say 10 .= 10.0  # Expected: true
+
+# String to number coercion
+say "5" .= 5  # Expected: true
+say "10" .= 10  # Expected: true
+say "3.14" .= 3.14  # Expected: true
+
+# Mixed coercion
+say 0 .= false  # Expected: true (in many languages)
+say 1 .= true  # Expected: true (in many languages)
+
+# Same values, different types
+say "42" .= 42.0  # Expected: true
+say 100 .= "100"  # Expected: true
+
+say "=== END TIER 1 ==="
+
+# =============================================================================
+# TIER 2: Strict Equality (==)
+# No type coercion, case-sensitive strings
+# =============================================================================
+
+say "=== TIER 2: STRICT EQUALITY (==) ==="
+
+# Case-sensitive string comparison
+say "a" == "A"  # Expected: false
+say "a" == "a"  # Expected: true
+say "Hello" == "Hello"  # Expected: true
+say "Hello" == "hello"  # Expected: false
+
+# No type coercion - boolean vs string
+say true == "true"  # Expected: false
+say false == "false"  # Expected: false
+
+# No type coercion - string vs number
+say "5" == 5  # Expected: false
+say "10" == 10  # Expected: false
+
+# No type coercion - int vs float
+say 5 == 5.0  # Expected: false
+say 10 == 10.0  # Expected: false
+
+# Same type, same value
+say 5 == 5  # Expected: true
+say 5.0 == 5.0  # Expected: true
+say "hello" == "hello"  # Expected: true
+
+say "=== END TIER 2 ==="
+
+# =============================================================================
+# TIER 3: Identity Equality (===)
+# Object identity, not value equality
+# =============================================================================
+
+say "=== TIER 3: IDENTITY EQUALITY (===) ==="
+
+# String identity (different objects)
+say "A" === "A"  # Expected: false (different string objects)
+say "hello" === "hello"  # Expected: false (different string objects)
+
+# Numeric identity (different objects)
+say 5 === 5  # Expected: false (different number objects)
+say 5.0 === 5.0  # Expected: false
+
+# Same variable identity test
+x = 10
+y = 10
+say x === y  # Expected: false (different variables)
+
+# Self-identity (should always be true)
+z = 42
+say z === z  # Expected: true (same object)
+
+say "=== END TIER 3 ==="
+
+# =============================================================================
+# NEGATION OPERATORS
+# =============================================================================
+
+say "=== NEGATION OPERATORS ==="
+
+# Loose inequality (!=)
+say "a" != "A"  # Expected: false (negation of loose equality)
+say "a" != "b"  # Expected: true
+say 5 != 5.0  # Expected: false
+
+# Strict inequality (!==)
+say "a" !== "A"  # Expected: true (negation of strict equality)
+say "a" !== "a"  # Expected: false
+say 5 !== 5.0  # Expected: true
+
+# Identity inequality (!===)
+say "A" !=== "A"  # Expected: true (negation of identity)
+x = 10
+say x !=== x  # Expected: false
+
+say "=== END NEGATION OPERATORS ==="
+
+# =============================================================================
+# COMBINED TESTS
+# =============================================================================
+
+say "=== COMBINED TESTS ==="
+
+# Test all three operators on same values
+say "5 .= 5.0: " + ("5" .= 5.0)
+say "5 == 5.0: " + ("5" == 5.0)
+say "5 === 5.0: " + ("5" === 5.0)
+
+say "a .= A: " + ("a" .= "A")
+say "a == A: " + ("a" == "A")
+say "a === A: " + ("a" === "A")
+
+say "=== END COMBINED TESTS ==="
+
+say "All equality tier tests completed!"

@@ -1,0 +1,5 @@
+# Test: Function to Function collision should fail (N007)
+def myfunc:
+    say "hello"
+def myfunc:
+    say "world"

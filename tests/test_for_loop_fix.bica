@@ -1,0 +1,4 @@
+t = 0
+for i in 10000:
+    t += 1
+say "Done: " + t

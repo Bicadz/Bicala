@@ -1,0 +1,73 @@
+# ============================================================
+# Bicala Core Protection Test Suite
+# ============================================================
+# This test file validates the three core protection mechanisms:
+# 1. Immutable Constants (N002 error)
+# 2. Type-Constrained Variables (T002 error)
+# 3. System Integrity Protection (N003 error)
+# ============================================================
+
+say "=== Bicala Core Protection Test Suite ==="
+say ""
+
+# ============================================================
+# TEST 1: Immutable Constants (N002 Error)
+# ============================================================
+say "Test 1: Immutable Constants (N002 Error)"
+say "----------------------------------------"
+
+# Declare a constant
+const x = 10
+say "Declared constant: x = 10"
+
+# Attempt to reassign constant - should trigger N002 error
+say "Attempting to reassign x = 20 (should fail with N002)..."
+x = 20
+
+say "ERROR: This line should never be reached (N002 should have been raised)"
+say ""
+
+# ============================================================
+# TEST 2: Type-Constrained Variables (T002 Error)
+# ============================================================
+say "Test 2: Type-Constrained Variables (T002 Error)"
+say "-----------------------------------------------"
+
+# Declare type-constrained variable
+int tu_oi = 18
+say "Declared int variable: tu_oi = 18"
+
+# Attempt to assign wrong type - should trigger T002 error
+say "Attempting to assign string to int variable (should fail with T002)..."
+tu_oi = "Bica"
+
+say "ERROR: This line should never be reached (T002 should have been raised)"
+say ""
+
+# ============================================================
+# TEST 3: System Integrity Protection (N003 Error)
+# ============================================================
+say "Test 3: System Integrity Protection (N003 Error)"
+say "--------------------------------------------------"
+
+# Attempt to delete boolean constant - should trigger N003 error
+say "Attempting to delete 'true' constant (should fail with N003)..."
+del true
+
+say "ERROR: This line should never be reached (N003 should have been raised)"
+say ""
+
+# Attempt to delete built-in function - should trigger N003 error
+say "Attempting to delete 'len' built-in function (should fail with N003)..."
+del len
+
+say "ERROR: This line should never be reached (N003 should have been raised)"
+say ""
+
+# ============================================================
+# Expected Error Codes
+# ============================================================
+# Test 1: N002 - Cannot reassign a constant variable
+# Test 2: T002 - Type mismatch
+# Test 3: N003 - Cannot delete protected name
+# ============================================================

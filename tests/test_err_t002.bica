@@ -1,0 +1,13 @@
+# ============================================================
+# Bicala Negative Path Test: T002 - Type Mismatch
+# ============================================================
+# This test validates that attempting to assign a value of
+# the wrong type to a type-constrained variable triggers
+# the T002 error code.
+# ============================================================
+
+say "Test: Type Mismatch (should fail with T002)"
+int tu_oi = 18
+say "Declared int tu_oi = 18"
+say "Attempting to assign string to int variable..."
+tu_oi = "Bica"

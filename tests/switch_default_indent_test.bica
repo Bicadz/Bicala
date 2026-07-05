@@ -1,0 +1,11 @@
+# Test switch with default at same indent level as switch
+x = 5
+switch x:
+    1:
+        say "one"
+    2:
+        say "two"
+default:
+    say "error"
+
+say "done"

@@ -1,0 +1,2 @@
+# Test: type mismatch should fail with T002
+int count = "hello"

@@ -1,0 +1,63 @@
+# Test Try/Catch/Finally with Unicode symbols
+# This file tests the try/catch/finally exception handling with Unicode support
+
+say "=== TRY/CATCH/FINALLY TESTS ==="
+
+# Test 1: Valid try/catch with Unicode symbols
+say "Test 1: Valid try/catch with Unicode ✓"
+try:
+    say "Trying risky operation with ✓"
+    x = 10 / 0  # This will raise an error
+catch (error):
+    say "Caught error: " + error
+    say "Error handling ✓ successful"
+
+# Test 2: Valid try/finally with error bubbling
+say "Test 2: Valid try/finally with error bubbling"
+try:
+    say "Trying operation that may fail"
+    y = 5 / 0  # This will raise an error
+finally:
+    say "Finally block executed ✓"
+    say "Cleanup completed ✓"
+
+# Test 3: Valid try/catch/finally combination
+say "Test 3: Valid try/catch/finally combination"
+try:
+    say "Trying operation ✓"
+    z = 10 / 0
+catch (error):
+    say "Caught: " + error
+finally:
+    say "Final cleanup ✓"
+
+# Test 4: Valid try/catch with no error
+say "Test 4: Valid try/catch with no error"
+try:
+    say "Safe operation ✓"
+    result = 5 + 5
+catch (error):
+    say "This should not execute"
+say "After try/catch ✓"
+
+# Test 5: Valid try/finally with no error
+say "Test 5: Valid try/finally with no error"
+try:
+    say "Safe operation ✓"
+    result = 10 * 2
+finally:
+    say "Finally block ✓"
+say "After try/finally ✓"
+
+# Test 6: Valid try/catch/finally with no error
+say "Test 6: Valid try/catch/finally with no error"
+try:
+    say "Complete safe operation ✓"
+    final_result = 100 / 2
+catch (error):
+    say "Catch should not execute"
+finally:
+    say "Finally executed ✓"
+
+say "=== END TRY/CATCH/FINALLY TESTS ==="
+say "All exception handling tests passed ✓"

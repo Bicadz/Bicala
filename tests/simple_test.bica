@@ -1,0 +1,3 @@
+say "Simple test"
+x = 10
+say x

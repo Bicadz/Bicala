@@ -1,0 +1,25 @@
+# Test Try/Catch/Finally with Unicode in strings
+# This file tests Unicode support in exception handling
+
+say "=== UNICODE SUPPORT TEST ==="
+
+# Test Unicode in safe operations
+try:
+    say "Testing with Unicode: PASS"
+    result = "Success"
+catch (error):
+    say "Should not reach here"
+finally:
+    say "Unicode support works"
+
+# Test Unicode symbols in variables
+try:
+    status = "OK"
+    symbol = "✓"
+    say "Status: " + status
+catch (error):
+    say "Error occurred"
+finally:
+    say "Completed"
+
+say "=== END UNICODE SUPPORT TEST ==="

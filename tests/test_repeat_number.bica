@@ -1,0 +1,3 @@
+# Try parsing a number after repeat
+count = 5
+say count

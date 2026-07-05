@@ -1,0 +1,62 @@
+# Test defer mechanism
+# Test 0: Basic function test (no defer)
+def basic_test:
+    say "basic function body"
+
+say "Test 0 - Basic function:"
+basic_test
+say ""
+
+# Test 1: Normal function exit
+def test_normal_exit:
+    say "function body"
+    defer say "defer 1"
+    defer say "defer 2"
+
+say "Test 1 - Normal function exit:"
+test_normal_exit
+say ""
+
+# Test 2: Early return
+def test_early_return:
+    say "before return"
+    defer say "cleanup"
+    return
+    say "after return"
+
+say "Test 2 - Early return:"
+test_early_return
+say ""
+
+# Test 3: Nested defer (LIFO order)
+def test_nested:
+    say "function body"
+    defer say "defer 1"
+    defer say "defer 2"
+    defer say "defer 3"
+
+say "Test 3 - Nested defer (LIFO):"
+test_nested
+say ""
+
+# Test 4: Multi-line defer block
+def test_multiline:
+    say "function body"
+    defer:
+        say "line 1"
+        say "line 2"
+
+say "Test 4 - Multi-line defer block:"
+test_multiline
+say ""
+
+# Test 5: Simple test
+def simple_test:
+    say "start"
+    defer say "end"
+
+say "Test 5 - Simple:"
+simple_test
+say ""
+
+say "All defer tests completed!"

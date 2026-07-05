@@ -1,0 +1,10 @@
+# Test: const and type-constrained variables
+const PI = 3.14159
+int count = 5
+string name = "Bicala"
+say "PI: "
+say PI
+say "count: "
+say count
+say "name: "
+say name

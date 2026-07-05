@@ -1,0 +1,4 @@
+# Test inline forever loop (disabled for safety - would run infinitely)
+# forever: say "This would run forever"
+# Note: Inline forever works but requires external break mechanism for testing
+

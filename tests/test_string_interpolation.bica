@@ -1,0 +1,14 @@
+# Test String Interpolation with {} syntax
+
+name = "Bica"
+Age = 25
+say "My name is {name}, I'm {Age} years old." # Expected: My name is Bica, I'm 25 years old.
+say "Literal curly braces: \{ and \}"          # Expected: Literal curly braces: { and }
+
+# Test escape sequences
+say "Windows path: C:\\Users\\Test"            # Expected: Windows path: C:\Users\Test
+say "Newline test: Line1\nLine2"               # Expected: Newline test: Line1 (newline) Line2
+say "Tab test: Col1\tCol2"                     # Expected: Tab test: Col1 (tab) Col2
+
+# Test interpolation in inline blocks
+if true: say "Name in block: {name}" | say "Age in block: {Age}"

@@ -1,0 +1,11 @@
+# ============================================================
+# Bicala Negative Path Test: N003 - Protected Constant Deletion
+# ============================================================
+# This test validates that attempting to delete a protected
+# language keyword (true, false, none, nan) triggers the N003
+# error code.
+# ============================================================
+
+say "Test: Protected Constant Deletion (should fail with N003)"
+say "Attempting to delete 'true' constant..."
+del true

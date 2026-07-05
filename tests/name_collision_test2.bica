@@ -1,0 +1,3 @@
+# Test name collision - module alias
+from math as m
+from str as m

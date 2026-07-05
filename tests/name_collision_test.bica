@@ -1,0 +1,4 @@
+# Test name collision error handling
+
+x : 10
+from math import sqrt as x

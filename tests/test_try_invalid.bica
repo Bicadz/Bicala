@@ -1,0 +1,7 @@
+# Test Invalid Try Syntax
+# This file should fail with S044 error for standalone try block
+
+try:
+    say "This try block has no catch or finally"
+    x = 5 + 5
+# Expected: S044 - Try block must be followed by catch or finally

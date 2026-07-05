@@ -1,0 +1,211 @@
+# Test Control Flow Matrix
+# Comprehensive testing of while loops, for loops, ranges, and utility loops
+
+# =============================================================================
+# WHILE LOOPS
+# =============================================================================
+
+say "=== WHILE LOOPS ==="
+
+# Basic while loop
+counter = 0
+while counter < 5:
+    say "While iteration: " + counter
+    counter += 1
+
+say "Final counter: " + counter
+
+# While loop with decrement
+countdown = 5
+while countdown > 0:
+    say "Countdown: " + countdown
+    countdown -= 1
+
+say "Liftoff!"
+
+# Single-line while loop with inline body
+i = 0
+while i < 3: say "Single-line while: " + i; i += 1
+
+# While loop with complex condition
+x = 10
+y = 5
+while x > y:
+    say "x: " + x + ", y: " + y
+    x -= 1
+
+say "=== END WHILE LOOPS ==="
+
+# =============================================================================
+# FOR LOOP RANGE FAMILY
+# =============================================================================
+
+say "=== FOR LOOP RANGE FAMILY ==="
+
+# Basic range: for i in 5 (iterates 0 to 4)
+say "Basic range (0:5):"
+for i in 5:
+    say "  i: " + i
+
+# Inclusive range: for i in 2:8 (iterates 2 to 8 inclusive)
+say "Inclusive range (2:8):"
+for i in 2:8:
+    say "  i: " + i
+
+# Step-skipping range: for i in 0:10:2 (iterates 0, 2, 4, 6, 8, 10)
+say "Step-skipping range (0:10:2):"
+for i in 0:10:2:
+    say "  i: " + i
+
+# Reverse step: for i in 10:0:-2 (should iterate backwards)
+say "Reverse step (10:0:-2):"
+for i in 10:0:-2:
+    say "  i: " + i
+
+# Large step: for i in 0:20:5
+say "Large step (0:20:5):"
+for i in 0:20:5:
+    say "  i: " + i
+
+# Single value range: for i in 1:1
+say "Single value range (1:1):"
+for i in 1:1:
+    say "  i: " + i
+
+# Negative range
+say "Negative range (-5:-1):"
+for i in -5:-1:
+    say "  i: " + i
+
+say "=== END FOR LOOP RANGE FAMILY ==="
+
+# =============================================================================
+# INLINE FOR LOOPS (Single-line)
+# =============================================================================
+
+say "=== INLINE FOR LOOPS ==="
+
+# Single-line for loop with pass
+for i in 1:10: pass
+
+# Single-line for loop with say
+for i in 1:5: say "Inline for: " + i
+
+# Single-line for loop with compound operation
+total = 0
+for i in 1:5: total += i
+say "Total after inline for: " + total
+
+# Single-line for loop with nested operations
+product = 1
+for i in 1:4: product *= i
+say "Product after inline for: " + product
+
+say "=== END INLINE FOR LOOPS ==="
+
+# =============================================================================
+# UTILITY LOOPS
+# =============================================================================
+
+say "=== UTILITY LOOPS ==="
+
+# Repeat loop
+say "Repeat loop (3 times):"
+repeat 3:
+    say "  Hello"
+
+# Repeat loop with counter
+repeat 5:
+    say "  Repeat iteration"
+
+# Forever loop (commented out to prevent infinite execution)
+# forever:
+#     say "This would run forever"
+
+say "=== END UTILITY LOOPS ==="
+
+# =============================================================================
+# NESTED LOOPS
+# =============================================================================
+
+say "=== NESTED LOOPS ==="
+
+# Nested for loops
+say "Nested for loops (3x3):"
+for i in 3:
+    for j in 3:
+        say "  i: " + i + ", j: " + j
+
+# Nested while and for loops
+ted while and for:"
+0
+ter < 2:
+"  Outer: " + outer
+inner in 0:2:
+say "    Inner: " + inner
+r += 1
+
+say "=== END NESTED LOOPS ==="
+
+# =============================================================================
+# LOOP CONTROL STATEMENTS
+# =============================================================================
+
+say "=== LOOP CONTROL STATEMENTS ==="
+
+# Break statement
+say "Break test (should stop at 3):"
+for i in 1:10:
+    if i  3:
+        break
+    say "  i: " + i
+
+# Continue statement
+say "Continue test (should skip 3):"
+for i in 1:5:
+    if i  3:
+        continue
+    say "  i: " + i
+
+# Break in while loop
+say "Break in while loop:"
+j = 0
+while j < 10:
+    if j :
+        break
+    say "  j: " + j
+    j += 1
+
+say "=== END LOOP CONTROL STATEMENTS ==="
+
+# =============================================================================
+# COMPLEX LOOP SCENARIOS
+# =============================================================================
+
+say "=== COMPLEX LOOP SCENARIOS ==="
+
+# Loop with array operations (simulated)
+say "Loop with arithmetic:"
+sum_val = 0
+for i in 1:10:
+    if i % 2 :
+        sum_val += i
+say "Sum of even numbers 1-10: " + sum_val
+
+# Loop with string building
+result = ""
+for i in 1:5:
+    result = result + str i
+say "Concatenated result: " + result
+
+# Loop with conditional execution
+say "Conditional execution in loop:"
+for i in 1:10:
+    if i < 5:
+        say "  " + i + " is less than 5"
+    else:
+        say "  " + i + " is 5 or greater"
+
+say "=== END COMPLEX LOOP SCENARIOS ==="
+
+say "All control flow matrix tests completed!"

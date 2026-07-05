@@ -1,0 +1,5 @@
+# Test math import
+say "Testing math import"
+import math
+say "Math import successful"
+say math.pi

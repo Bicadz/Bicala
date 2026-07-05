@@ -1,0 +1,4 @@
+# Test: Function to Variable collision should fail (N007)
+def myfunc:
+    say "hello"
+myfunc = 10

@@ -1,0 +1,4 @@
+# Test import only
+say "Testing import"
+import time
+say "Import successful"

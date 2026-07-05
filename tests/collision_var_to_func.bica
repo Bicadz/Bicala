@@ -1,0 +1,4 @@
+# Test: Variable to Function collision should fail (N007)
+x = 5
+def x:
+    say "This should fail"

@@ -1,0 +1,22 @@
+# Test comparison operators
+
+# Loose equality (=)
+say "a" = "A"  # true (case-insensitive)
+say true = "true"  # true (boolean to string)
+say 5 = 5.0  # true (int to float)
+say "5" = 5  # true (string to number)
+
+# Strict equality (==)
+say "a" == "A"  # false (case-sensitive)
+say true == "true"  # false (no type coercion)
+say "5" == 5  # false (no type coercion)
+say 5 == 5.0  # false (different types)
+
+# Identity (===)
+say "A" === "A"  # false (different objects)
+say 5 === 5  # false (different objects)
+
+# Negation operators
+say "a" != "A"  # false (negation of loose)
+say "a" !== "A"  # true (negation of strict)
+say "A" !=== "A"  # true (negation of identity)

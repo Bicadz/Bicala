@@ -1,0 +1,37 @@
+# Verify Scope Security and Del Statement Implementation
+# Using correct assignment syntax (=)
+
+# Test 1: Variable reassignment should work
+x = 5
+x = 10
+say x
+
+# Test 2: del statement on variable
+y = 20
+say y
+del y
+
+# Test 3: del followed by reassignment
+z = 30
+say z
+del z
+z = 40
+say z
+
+# Test 4: Function definition and call
+def testfunc:
+    say "test function"
+testfunc()
+
+# Test 5: del function
+del testfunc
+
+# Test 6: After del, can redefine with same name
+temp = 100
+say temp
+del temp
+def temp:
+    say "temp is now a function"
+temp()
+
+say "All scope security tests passed!"

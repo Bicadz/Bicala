@@ -1,0 +1,29 @@
+# Test inline if with colon (should work)
+x = 10
+if x > 5: say "inline if works"
+
+# Test multi-line if without colon (should work)
+if x > 5
+    say "multi-line if without colon works"
+
+# Test multi-line if with colon (should work)
+if x > 5:
+    say "multi-line if with colon works"
+
+# Test inline while with colon (should work)
+i = 0
+while i < 3: say "inline while works"; i = i + 1
+
+# Test multi-line while without colon (should work)
+i = 0
+while i < 3
+    say "multi-line while without colon"
+    i = i + 1
+
+# Test multi-line while with colon (should work)
+i = 0
+while i < 3:
+    say "multi-line while with colon"
+    i = i + 1
+
+say "All tests passed!"

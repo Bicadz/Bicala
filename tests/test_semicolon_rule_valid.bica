@@ -1,0 +1,116 @@
+# Test Semicolon Rule: Valid Cases
+# This file tests valid semicolon usage according to the syntax specification
+
+# =============================================================================
+# RULE 1: Top-Level Declarations - Semicolon is Optional
+# =============================================================================
+
+say "=== RULE 1: TOP-LEVEL DECLARATIONS (OPTIONAL SEMICOLON) ==="
+
+# Function calls without semicolon (valid)
+say "Hello"
+say "World"
+
+# Function calls with semicolon (also valid)
+say "Hello";
+say "World";
+
+# Assignments without semicolon (valid)
+x = 10
+y = 20
+
+# Assignments with semicolon (also valid)
+z = 30;
+w = 40;
+
+# Mixed usage (valid)
+a = 50
+b = 60;
+say "Mixed usage works";
+
+say "=== END RULE 1 ==="
+
+# =============================================================================
+# RULE 2: Nested Inline Declarations - Semicolon is Mandatory
+# =============================================================================
+
+say "=== RULE 2: NESTED INLINE DECLARATIONS (MANDATORY SEMICOLON) ==="
+
+# Basic nested function call with semicolon
+import math
+x = math.sqrt math.sqrt 16; 25
+
+# Multiple nested levels with semicolons
+import math
+result = math.sqrt math.sqrt 25; 100
+
+# Function call as argument with semicolon
+import math
+say math.abs math.sqrt 25; 100
+
+# Nested calls with built-in functions
+import math
+say math.abs math.sqrt 16; 144
+
+# Complex nesting with semicolons
+import math
+final = math.abs math.sqrt 25; "test"
+
+say "=== END RULE 2 ==="
+
+# =============================================================================
+# RULE 3: Whitespace Enforcement - Space/newline MUST follow semicolon
+# =============================================================================
+
+say "=== RULE 3: WHITESPACE ENFORCEMENT ==="
+
+# Space after semicolon (valid)
+x = 10; y = 20
+say "Space after semicolon works"
+
+# Newline after semicolon (valid)
+z = 30;
+w = 40
+say "Newline after semicolon works"
+
+# Tab after semicolon (valid)
+a = 50;	b = 60
+say "Tab after semicolon works"
+
+# Multiple spaces after semicolon (valid)
+c = 70;   d = 80
+say "Multiple spaces after semicolon works"
+
+# Semicolon at end of line (valid)
+e = 90; 
+f = 100
+say "Semicolon at end of line works"
+
+say "=== END RULE 3 ==="
+
+# =============================================================================
+# COMPLEX VALID SCENARIOS
+# =============================================================================
+
+say "=== COMPLEX VALID SCENARIOS ==="
+
+# Multiple statements on one line with semicolons
+x = 1; y = 2; z = 3; say "Multiple statements"
+
+# Mix of optional and mandatory semicolons
+import math
+base = math.sqrt 16; 
+derived = base + 5
+say "Mixed semicolon usage"
+
+# Function calls in expressions with semicolons
+import math
+say "Result: " + math.abs math.sqrt 25; 100
+
+# Nested calls with different function types
+import math
+say math.abs math.sqrt 16; "result"
+
+say "=== END COMPLEX VALID SCENARIOS ==="
+
+say "All valid semicolon rule tests passed!"

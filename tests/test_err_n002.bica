@@ -1,0 +1,12 @@
+# ============================================================
+# Bicala Negative Path Test: N002 - Const Reassignment
+# ============================================================
+# This test validates that attempting to reassign a constant
+# variable triggers the N002 error code.
+# ============================================================
+
+say "Test: Const Reassignment (should fail with N002)"
+const x = 10
+say "Declared const x = 10"
+say "Attempting to reassign x = 20..."
+x = 20

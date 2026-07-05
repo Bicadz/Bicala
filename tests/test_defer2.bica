@@ -1,0 +1,53 @@
+# Test defer mechanism - using = for assignment
+# Test 0: Basic function test (no defer)
+def basic_test name
+    say "basic function body: " + name
+
+say "Test 0 - Basic function:"
+basic_test "test"
+say ""
+
+# Test 1: Normal function exit
+def test_normal_exit x
+    say "function body"
+    defer say "defer 1"
+    defer say "defer 2"
+
+say "Test 1 - Normal function exit:"
+test_normal_exit 0
+say ""
+
+# Test 2: Early return
+def test_early_return x
+    say "before return"
+    defer say "cleanup"
+    return
+    say "after return"
+
+say "Test 2 - Early return:"
+test_early_return 0
+say ""
+
+# Test 3: Nested defer (LIFO order)
+def test_nested x
+    say "function body"
+    defer say "defer 1"
+    defer say "defer 2"
+    defer say "defer 3"
+
+say "Test 3 - Nested defer (LIFO):"
+test_nested 0
+say ""
+
+# Test 4: Multi-line defer block
+def test_multiline x
+    say "function body"
+    defer:
+        say "line 1"
+        say "line 2"
+
+say "Test 4 - Multi-line defer block:"
+test_multiline 0
+say ""
+
+say "All defer tests completed!"

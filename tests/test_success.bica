@@ -1,0 +1,53 @@
+# ============================================================
+# Bicala Positive Path Test Suite
+# ============================================================
+# This test validates that const and type-constrained variables
+# work correctly when used with valid operations.
+# ============================================================
+
+say "=== Bicala Positive Path Test ==="
+say ""
+
+# Test 1: Const variable declaration and reading
+say "Test 1: Const variable declaration and reading"
+const x = 10
+say "  Declared const x = 10"
+say "  Reading x:", x
+say ""
+
+# Test 2: Type-constrained int variable
+say "Test 2: Type-constrained int variable"
+int age = 25
+say "  Declared int age = 25"
+say "  Reading age:", age
+say ""
+
+# Test 3: Type-constrained string variable
+say "Test 3: Type-constrained string variable"
+string name = "Bicala"
+say "  Declared string name = 'Bicala'"
+say "  Reading name:", name
+say ""
+
+# Test 4: Type-constrained bool variable
+say "Test 4: Type-constrained bool variable"
+bool is_active = true
+say "  Declared bool is_active = true"
+say "  Reading is_active:", is_active
+say ""
+
+# Test 5: Type-constrained float variable
+say "Test 5: Type-constrained float variable"
+float pi = 3.14159
+say "  Declared float pi = 3.14159"
+say "  Reading pi:", pi
+say ""
+
+# Test 6: Type-constrained array variable
+say "Test 6: Type-constrained array variable"
+array numbers = [1, 2, 3, 4, 5]
+say "  Declared array numbers = [1, 2, 3, 4, 5]"
+say "  Reading numbers:", numbers
+say ""
+
+say "=== All Positive Tests Passed ==="

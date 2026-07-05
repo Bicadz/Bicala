@@ -1,0 +1,3 @@
+# Simple test for delete protection
+# Test 1: Try to delete a builtin function (type)
+del type

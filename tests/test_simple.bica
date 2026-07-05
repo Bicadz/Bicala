@@ -1,0 +1,10 @@
+# Simple test without defer
+say "Before function definition"
+
+def basic_test:
+    say "basic function body"
+
+say "After function definition"
+say "Test - Basic function:"
+basic_test
+say "After function call"

@@ -1,0 +1,24 @@
+# Test pipe (|) as statement separator
+
+# Basic cases
+say "a"|say "b"|say "c"
+
+# Mix with assignment
+x : 10|say x|y : 20|say y
+
+# Mix with operators
+x : 10 + 5|say x
+
+# Mix with increment
+x : 10|x++|say x
+
+# Mix with condition
+x : 10
+if x > 5
+    say "big"|say "very big"
+else
+    say "small"|say "very small"
+
+# Mix with loop
+for i in 5
+    say i|i++

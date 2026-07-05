@@ -1,0 +1,28 @@
+# Test advanced import syntax
+
+# Test 1: from X as Y (module namespace alias)
+from math as m
+say m.sin 10
+
+# Test 2: from X as Y import Z (hybrid)
+# Note: s is the module alias, join is imported directly
+from str as s import join
+say join ",", ["hello", "world"]
+say s.join ",", ["hello", "world"]
+
+# Test 3: Standard from import (should still work)
+from math import sqrt
+say sqrt 16
+
+# Test 4: import X as Y (should still work)
+import math as m2
+say m2.cos 0
+
+# Test 5: from X import Y as Z (function alias)
+from math import sqrt as square_root
+say square_root 25
+
+# Test 6: from X as Y import Z as W (both module and function aliases)
+from math as m3 import sin as sine
+say sine 0
+say m3.cos 0

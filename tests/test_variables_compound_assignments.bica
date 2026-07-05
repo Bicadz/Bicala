@@ -1,0 +1,68 @@
+# Test Variables: Compound Assignments
+# This file tests all compound assignment operators
+
+# Test += (Addition assignment)
+x = 10
+say "Initial x: " + x
+x += 5
+say "After x += 5: " + x
+say "Expected: 15"
+
+# Test -= (Subtraction assignment)
+y = 20
+say "Initial y: " + y
+y -= 3
+say "After y -= 3: " + y
+say "Expected: 17"
+
+# Test *= (Multiplication assignment)
+z = 5
+say "Initial z: " + z
+z *= 2
+say "After z *= 2: " + z
+say "Expected: 10"
+
+# Test /= (Division assignment)
+a = 20
+say "Initial a: " + a
+a /= 2
+say "After a /= 2: " + a
+say "Expected: 10"
+
+# Test //= (Floor Division assignment)
+b = 20
+say "Initial b: " + b
+b //= 3
+say "After b //= 3: " + b
+say "Expected: 6"
+
+# Test %= (Modulo assignment)
+c = 20
+say "Initial c: " + c
+c %= 3
+say "After c %= 3: " + c
+say "Expected: 2"
+
+# Test **= (Exponentiation assignment)
+d = 3
+say "Initial d: " + d
+d **= 2
+say "After d **= 2: " + d
+say "Expected: 9"
+
+# Test chaining compound assignments
+e = 10
+say "Initial e: " + e
+e += 5
+e *= 2
+say "After e += 5, e *= 2: " + e
+say "Expected: 30"
+
+# Test with float values
+f = 10.5
+say "Initial f: " + f
+f += 2.5
+say "After f += 2.5: " + f
+say "Expected: 13"
+
+say "All compound assignment tests completed!"

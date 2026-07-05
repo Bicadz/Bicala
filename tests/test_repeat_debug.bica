@@ -1,0 +1,3 @@
+# Test without colon first
+x = 3
+say x

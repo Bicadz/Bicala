@@ -1,0 +1,2 @@
+# Test inline repeat loop
+repeat 3: say "Inline repeat"

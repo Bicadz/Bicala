@@ -1,0 +1,32 @@
+# Test Semicolon Rule: Invalid Cases
+# This file tests INVALID semicolon usage that should trigger syntax errors
+# NOTE: This file is expected to FAIL during parsing/execution
+
+# =============================================================================
+# RULE 3 VIOLATION: No whitespace after semicolon
+# =============================================================================
+
+say "=== TESTING INVALID SEMICOLON USAGE ==="
+
+# CASE 1: No space after semicolon (INVALID - should fail)
+# 150.2;a    # This should trigger a syntax error
+
+# CASE 2: No space after semicolon in assignment (INVALID - should fail)
+# x = 10;y = 20    # This should trigger a syntax error
+
+# CASE 3: No space after semicolon in function call (INVALID - should fail)
+# say "hello";"world"    # This should trigger a syntax error
+
+# CASE 4: No space after semicolon in nested function (INVALID - should fail)
+# import str
+# s.join s.join "a", "b";"c"    # This should trigger a syntax error
+
+# CASE 5: Multiple semicolons without spacing (INVALID - should fail)
+# x = 10;;y = 20    # This should trigger a syntax error
+
+# CASE 6: Semicolon immediately followed by another character (INVALID - should fail)
+# x = 10;+ 5    # This should trigger a syntax error
+
+say "=== END INVALID SEMICOLON TESTS ==="
+# NOTE: The above cases are commented out because they would cause parsing errors
+# In a real test environment, these should be tested separately to verify they fail as expected

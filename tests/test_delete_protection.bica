@@ -1,0 +1,23 @@
+# Test delete protection for builtins and keywords
+# This test verifies that attempting to delete protected builtins or keywords raises N003 error
+
+# Test 1: Try to delete a builtin function (type)
+# Expected: N003 error - Cannot delete protected builtin/keyword 'type'
+del type
+
+# Test 2: Try to delete a keyword (if)
+# Expected: N003 error - Cannot delete protected builtin/keyword 'if'
+del if
+
+# Test 3: Try to delete another builtin (say)
+# Expected: N003 error - Cannot delete protected builtin/keyword 'say'
+del say
+
+# Test 4: Try to delete a loop control keyword (break)
+# Expected: N003 error - Cannot delete protected builtin/keyword 'break'
+del break
+
+# Test 5: Verify normal deletion still works (user-defined variable)
+x = 10
+del x
+# Expected: No error, x should be deleted successfully

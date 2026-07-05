@@ -1,0 +1,21 @@
+# Simple test for time module
+
+# Test 1: Global time() function
+say "Test 1: Global time()"
+say time()
+
+# Test 2: Import time module
+say "Test 2: Import time"
+import time
+
+# Test 3: Call time functions
+say "Test 3: time.ctime()"
+say time.ctime()
+
+say "Test 4: time.local_hour()"
+say time.local_hour()
+
+say "Test 5: time.gmt_hour()"
+say time.gmt_hour()
+
+say "All tests passed"

@@ -1,0 +1,67 @@
+# Test Variables: Inline Mutators
+# This file tests inline increment (++) and decrement (--) operators
+
+# Test ++ (Increment)
+i = 0
+say "Initial i: " + i
+i++
+say "After i++: " + i
+say "Expected: 1"
+
+# Test multiple increments
+j = 0
+say "Initial j: " + j
+j++
+j++
+j++
+say "After 3 j++: " + j
+say "Expected: 3"
+
+# Test -- (Decrement)
+k = 10
+say "Initial k: " + k
+k--
+say "After k--: " + k
+say "Expected: 9"
+
+# Test multiple decrements
+l = 10
+say "Initial l: " + l
+l--
+l--
+l--
+say "After 3 l--: " + l
+say "Expected: 7"
+
+# Test increment and decrement combination
+m = 5
+say "Initial m: " + m
+m++
+m++
+m--
+say "After m++, m++, m--: " + m
+say "Expected: 6"
+
+# Test with floats
+n = 5.5
+say "Initial n: " + n
+n++
+say "After n++: " + n
+say "Expected: 6.5"
+
+o = 10.8
+say "Initial o: " + o
+o--
+say "After o--: " + o
+say "Expected: 9.8"
+
+# Test in loops using inline mutators
+p = 0
+while p < 5:
+    say "Loop iteration: " + p
+    p++
+
+say "Final p after loop: " + p
+say "Expected: 5"
+
+say "All inline mutator tests completed!"

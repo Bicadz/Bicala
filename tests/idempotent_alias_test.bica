@@ -1,0 +1,4 @@
+# Test idempotent module alias registration
+from str as s import join as j
+say j ",", ["hello", "world"]
+say s.join ",", ["hello", "world"]

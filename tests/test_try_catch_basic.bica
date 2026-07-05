@@ -1,0 +1,53 @@
+# Test Try/Catch/Finally basic functionality
+# This file tests the try/catch/finally exception handling without Unicode symbols
+
+say "=== TRY/CATCH/FINALLY BASIC TESTS ==="
+
+# Test 1: Valid try/catch
+say "Test 1: Valid try/catch"
+try:
+    say "Trying risky operation"
+    x = 10 / 0  # This will raise an error
+catch (error):
+    say "Caught error occurred"
+    say "Error handling successful"
+
+# Test 2: Valid try/finally
+say "Test 2: Valid try/finally"
+try:
+    say "Trying operation that may fail"
+    y = 5 / 0  # This will raise an error
+finally:
+    say "Finally block executed"
+    say "Cleanup completed"
+
+# Test 3: Valid try/catch/finally
+say "Test 3: Valid try/catch/finally"
+try:
+    say "Trying operation"
+    z = 10 / 0
+catch (error):
+    say "Caught exception occurred"
+finally:
+    say "Final cleanup"
+
+# Test 4: Valid try/catch with no error
+say "Test 4: Valid try/catch with no error"
+try:
+    say "Safe operation"
+    result = 5 + 5
+catch (error):
+    say "This should not execute"
+say "After try/catch"
+
+# Test 5: Valid try/finally with no error
+say "Test 5: Valid try/finally with no error"
+try:
+    say "Safe operation"
+    result = 10 * 2
+finally:
+    say "Finally block"
+say "After try/finally"
+
+say "=== END TRY/CATCH/FINALLY BASIC TESTS ==="
+say "All basic exception handling tests passed"

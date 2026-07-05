@@ -1,0 +1,10 @@
+# ============================================================
+# Bicala Negative Path Test: N003 - Protected Builtin Deletion
+# ============================================================
+# This test validates that attempting to delete a protected
+# built-in function triggers the N003 error code.
+# ============================================================
+
+say "Test: Protected Builtin Deletion (should fail with N003)"
+say "Attempting to delete 'len' built-in function..."
+del len

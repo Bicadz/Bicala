@@ -1,0 +1,8 @@
+# Test Invalid Catch Parameter Syntax
+# This file should fail with S043 error for invalid catch parameter
+
+try:
+    say "Test"
+catch (123error):
+    say "This should fail"
+# Expected: S043 - Invalid catch parameter syntax

@@ -1,0 +1,2 @@
+# Test: del statement on non-existent variable should fail (N004)
+del nonexistent

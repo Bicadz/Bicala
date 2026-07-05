@@ -1,0 +1,4 @@
+# Try repeat with a simple number
+n = 3
+repeat n:
+    say "test"

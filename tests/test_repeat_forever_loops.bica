@@ -1,0 +1,95 @@
+# Integration Tests for Repeat and Forever Loops
+# This file tests the restored repeat and forever loop functionality
+
+# =============================================================================
+# REPEAT LOOPS
+# =============================================================================
+
+say "=== REPEAT LOOP TESTS ==="
+
+# Basic repeat loop with literal
+repeat 3:
+    say "Repeat iteration"
+
+# Repeat loop with variable
+count = 5
+repeat count:
+    say "Variable repeat: " + count
+
+# Repeat loop with expression
+repeat 2 + 1:
+    say "Expression repeat"
+
+# Repeat loop with inline body
+repeat 2: say "Inline repeat"
+
+# Repeat loop with compound operations in body
+total = 0
+repeat 4:
+    total += 1
+say "Total after repeat: " + total
+
+# Repeat loop with nested statements
+repeat 2:
+    say "Outer repeat"
+    repeat 2:
+        say "  Inner repeat"
+
+say "=== END REPEAT LOOP TESTS ==="
+
+# =============================================================================
+# FOREVER LOOPS
+# =============================================================================
+
+say "=== FOREVER LOOP TESTS ==="
+
+# Forever loop with break (to prevent infinite execution)
+counter = 0
+forever:
+    say "Forever iteration: " + counter
+    counter += 1
+    if counter >= 3:
+        break
+
+# Forever loop with nested operations
+accumulator = 0
+forever:
+    accumulator += 1
+    say "Accumulator: " + accumulator
+    if accumulator >= 2:
+        break
+
+# Forever loop with continue
+skip_counter = 0
+forever:
+    skip_counter += 1
+    if skip_counter .= 1:
+        continue
+    say "After continue: " + skip_counter
+    if skip_counter >= 3:
+        break
+
+say "=== END FOREVER LOOP TESTS ==="
+
+# =============================================================================
+# EDGE CASES
+# =============================================================================
+
+say "=== EDGE CASE TESTS ==="
+
+# Repeat with 0 (should execute 0 times)
+repeat 0:
+    say "This should not print"
+say "After repeat 0"
+
+# Repeat with 1 (should execute 1 time)
+repeat 1:
+    say "This should print once"
+
+# Repeat with negative number (behavior may vary)
+repeat -1:
+    say "Negative repeat behavior"
+
+say "=== END EDGE CASE TESTS ==="
+
+say "All repeat and forever loop tests completed!"

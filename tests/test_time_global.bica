@@ -1,0 +1,4 @@
+# Test global time() function only
+say "Testing global time()"
+say time()
+say "Global time test passed"

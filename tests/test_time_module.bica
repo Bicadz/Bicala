@@ -1,0 +1,56 @@
+# Test script for time module
+# Tests both global time() function and time module functions
+
+# Test 1: Global time() function (no import needed)
+say "Test 1: Global time() function"
+say time()
+
+# Test 2: Import time module
+say ""
+say "Test 2: Import time module"
+import time
+say "Module imported successfully"
+
+# Test 3: Core time functions
+say ""
+say "Test 3: Core time functions"
+say "ctime(): ", time.ctime()
+say "perf_counter(): ", time.perf_counter()
+say "strftime: ", time.strftime "%Y-%m-%d %H:%M:%S"
+
+# Test 4: Local time unit getters
+say ""
+say "Test 4: Local time unit getters"
+say "local_year: ", time.local_year()
+say "local_month: ", time.local_month()
+say "local_day: ", time.local_day()
+say "local_weekday: ", time.local_weekday()
+say "local_hour: ", time.local_hour()
+say "local_minute: ", time.local_minute()
+say "local_second: ", time.local_second()
+
+# Test 5: GMT time unit getters
+say ""
+say "Test 5: GMT time unit getters"
+say "gmt_year: ", time.gmt_year()
+say "gmt_month: ", time.gmt_month()
+say "gmt_day: ", time.gmt_day()
+say "gmt_weekday: ", time.gmt_weekday()
+say "gmt_hour: ", time.gmt_hour()
+say "gmt_minute: ", time.gmt_minute()
+say "gmt_second: ", time.gmt_second()
+
+# Test 6: time.sleep (short delay)
+say ""
+say "Test 6: time.sleep (0.5 second delay)"
+say "Before sleep"
+time.sleep 0.5
+say "After sleep"
+
+# Test 7: time.time() from module
+say ""
+say "Test 7: time.time() from module"
+say "time.time(): ", time.time()
+
+say ""
+say "All tests completed successfully!"

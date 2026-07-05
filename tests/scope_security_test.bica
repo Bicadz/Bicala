@@ -1,0 +1,53 @@
+# Test Scope Security and Identifier Management
+
+# Test 1: Variable to Function collision should fail (N007)
+# x = 5
+# def x:
+#     say "This should fail"
+
+# Test 2: Function to Variable collision should fail (N007)
+# def myfunc:
+#     say "hello"
+# myfunc = 10
+
+# Test 3: Function to Function collision should fail (N007)
+# def myfunc:
+#     say "hello"
+# def myfunc:
+#     say "world"
+
+# Test 4: Variable to Variable reassignment should work
+x = 5
+x = 10
+say x
+
+# Test 5: del statement on existing variable should work
+y = 20
+say y
+del y
+# y should no longer exist
+
+# Test 6: del statement followed by redefinition should work
+z = 30
+say z
+del z
+z = 40
+say z
+
+# Test 7: del statement on non-existent variable should fail (N004)
+# del nonexistent
+
+# Test 8: del statement on function should work
+def testfunc:
+    say "test function"
+testfunc()
+del testfunc
+# testfunc should no longer exist
+
+# Test 9: After del, can define function with same name
+temp = 100
+say temp
+del temp
+def temp:
+    say "temp is now a function"
+temp()
