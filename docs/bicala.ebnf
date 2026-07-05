@@ -1,0 +1,344 @@
+(* ========================================================================= *)
+(* EBNF Grammar for Bicala Language                                          *)
+(* ========================================================================= *)
+(*                                                                           *)
+(* KEY FIXES from v1:                                                        *)
+(* 1. FIXED: Left recursion in expressions (now using iteration { })         *)
+(*    - Old: LogicalExpr ::= LogicalExpr "or" LogicalExpr                    *)
+(*    - New: OrExpr ::= AndExpr { "or" AndExpr }                             *)
+(*                                                                           *)
+(* 2. CLARIFIED: Assignment vs Comparison operators                          *)
+(*    - Assignment: x = 5  (equals sign)                                     *)
+(*    - Comparison: x == 5, x === 5  (double/triple equals signs)            *)
+(*                                                                           *)
+(* 3. FIXED: Function call syntax with proper argument list                  *)
+(*    - Old: FunctionCall ::= Identifier "(" ")"                             *)
+(*    - New: FunctionCall ::= Identifier "(" [ArgList] ")"                   *)
+(*    - ArgList ::= Expression { "," Expression }                            *)
+(*                                                                           *)
+(* 4. DOCUMENTED: Built-in functions use SPACE-separated args                *)
+(*    - math.min a b (NOT comma)                                             *)
+(*    - str.slice x start end (NOT comma)                                    *)
+(*    - int "42", str 123, float "3.14"                                      *)
+(*                                                                           *)
+(* 5. ADDED: Custom operator definitions with alphanumeric support           *)
+(*    - Syntax: def infixl|infixr|infix <prec> <op> <params>: <body>         *)
+(*    - Operator names can be symbolic (+, *, ^) or alphanumeric (add, mul)  *)
+(*    - Example: def infixl 10 add x,y: x+y                                  *)
+(*    - Example: def infixl 5 + x,y: x+y                                     *)
+(*    - NOTE: def is now the unified keyword for both function and operator definitions (Beta 5.1.3.1) *)
+(*                                                                           *)
+(* ========================================================================= *)
+
+(* === PROGRAM STRUCTURE === *)
+Program       ::= { Statement | Comment | EmptyLine } ;
+Statement     ::= Assignment
+                | IncrementDecrement
+                | Output
+                | InputStmt
+                | Conditional
+                | Loop
+                | FunctionDef
+                | CustomOperatorDef
+                | FunctionCallStmt
+                | ReturnStmt
+                | BreakStmt
+                | ContinueStmt
+                | DebugStmt
+                | ImportStmt
+                | FromImportStmt
+                | HelpStmt
+                | DelStmt
+                | SwitchStmt
+                | DeferStmt
+                | PassStmt
+                | TryCatchStmt
+                ;
+
+(* Multiple statements on one line separated by | *)
+MultiStatement ::= Statement , { "|" , Statement } ;
+
+Indent        ::= "    " | "\t" ;
+EmptyLine     ::= "" ;
+
+(* === COMMENTS === *)
+Comment       ::= LineComment | BlockComment ;
+LineComment   ::= "#" , { AnyChar - "\n" } ;
+BlockComment  ::= "###" , { AnyChar } , "###" ;
+
+(* === ASSIGNMENT & VARIABLES === *)
+(* NOTE: = is assignment, ==/=== are comparisons *)
+Assignment    ::= Identifier , "=" , Expression
+                | Identifier , "+=" , Expression
+                | Identifier , "-=" , Expression
+                | Identifier , "*=" , Expression
+                | Identifier , "/=" , Expression
+                | Identifier , "//=" , Expression
+                | Identifier , "%=" , Expression
+                | Identifier , "**=" , Expression
+                ;
+
+IncrementDecrement ::= Identifier , "++"
+                     | Identifier , "--"
+                     ;
+
+(* === OUTPUT === *)
+Output        ::= "say" , Expression ;
+
+(* === INPUT === *)
+InputStmt     ::= "input" , [ String ] ;
+
+(* === CONDITIONALS === *)
+Conditional   ::= IfStmt , { ElifStmt } , [ ElseStmt ] ;
+IfStmt        ::= "if" , Condition , ":" , "\n" , IndentedBlock ;
+ElifStmt      ::= "elif" , Condition , ":" , "\n" , IndentedBlock
+                | "else if" , Condition , ":" , "\n" , IndentedBlock
+                ;
+ElseStmt      ::= "else" , ":" , "\n" , IndentedBlock ;
+
+Condition     ::= Expression ;
+IndentedBlock ::= { Indent , Statement } ;
+
+(* === LOOPS === *)
+Loop          ::= WhileLoop | ForLoop | RepeatLoop | ForeverLoop ;
+
+WhileLoop     ::= "while" , Condition , ":" , "\n" , IndentedBlock ;
+
+ForLoop       ::= "for" , Identifier , "in" , Range , ":" , "\n" , IndentedBlock ;
+Range         ::= Expression
+                | Expression , ":" , Expression
+                | Expression , ":" , Expression , ":" , Expression
+                ;
+
+RepeatLoop    ::= "repeat" , ["("] , Expression , [")"] , ":" , "\n" , IndentedBlock ;
+
+ForeverLoop   ::= "forever" , ":" , "\n" , IndentedBlock ;
+
+BreakStmt     ::= "break" ;
+ContinueStmt  ::= "continue" ;
+
+(* === EXCEPTION HANDLING === *)
+(* Implemented in Beta 5.1.19 - Full exception handling support *)
+(* Strict validation: try blocks must be followed by catch or finally (Error S100) *)
+(* Catch parameter must be valid identifier (Error S099) *)
+(* Maps to Python try/except/finally semantics in evaluator *)
+TryCatchStmt   ::= "try" , ":" , "\n" , IndentedBlock , "catch" , "(" , Identifier , ")" , ":" , "\n" , IndentedBlock , [ "finally" , ":" , "\n" , IndentedBlock ] ;
+
+(* === FUNCTIONS === *)
+FunctionDef   ::= "def" , Identifier , [ FunctionParams ] , ":" , "\n" , IndentedBlock
+                | "def" , Identifier , [ FunctionParams ] , ":" , Expression ;
+FunctionCallStmt ::= FunctionCall ;
+FunctionCall  ::= Identifier , [ FunctionArgs ] ;
+FunctionParams ::= "(" , [ ParamList ] , ")" | ParamList ;
+FunctionArgs  ::= "(" , [ ArgList ] , ")" | ArgList ;
+ParamList     ::= Identifier , { "," , Identifier } ;
+ArgList       ::= Expression , { "," , Expression } ;
+ReturnStmt    ::= "return" , [ Expression ] ;
+
+(* === CUSTOM OPERATORS === *)
+(* Operator names can be symbolic (+, *, ^) or alphanumeric (add, mul) *)
+(* NOTE: = and assignment tokens excluded from SymbolicOp to prevent ambiguity with assignment operator *)
+OperatorSymbol ::= SymbolicOp | AlphanumericOp ;
+SymbolicOp     ::= "+" | "-" | "*" | "/" | "//" | "%" | "**" | "^" | "~" | "@" | "#" | "$" | "&" | "|" | "!" | "?" | "<" | ">" ;
+AlphanumericOp ::= Letter , { Letter | Digit } ;
+(* Precedence must be positive integer 1-99 *)
+PositiveInteger ::= Digit , { Digit } ;
+(* Custom operators require exactly two parameters *)
+CustomOperatorDef ::= "def" , ( "infixl" | "infixr" | "infix" ) , PositiveInteger , OperatorSymbol , Identifier , "," , Identifier , ":" , "\n" , IndentedBlock
+                    | "def" , ( "infixl" | "infixr" | "infix" ) , PositiveInteger , OperatorSymbol , Identifier , "," , Identifier , ":" , Expression ;
+
+(* === DEBUG & ERROR === *)
+DebugStmt     ::= "debug"
+                | "debug" , "all"
+                | "debug" , Identifier
+                ;
+
+ErrorStmt     ::= "error" , Expression ;
+
+(* === IMPORT STATEMENTS === *)
+ImportStmt    ::= "import" , String , [ "as" , Identifier ] ;
+FromImportStmt ::= "from" , String , [ "as" , Identifier ] , "import" , ImportList ;
+ImportList    ::= Identifier , { "," , Identifier } 
+                | Identifier , "as" , Identifier , { "," , Identifier , "as" , Identifier } ;
+
+(* === HELP === *)
+HelpStmt      ::= "help"
+                | Expression , "/help"
+                ;
+
+(* === DELETE STATEMENT === *)
+(* Implemented in Beta 5.1.24.3 - Protected from deleting builtins and keywords *)
+(* Raises N003 error if attempting to delete protected names *)
+DelStmt       ::= "del" , Identifier ;
+
+(* === SWITCH STATEMENT === *)
+(* Implemented in Beta 5.1.15 - Switch/case/default control flow *)
+SwitchStmt    ::= "switch" , Expression , ":" , "\n" , IndentedBlock ;
+
+(* === DEFER STATEMENT === *)
+(* Implemented in Beta 5.1.18 - Deferred execution *)
+(* Defer statement: defer statement or defer: block *)
+DeferStmt     ::= "defer" , Statement
+                | "defer" , ":" , "\n" , IndentedBlock
+                ;
+
+(* === PASS STATEMENT === *)
+(* Implemented in Beta 5.1.20 - No-op statement *)
+PassStmt      ::= "pass" ;
+
+(* === EXPRESSIONS - NON-LEFT-RECURSIVE === *)
+(* Fixed left recursion using iteration { } *)
+
+Expression    ::= IfExpr ;
+
+(* Inline if expression: if cond: true_expr { elif cond: expr } else: false_expr *)
+(* NOTE: Single-line, no semicolons, clean syntax, supports N-ary branching *)
+IfExpr        ::= "if" , Condition , ":" , OrExpr , { "elif" , Condition , ":" , OrExpr } , "else" , ":" , OrExpr | OrExpr ;
+
+OrExpr        ::= AndExpr , { "or" , AndExpr } ;
+AndExpr       ::= NotExpr , { "and" , NotExpr } ;
+NotExpr       ::= "not" , NotExpr | InExpr ;
+
+InExpr        ::= ComparisonExpr , [ "in" , ComparisonExpr ] ;
+
+(* Comparison operators *)
+(*   .=      : loose equality (case-insensitive strings, type coercion) *)
+(*            - "a" .= "A" → true (case-insensitive) *)
+(*            - true .= "true" → true (bool↔string coercion) *)
+(*            - 5 .= 5.0 → true (int↔float coercion) *)
+(*            - "5" .= 5 → true (string↔number coercion) *)
+(*   ==      : strict equality (no type coercion, case-sensitive) *)
+(*            - "a" == "A" → false (case-sensitive) *)
+(*            - true == "true" → false (no type coercion) *)
+(*            - "5" == 5 → false (different types) *)
+(*            - 5 == 5.0 → false (different types) *)
+(*   ===     : identity equality (same object in memory using Python's 'is' operator) *)
+(*            - x === y → true only if x and y are the exact same object *)
+(*   !=      : loose inequality (negation of .=) *)
+(*   !==     : strict inequality (negation of ==) *)
+(*   !===    : identity inequality (negation of ===) *)
+(*   <, >, <=, >=  : numeric comparisons only *)
+ComparisonExpr ::= AdditiveExpr , [ ( ".=" | "==" | "===" | "!=" | "!==" | "!===" | "<" | ">" | "<=" | ">=" | "in" ) , AdditiveExpr ] ;
+
+AdditiveExpr  ::= MultiplicativeExpr , { ( "+" | "-" ) , MultiplicativeExpr } ;
+MultiplicativeExpr ::= PowerExpr , { ( "*" | "/" | "//" | "%" ) , PowerExpr } ;
+PowerExpr     ::= UnaryExpr , { "**" , UnaryExpr } ;
+
+UnaryExpr     ::= ( "+" | "-" ) , UnaryExpr | PostfixExpr ;
+
+PostfixExpr   ::= PrimaryExpr , { "." , Identifier | "[" , [ IndexExpr ] , "]" } ;
+
+IndexExpr     ::= Expression
+                | Expression , ":" , [ Expression ]
+                | ":" , [ Expression ]
+                ;
+
+
+(* + adds numbers, concatenates strings, and concatenates arrays. *)
+(* In array literals, comma separates elements: [x, y] keeps x and y nested. *)
+PrimaryExpr   ::= Literal
+                | Identifier
+                | FunctionExpr
+                | TypeConvExpr
+                | ArrayLiteral
+                | "(" , Expression , ")"
+                ;
+
+(* Built-in Functions *)
+(* NOTE: Space-separated arguments, NOT comma-separated *)
+(* PARSER STRATEGY: Parse greedily from left to right, stopping at known delimiters *)
+(* Example: math.min a + b c → parse as math.min(a + b, c) NOT math.min(a, +b c) *)
+(* The parser must recognize operator boundaries to split arguments correctly *)
+FunctionExpr  ::= MathFunc | StrFunc | ArrayFunc | TypeConvExpr | TypeCheck | "input" , [ String ] ;
+
+MathFunc      ::= "math.abs" , Expression
+                | "math.min" , Expression , Expression
+                | "math.max" , Expression , Expression
+                | "math.round" , Expression
+                | "math.floor" , Expression
+                | "math.ceil" , Expression
+                ;
+
+StrFunc       ::= "str.len" , Expression
+                | "str.upper" , Expression
+                | "str.lower" , Expression
+                | "str.isupper" , Expression
+                | "str.islower" , Expression
+                | "str.find" , Expression , Expression
+                | "str.slice" , Expression , Expression , [ Expression ]
+                ;
+
+ArrayFunc     ::= "arr.len" , Expression
+                | "arr.first" , Expression
+                | "arr.last" , Expression
+                | "arr.push" , Expression , Expression
+                | "arr.pop" , Expression , [ Expression ]
+                | "arr.insert" , Expression , Expression , Expression
+                | "arr.remove" , Expression , Expression
+                | "arr.concat" , Expression , Expression
+                | "arr.reverse" , Expression
+                | "arr.sort" , Expression
+                ;
+
+TypeConvExpr  ::= "int" , Expression     (* convert to integer, e.g. int "42" *)
+                | "str" , Expression     (* convert to string, e.g. str 123 *)
+                | "float" , Expression   (* convert to float, e.g. float "3.14" *)
+                | "bool" , Expression    (* convert to boolean *)
+                ;
+
+TypeCheck     ::= "type" , Expression ;
+
+(* === LITERALS & IDENTIFIERS === *)
+Literal       ::= String | Number | Boolean | "None" ;
+ArrayLiteral  ::= "[" , [ ArrayItems ] , "]" ;
+ArrayItems    ::= OrExpr , { "," , OrExpr } ;
+
+String        ::= '"' , { AnyChar - '"' } , '"'
+                | "'" , { AnyChar - "'" } , "'"
+                ;
+
+Number        ::= Integer | Float ;
+Integer       ::= [ "-" ] , Digit , { Digit } ;
+Float         ::= [ "-" ] , Digit , { Digit } , "." , Digit , { Digit } ;
+
+Boolean       ::= "True" | "False" ;
+
+Identifier    ::= Letter , { Letter | Digit | "_" } ;
+
+(* === BASIC TOKENS === *)
+Letter        ::= "a" | "b" | ... | "z" | "A" | "B" | ... | "Z" ;
+Digit         ::= "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" ;
+AnyChar       ::= ? any character ? ;
+
+(* === OPERATOR PRECEDENCE (high to low) === *)
+(* 1. Parentheses ()                                           *)
+(* 2. Exponentiation ** (right-associative)                    *)
+(* 3. Unary operators: +, -                                    *)
+(* 4. Multiplication, Division, Floor Div, Modulo: *, /, //, % *)
+(* 5. Addition, Subtraction: +, -                              *)
+(* 6. Comparisons: =, ==, ===, !=, !==, !===, <, >, <=, >=, in *)
+(* 7. Logical NOT: not                                         *)
+(* 8. Logical AND: and                                         *)
+(* 9. Logical OR: or                                           *)
+(* 10. Ternary: ? :                                            *)
+(* 11. Comma (concatenation)                                   *)
+(* 12. Custom operators (user-defined precedence)              *)
+(*                                                             *)
+(* OPERATOR DETAILS:                                           *)
+(*   =   : loose equality (case-insensitive strings, type coercion) *)
+(*   ==  : strict equality (no type coercion, case-sensitive)  *)
+(*   === : identity equality (same object in memory)           *)
+(*   !=  : loose inequality (negation of =)                    *)
+(*   !== : strict inequality (negation of ==)                  *)
+(*   !===: identity inequality (negation of ===)               *)
+(*   =   : assignment (basic)                                  *)
+(*   +=, -=, *=, /=, //=, %=, **= : compound assignments       *)
+(*   ;   : function terminator (optional at top-level, mandatory in nested calls) *)
+(*   |   : statement separator                                 *)
+(*   ,   : string concatenation OR array element separator     *)
+(*   ? :  : ternary operator (condition ? true_expr : false_expr) *)
+(*   Custom operators: def infixl|infixr|infix <prec> <op> <params>: <body> *)
+(*     - infixl: left-associative (e.g., def infixl 10 add x,y: x+y) *)
+(*     - infixr: right-associative (e.g., def infixr 5 pow x,y: x**y) *)
+(*     - infix: non-associative (e.g., def infix 7 eq x,y: x==y) *)
+(*     - Operator names can be symbolic (+, *, ^) or alphanumeric (add, mul) *)
