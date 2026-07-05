@@ -4,7 +4,7 @@
 
 This document defines the semantic rules, type system, and error codes for the Bicala programming language. It serves as the authoritative reference for language behavior and implementation guidelines.
 
-### Version: Beta 5.1.24
+## Version: Beta 5.1.24
 
 ---
 
@@ -233,7 +233,7 @@ Runtime Execution
 
 ---
 
-## Future Extensions (Cancelled due to project archive)
+## Future Extensions
 
 ### Potential Type System Enhancements
 - Type inference for variables without explicit declarations
@@ -242,7 +242,7 @@ Runtime Execution
 - Type aliases
 - Interface/struct types
 
-### Potential Const Enhancements (Defunct - Frozen at Beta 5.1.24.3)
+### Potential Const Enhancements
 - Const expressions (compile-time evaluation)
 - Const propagation (optimization)
 - Const correctness analysis

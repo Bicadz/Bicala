@@ -1916,3 +1916,42 @@ Beta:
               - Clear Error: N003 cung cấp thông báo lỗi rõ ràng về protected names
               - Consistent: Đồng bộ với kiến trúc bảo vệ scope security hiện có
               - Robust: Test suite 100% pass đảm bảo không có regression
+        [05/07/2026]
+        + Beta 5.1.24.4:
+          - Sửa Lỗi Runtime R000 và Module Naming Conflict:
+            - Root Cause: File main/ast.py bị conflict với Python's built-in ast module
+              - ImportError: cannot import name 'NumberNode' from 'ast' (Python's ast module)
+              - Parser và evaluator cố gắng import từ Python's ast thay vì Bicala's ast
+            - Giải pháp: Đổi tên main/ast.py → main/bicala_ast.py
+              - Tránh conflict với Python's built-in ast module
+              - Giữ nguyên tất cả AST node classes và functionality
+            - Cập nhật imports trong toàn bộ codebase:
+              - main/pars/base.py: from ast import → from bicala_ast import
+              - main/pars/stmt.py: from ast import DeferNode, TryCatchNode → from bicala_ast import
+              - main/eval.py: from ast import → from bicala_ast import
+            - Tạo Comprehensive Test Suite cho Core Protections:
+              - tests/test_success.bica: Positive path test (const & type constraints)
+              - tests/test_err_n002.bica: Negative test - const reassignment (N002)
+              - tests/test_err_t002.bica: Negative test - type mismatch (T002)
+              - tests/test_err_n003_keyword.bica: Negative test - protected constant deletion (N003)
+              - tests/test_err_n003_builtin.bica: Negative test - protected builtin deletion (N003)
+              - tests/run_tests.py: Automated Python test runner với subprocess
+                - Capture stdout/stderr cho mỗi test
+                - Assertions cho exit codes và error codes
+                - Colored console output (PASSED/FAILED)
+                - Summary báo cáo tổng số tests pass/fail
+            - Xác minh:
+              - Test Suite: 5/5 tests PASS (100%)
+              - test_success.bica: PASSED - const và type constraints hoạt động đúng
+              - test_err_n002.bica: PASSED - N002 error trigger đúng
+              - test_err_t002.bica: PASSED - T002 error trigger đúng
+              - test_err_n003_keyword.bica: PASSED - N003 error trigger đúng
+              - test_err_n003_builtin.bica: PASSED - N003 error trigger đúng
+              - Runtime恢复正常: Không còn R000 Unknown error
+            - Lợi ích:
+              - Fix Critical Bug: Runtime error R000 được giải quyết hoàn toàn
+              - Module Safety: Tránh conflict với Python's standard library
+              - Test Coverage: Comprehensive test suite cho core protections
+              - Automation: Automated test runner cho CI/CD integration
+              - Validation: 100% core protections active và hoạt động đúng
+              - Documentation: Test files serve as living documentation

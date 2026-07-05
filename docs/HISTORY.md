@@ -431,6 +431,19 @@ Comprehensive error code system establishment with Lexer (Lxxx), Parser (Sxxx), 
 - **Del Statement Enforcement**: Introduced the `N003: Cannot delete protected name` error rule to explicitly block the `del` statement from deleting core language keywords, boolean/null constants (`true`, `false`, `none`, `nan`), or registered built-in functions.
 - **Project Conclusion**: Permanently frozen as a completed educational monument.
 
+###### Beta 5.1.24.4
+- **Runtime R000 Error Fix**: Resolved critical runtime error caused by module naming conflict with Python's built-in `ast` module.
+- **Module Renaming**: Renamed `main/ast.py` to `main/bicala_ast.py` to avoid import conflicts with Python's standard library.
+- **Import Updates**: Updated all imports across the codebase (`main/pars/base.py`, `main/pars/stmt.py`, `main/eval.py`) to use the new module name.
+- **Comprehensive Test Suite**: Created automated test suite for core protection validation:
+  - `tests/test_success.bica`: Positive path validation for const and type constraints
+  - `tests/test_err_n002.bica`: N002 error validation for const reassignment
+  - `tests/test_err_t002.bica`: T002 error validation for type mismatch
+  - `tests/test_err_n003_keyword.bica`: N003 error validation for protected constant deletion
+  - `tests/test_err_n003_builtin.bica`: N003 error validation for protected builtin deletion
+  - `tests/run_tests.py`: Automated Python test runner with subprocess execution and colored output
+- **Test Results**: 5/5 tests PASSED (100%) - all core protections verified as active and functional
+
 ---
 
 ## Version Summary
@@ -448,7 +461,7 @@ The Bicala language has evolved through distinct eras:
 
 **Official Rename**: Bimuila → Bicala at Beta 5.1.4.2a (June 14, 2026)
 
-**Current Version**: Beta 5.1.24.3 (June 19, 2026) - Final Frozen State
+**Current Version**: Beta 5.1.24.4 (July 5, 2026) - Runtime Fix & Test Suite
 
 ---
 
