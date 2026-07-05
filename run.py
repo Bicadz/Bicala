@@ -6,6 +6,10 @@
 import os
 import sys
 
+# Force the terminal to use UTF-8 to avoid Unicode character printing errors (like ✓) on Windows.
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
+
 # Add main directory to sys.path for imports without __init__.py
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'main'))
 
