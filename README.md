@@ -63,20 +63,38 @@ python bicaide.py
 ```
 Source Code (.bica)
     ↓
-Tokenizer (tok.py)
+[run.py] or [bicaide.py]
+    ↓
+Tokenizer (lex.py::tokenize)
+    ↓
+Token Stream
     ↓
 Parser Package (pars/)
-    ├── base.py (Core helpers)
-    ├── expr.py (Expression parser)
-    └── stmt.py (Statement parser)
+    ├── base.py (helpers: indent, block detection)
+    ├── expr.py (expression parsing with precedence climbing)
+    └── stmt.py (statement parsing with block structure)
     ↓
-Abstract Syntax Tree (ast.py)
+Abstract Syntax Tree (ast.py nodes)
     ↓
-Semantic Layer (main/sem.py)
+Semantic Layer (sem.py)
+    ├── Name resolution (resolve_name)
+    ├── Type validation (require_boolean, validate_type_assignment)
+    ├── Callable validation (validate_callable, validate_function_arity)
+    └── Const validation (validate_const_assignment)
     ↓
 Evaluator (eval.py)
+    ├── Expression evaluation (evaluate_expression)
+    ├── Statement execution (execute_statement)
+    ├── Control flow signals (BreakSignal, ContinueSignal, ReturnSignal)
+    └── Environment interaction (env.py)
     ↓
 Environment (env.py)
+    ├── Scope management (parent/child chain)
+    ├── Variable storage (vars, functions)
+    ├── Const enforcement (const_vars)
+    ├── Type constraints (typed_vars)
+    ├── Defer stack (defer_stack)
+    └── Module registry (BUILTIN_MODULES, MODULE_REGISTRY)
     ↓
 Runtime Output
 
@@ -107,6 +125,7 @@ All errors are dynamically generated through a centralized error engine in `main
 * [Historical Chronicle](docs/HISTORY.md) - Language evolution from MiniLang to Bicala
 * [Change Log](docs/change.log) - Detailed development history (Vietnamese)
 * [Documentation README](README.md) - Additional documentation resources
+* [📄 Structural Specification](docs/bicala.structure.spec.md) - Deep-dive internal architecture and file responsibilities
 
 ---
 
