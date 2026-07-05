@@ -1,4 +1,4 @@
-# The Bicala Programming Language (Beta 5.1.24.3)
+# The Bicala Programming Language (Beta 5.1.24.4)
 
 *An indentation-based dynamic programming language with custom dynamic syntax definitions, implemented in Python.*
 
