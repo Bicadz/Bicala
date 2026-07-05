@@ -444,6 +444,17 @@ Comprehensive error code system establishment with Lexer (Lxxx), Parser (Sxxx), 
   - `tests/run_tests.py`: Automated Python test runner with subprocess execution and colored output
 - **Test Results**: 5/5 tests PASSED (100%) - all core protections verified as active and functional
 
+###### Beta 5.1.24.5
+- **Regression Fix: Code Duplication & Import Restoration**: Resolved regressions introduced after Beta 5.1.24.4.
+- **Code Duplication Removal**: Fixed massive code duplication (~730 lines) in `main/pars/stmt.py` that caused syntax errors and continue/break statements outside loop errors.
+- **Import Restoration**: Restored all Beta 5.1.24.4 fixes that were reverted:
+  - `main/eval.py`: Restored `from bicala_ast import` and `KEYWORDS, BUILTINS` imports
+  - `main/pars/base.py`: Changed from relative imports (`from ..tok`, `from ..ast`) to direct imports (`from tok`, `from bicala_ast`)
+  - `main/pars/stmt.py`: Restored `from bicala_ast import DeferNode, TryCatchNode`
+  - `main/eval.py`: Re-inserted N003 protection check in DelNode handler to prevent deletion of keywords and built-ins
+- **Zero __init__.py Architecture**: Maintained direct import architecture without package initialization files
+- **Test Verification**: 5/5 core protection tests PASSED (100%) - all protections verified active
+
 ---
 
 ## Version Summary
@@ -461,7 +472,7 @@ The Bicala language has evolved through distinct eras:
 
 **Official Rename**: Bimuila → Bicala at Beta 5.1.4.2a (June 14, 2026)
 
-**Current Version**: Beta 5.1.24.4 (July 5, 2026) - Runtime Fix & Test Suite
+**Current Version**: Beta 5.1.24.5 (July 5, 2026) - Regression Fix
 
 ---
 
