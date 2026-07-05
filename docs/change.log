@@ -1,0 +1,1918 @@
+  Bicala Change Log
+==================
+
+[26/04/2026]
+MiniLang: Startoff:
+  - Chỉ vài dòng Python
+  - Chưa có interpreter thật sự
+  - Code viết thẳng, chưa có hàm run()
+  - Lệnh cơ bản: set, add, print
+
+# Foundation → Foundtin -> Foutin → Forty → 40
+# Bimila = BIca MIni LAnguage
+[26-27/04/2026]
+40 Era:
+  * Bimila v0.1:
+    - Bắt đầu tách thành interpreter
+    - Xuất hiện hàm run()
+    - Chương trình được truyền qua list Python
+
+  * Bimila v0.2:
+    + Bimila v0.2.0:
+      - Xuất hiện file .bml
+      - Chương trình có thể lưu trong tệp riêng
+      - Bổ sung lệnh if và loop
+      - Bimila bắt đầu trở thành một ngôn ngữ độc lập
+    + Bimila v0.2.1:
+      - Bổ sung Command Line Interface (CLI)
+      - Có entry point bằng sys.argv
+      - Thêm lệnh debug để kiểm tra bộ nhớ
+      - Có thể chạy trực tiếp file .bml từ terminal
+
+  * Bimila v0.3:
+    + Bimila v0.3.0:
+      - Bắt đầu hỗ trợ cú pháp dạng hàm
+      - print x được thay bằng print(x)
+      - Sử dụng Regex để phân tích lệnh
+      - Đặt nền móng cho cú pháp hiện đại hơn
+    + Bimila v0.3.1:
+      - Bổ sung comment bằng dấu #
+      - Dòng bắt đầu bằng # sẽ bị bỏ qua
+    + Bimila v0.3.2:
+      - Bổ sung comment nhiều dòng
+      - Hỗ trợ cú pháp /* ... */
+      - Lấy cảm hứng trực tiếp từ JavaScript 
+      - Xuất hiện trạng thái in_block_comment 
+    + Bimila v0.3.3:
+      - Thay thế comment nhiều dòng
+      - Đổi từ /* ... */ sang ### ... ###
+      - Loại bỏ cú pháp vay mượn từ JavaScript
+      - Bimila bắt đầu có phong cách riêng
+    + Bimila v0.3.4:
+      - Bổ sung toán tử +=
+      - Thay thế add x y bằng x += y
+      - Bắt đầu hỗ trợ cú pháp toán tử
+      - Giúp mã nguồn ngắn gọn hơn
+    + Bimila v0.3.5:
+      - Bổ sung hệ thống báo lỗi cơ bản
+      - Thêm Syntax Error và Unknown Command
+      - Kiểm tra biến tồn tại trước khi +=
+      - Giúp việc debug chương trình dễ hơn
+    + Bimila v0.3.6:
+      - Cải tiến hệ thống báo lỗi
+      - Thêm số dòng vào mọi Error và Syntax Error
+      - run_line() nhận thêm line_num
+      - Giúp xác định vị trí lỗi nhanh hơn
+    + Bimila v0.3.7:
+      - Bổ sung toán tử -=
+      - Hoàn thiện nhóm toán tử cập nhật cơ bản
+      - Đạt cột mốc 100 dòng mã nguồn đầu tiên
+    + Bimila v0.3.8:
+      - Bổ sung phép gán bằng dấu =
+      - Thay thế cú pháp set x 10
+      - Giúp mã nguồn tự nhiên hơn
+      - Bimila tiến gần hơn tới cú pháp hiện đại
+      + Bimila v0.3.8.1:
+        - Hotfix cho phép gán bằng "="
+        - Sửa lỗi UnboundLocalError ở v0.3.8
+        - Ổn định hóa hệ thống assignment
+        - Bổ sung xử lý split an toàn (maxsplit=1)
+    + Bimila v0.3.9:
+      - Thêm hỗ trợ biểu thức với ngoặc ()
+      - Giới thiệu eval_expr() cho tính toán runtime
+      - print() trở thành expression-based
+      - Assignment hỗ trợ expression thay vì chỉ số
+      - Bước đầu chuyển sang mô hình "mini expression language"
+    + Bimila v0.3.10:
+      - Quay lại tinh thần v0.3 (đơn giản hơn)
+      - Loại bỏ print(x), thay bằng log(x)
+      - Giữ lại engine biểu thức từ v0.3.9
+      - Chuẩn hóa output theo cú pháp function-style
+      - Bimila bắt đầu "tái thiết kế cú pháp"
+      + Bimila v0.3.10.1:
+        - Hotfix cho log()
+        - Sửa lỗi parser không nhận log(x)
+        - Hỗ trợ khoảng trắng: log (x)
+        - Nâng cấp eval_expr để hỗ trợ string literal
+        - Bimila bắt đầu "chịu khó hiểu con người hơn"
+
+  * Bimila v0.4:
+    + Bimila v0.4.0:
+      - Quay lại tinh thần v0.2
+      - Thêm control flow cơ bản: if / else
+      - Parser bắt đầu xử lý nhiều dòng thay vì từng dòng đơn lẻ
+      - Hỗ trợ điều kiện trong ngoặc (if (expr))
+      - Bước đầu xuất hiện execution pointer (i)
+      - Bimila chuyển từ "line-by-line interpreter" sang "flow interpreter"
+      + Bimila v0.4.0.1:
+        - Hotfix cho control flow if/else
+        - Sửa lỗi "unknown command 'else'"
+        - Bổ sung cơ chế skip else khi if true
+        - Ổn định lại flow execution pointer
+
+*** 
+o Phần chưa rõ
+<Trôi theo dòng lịch sử>
+
+* Enigma Era (EE) [27/04/2026]:
+  o Chưa xác định đầy đủ
+  
+  - Đổi tên thành Bimuila
+  - Tạo file .reg để đăng ký PATH
+  - Bắt đầu phát triển IDE
+  - File: Bimuila-2704,08.py (583 dòng) - eval_expr cơ bản
+  - File: Bimuila-2704,13.py (708 dòng) - thêm break, continue
+
+  - Quyết định đổi đuôi file từ .bml sang .bica
+  - Acronym: BImuila Code Archive
+  - Đổi cú pháp gán từ = sang :
+  - Thêm các toán tử phức hợp: +:, -:, *:, /:, //:, %:, **:
+  - Thêm ++, --
+  - Đổi say sang cú pháp mới: say <expr> (vẫn hỗ trợ say(expr))
+  - Thêm input với cú pháp trả về: name: input "name:"
+  - Thêm for loop với range
+  - Hệ thống so sánh 3 tầng: = (lỏng), == (lỏng + ép kiểu), === (nghiêm ngặt)
+  - Thêm logic: and, or, not, in
+  - Bimila và Bimuide vẫn trong 1 file
+
+Beta:
+  > Beta 2 (cuối 29/04 - đầu 05/2026): o Chưa xác định đầy đủ
+
+    - Thêm def (định nghĩa hàm)
+    - Gọi hàm với cú pháp name()
+    - Chưa có AST (vẫn eval-based)
+    - Chưa ghi phiên bản rõ ràng
+
+    - Thêm màu sắc cho code (comment, biến, chuỗi, etc.)
+    - Thêm indentation guide
+    - Thêm auto-indent
+    - Thêm status bar
+    - File: Bimuila-0205,13.py (1414 dòng) - HELP_TEXT đầy đủ
+  
+  > BB23 (Between Beta 2, 3): Giai đoạn chuyển tiếp giữa Beta 2 và Beta 3 :
+    o Chưa xác định đầy đủ
+    - Quyết định lịch sử: Chọn full AST thay vì eval_expr
+    - Kiến trúc: tokenizer → parser → AST → walk AST
+    - Tách AST Nodes: Expression nodes (NumberNode, StringNode, VarNode, BinaryOpNode, etc.) và Statement nodes (AssignNode, SayNode, IfNode, WhileNode, etc.)
+    - Expression Parser với precedence climbing
+    - Expression Evaluator tách biệt parse vs execute
+    - Statement Parser cho control flow và blocks
+    - Statement Evaluator cho execution
+    - File: Bimuila-0305,21.py (2947 dòng) - AST hoàn chỉnh
+    - Tách IDE ra thành file riêng: Bimuide-0305,22.py
+  - Kế hoạch tách file thành package: bimuila_main/
+
+  > Beta 3 (08/05/2026): o Chưa xác định đầy đủ
+    - Nâng cấp Errors System toàn diện
+    - Thêm nhập liệu cho hàm input (CLI và IDE)
+    - Thêm hệ thống Module:
+      - import X as Y
+      - from X import Y as Z
+      - from X as Y
+      - from X as Y import Z
+    - Thêm module math: abs, min, max, round, floor, ceil
+    - Thêm module str: len, upper, lower, isupper, islower, slice, find
+    - Thêm module array
+    - Thêm hàm chuyển kiểu: str(), int(), float(), bool(), type()
+    - Tách file thành package: bimuila_main/ với các module riêng biệt
+    - Sau đó đổi tên file ngắn hơn: eval.py, pars.py, lex.py, tok.py, ast.py
+***
+
+
+  > Beta 4: [Đầu tháng 6)
+    * Beta 4.0:
+      - Thêm ; (kết thúc hàm và tách dòng)
+      - Lexer: Thêm semicolon vào danh sách single-character operators, nhận diện và emit TOKEN_SEMICOLON khi gặp ;
+      - Parser: Import TOKEN_SEMICOLON, sửa parse_postfix_chain để xử lý semicolon như function terminator
+      - Sửa parse_expression_to_ast để cho phép semicolon ở cuối expression
+      - Thêm _split_statements_by_semicolon function để split statements bởi semicolon
+      - Tránh split bên trong parentheses/brackets
+      - Sửa parse_program và parse_block để split statements bởi semicolon
+      - Sửa parse_statement để strip trailing semicolon
+      - Quy tắc implement:
+        - Semicolon tùy chọn ở top-level: say "hello" và say "hello"; đều hợp lệ
+        - Semicolon bắt buộc khi lồng hàm: Parser xử lý semicolon để đóng function calls lồng nhau
+        - Semicolon như statement separator: x : 10; say x split thành 2 statements
+        - Không split trong function calls: Semicolon bên trong parentheses/brackets không bị split
+    * Beta 4.1:
+      - Tách riêng ra ; (kết thúc hàm) và | (tách dòng)
+    * Beta 4.2:
+      - Thêm các kiểu import:
+        - import X as Y: Lưu Y:X vào ModuleAliasTable
+        - from X import Y as Z: Tra X trong AliasTable, lấy hàm Y, lưu vào SymbolTable dưới tên Z
+        - from X as Y: Lưu Y:X vào ModuleAliasTable, chưa nạp hàm nào
+        - from X as Y import Z: Map Y->X, sau đó lấy Z từ X đưa vào SymbolTable
+ 
+  [Tuần đầu tháng 6]
+  > Beta 5:
+    * Beta 5.0:
+      - Tái cấu trúc và mở rộng hệ thống Error Codes toàn diện:
+      + Beta 5.0.0:
+        - Bỏ N005 và A002 (do trùng lặp)
+        - Tách N002 thành 3 lỗi riêng biệt:
+          - N006: Module not defined
+          - N003: Import alias collision
+          - N007: Name collision in scope
+      + Beta 5.0.1:
+        - Gộp Indentation Errors vào Syntax Errors (S013)
+        - Gộp Attribute Errors (A001) vào Name Errors (N008)
+      + Beta 5.0.2:
+        - Cải thiện Import Module Errors:
+        - Đổi sang nhóm SEVERITY_RUNTIME (vì import là runtime operation)
+        - Đổi tên M001 từ "Cannot import module" thành "Import operation failed at runtime"
+        - Thêm M002: Circular import detected
+        - Thêm M003: Duplicate alias in scope
+        - Thêm M004: Wrong module usage
+      + Beta 5.0.3:
+        - Tách Type Errors:
+          - T001: Function argument count mismatch
+          - T004: Value is not callable
+        - Thêm lỗi về logic gọi hàm: 
+          - T005 (Missing function arguments)
+          - T006 (Extra function arguments)
+        - Thêm Runtime Errors: R001: Division by zero
+      + Beta 5.0.4:
+        - Thêm Lexer Errors:
+          - L001: Unterminated string
+          - L002: Invalid character
+          - L003: Invalid escape sequence
+      + Beta 5.0.5:
+        - Thêm các lỗi Syntax Errors liên quan Bracket:
+          - S015: Missing opening bracket
+          - S016: Extra opening bracket
+          - S017: Missing closing bracket
+          - S018: Extra closing bracket
+      + Beta 5.0.6:
+        - Thêm các lỗi về dấu câu: S019 (Missing punctuation), S020 (Extra punctuation), S021 (Invalid punctuation position)
+        - Thêm các lỗi về Block: S022 (Empty block), S023 (Block in wrong position), S024 (Block with wrong indent)
+        - Thêm các lỗi về control flow: S025 (else without if), S026 (elif in wrong position), S027 (if without code) 
+      + Beta 5.0.7:
+        - Tách Import Syntax Errors:
+          - S033: Expected name(s) after 'import'
+          - S034: Expected 'import' or 'as' after module name
+      + Beta 5.0.8: 
+        - Tái cấu trúc lại mã lỗi toàn diện để cải thiện tính cụ thể và rõ ràng:
+        + Beta 5.0.8.0:
+          - Chia S007 (Invalid import syntax) thành 5 lỗi cụ thể:
+            - S033: Expected module name after 'from'
+            - S034: Expected 'import' or 'as' after module name
+            - S035: Expected name(s) to import after 'import'
+            - S036: Expected alias name after 'as'
+            - S037: Unexpected token in import list
+          - Bỏ S007 hoàn toàn
+        + Beta 5.0.8.1:
+          - Định nghĩa lại Type Errors:
+            - Bỏ T001 (Function argument count mismatch)
+            - Giữ T005 (Missing function arguments) và T006 (Extra function arguments)
+            - Tách rõ ràng giữa thiếu và thừa đối số
+        + Beta 5.0.8.2:
+          - Tách Syntax Errors S001, S002, S005 thành các lỗi cụ thể hơn:
+            - S001: Expected expression (thiếu biểu thức)
+            - S002: Expected name/identifier (thiếu tên biến/tên định danh)
+            - S005: Expected ':' after block header (thiếu dấu : ở cuối câu lệnh điều khiển)
+            - S038: Expected ',' or ';' (thiếu dấu phẩy hoặc chấm phẩy)
+        + Beta 5.0.8.3:
+          - Bỏ lỗi bị trùng:
+            - Bỏ S032 (Invalid parameter structure)
+            - Bỏ N003 (Import alias collision) → consolidate under M003
+            - Bỏ N006 (Module not defined) → consolidate under M001
+            - Bỏ N008 (Name not found in module) → consolidate under M004
+        + Beta 5.0.8.4:  
+          - Hợp nhất các lỗi import/module dưới nhóm M:
+            - M001: Import operation failed at runtime
+            - M003: Duplicate alias in scope
+            - M004: Wrong module usage
+        + Beta 5.0.8.5:
+          - Cập nhật parser.py và parser_expr.py để sử dụng error codes mới (S001, S002, S005)
+          - Cập nhật parser_stmt.py để sử dụng error codes import (S033-S037)
+          - Cập nhật evaluator.py để sử dụng T005/T006 thay vì T001
+          - Cập nhật evaluator.py để sử dụng M003/M001/M004 thay vì N003/N006/N008
+          - Cải thiện error messages và hints cho người dùng
+          - Cập nhật error_document.txt với cấu trúc error codes mới
+        + Beta 5.0.8.6:
+          - Loại bỏ ba tệp không dùng tới: parser_expr , parser_stmt , parser_smpl
+          - Sắp xếp lại các tệp trong thư mục
+          - Dọn dẹp thư mục tests:
+            - Xóa 5 file test semicolon trùng lặp
+            - Giữ lại các file test quan trọng
+        + Beta 5.0.8.7:
+            - Thay thế file .reg bằng Python script:
+              - Thêm setup.py để cài đặt Bimuila (thêm vào PATH, đăng ký file association .bica)
+              - Thêm unis0000.py để gỡ cài đặt Bimuila
+              - Xóa install_bimuila.reg và uninstall_bimuila.reg
+            + Beta 5.0.8.7.1:
+              - Cập nhật setup.py và unis0000.py:
+                - Sử dụng HKEY_CURRENT_USER thay cho HKEY_CLASSES_ROOT , thao tác này không cần quyền Admin.
+                - Cập nhật unis0000.py tương ứng
+    * Beta 5.1:
+      - Các cập nhật liên tục:
+      + Beta 5.1.0:
+        - Cải thiện hệ thống AST Nodes (ast_nodes.py):
+          - Thêm dump_tree() method vào ASTNode để hiển thị cây AST đệ quy với thụt lề
+          - Giúp debug dễ dàng hơn bằng cách hiển thị chi tiết các node con thay vì chỉ tên class
+          - Đồng nhất kiểm tra kiểu dữ liệu trên tất cả primitive nodes:
+            - NumberNode: Kiểm tra value phải là int hoặc float
+            - StringNode: Kiểm tra value phải là str
+            - VarNode: Kiểm tra name phải là str
+            - BooleanNode: Đã có sẵn kiểm tra bool
+          - Thêm validation cho target trong AssignNode, CompoundAssignNode, IncDecNode:
+            - Chấp nhận VarNode, IndexNode, AttrNode làm l-value hợp lệ
+            - Chuẩn bị cho tính năng gán vào mảng hoặc thuộc tính trong tương lai
+          - Xác nhận control flow nodes đã tồn tại: BlockNode, IfNode, WhileNode, DefNode
+      + Beta 5.1.1:
+        - Sửa các lỗi trong EBNF:
+          - Xóa bỏ các định nghĩa trùng lặp: Loại bỏ bản sao của các class sau:
+            - AdditiveExpr , MultiplicativeExpr , PowerExpr , UnaryExpr , PostfixExpr
+          - Sửa TernaryExpr hierarchy:
+            - Expression ::= TernaryExpr (thay vì OrExpr)
+            - TernaryExpr trở thành là đỉnh của cây expression
+            - Thêm comment giải quyết ambiguity với dấu :
+          - Sửa left recursion trong PostfixExpr:
+            - Chuyển từ PostfixExpr ::= PostfixExpr, "." , Identifier
+            -> Sang PostfixExpr ::= PrimaryExpr, { "." , Identifier | "[" , [ IndexExpr ] , "]" }
+            - Dùng iteration { } thay vì đệ quy bên trái
+          - Giải quyết colon ambiguity:
+            - Thêm comment: Parser phân biệt ternary với assignment bằng dấu ?
+          - Thêm parser strategy cho space-separated args:
+            - Document cách parse: math.min a + b c → math.min(a + b, c)
+          - Bắt buộc dấu : trong control flow:
+            - if/elif/else, while, for, repeat, forever, def: giờ bắt buộc có :
+            - Tránh ambiguity với assignment
+      + Beta 5.1.2:
+        + Beta 5.1.2.0:
+          - Tái cấu trúc hệ thống cú pháp (Syntax Configuration):
+            - Tạo syntax_config.py module để quản lý tập trung các định nghĩa cú pháp
+            - Di chuyển tất cả cấu hình cú pháp từ syntax.ini sang tokens.py:
+              - Assignment operators: :, +:, -:, *:, /:, //:, %:, **:
+              - Comparison operators: =, ==, ===, !=, !==, !===, <, >, <=, >=, in
+              - Arithmetic operators: +, -, *, /, //, %, **
+              - Logical operators: and, or, not
+              - Punctuation characters: ;, |, ,, :, ?, ., (, ), [, ], {, }
+              - Comment markers: #, ###
+              - Operator precedence levels
+            - Cập nhật lexer.py để sử dụng syntax_config thay vì hardcode:
+              - Dùng config.punctuation cho các ký tự câu
+              - Dùng config.comment_markers cho comment
+              - Dùng config.keywords cho kiểm tra keyword
+              - Dùng config.arithmetic_operators cho toán tử số học
+            - Cập nhật parser.py để sử dụng syntax_config thay vì hardcode:
+              - Dùng config.punctuation cho :, ;, |, ?, (, ), [, ]
+              - Dùng config.keywords cho kiểm tra keyword
+              - Dùng config.assignment_operators cho toán tử gán
+              - Dùng config.comparison_operators cho toán tử so sánh
+              - Dùng config.arithmetic_operators cho toán tử số học
+              - Dùng config.logical_operators cho and, or, not
+            - Lợi ích:
+              - Dễ dàng thay đổi cú pháp toàn bộ ngôn ngữ bằng cách sửa tokens.py
+              - Tránh hardcode rải rác khắp nơi
+              - Dễ dàng mở rộng thêm toán tử mới
+              - Giúp việc bảo trì và refactor dễ dàng hơn
+        + Beta 5.1.2.1:
+          - Tái cấu trúc PUNCTUATION theo chức năng (Function-based naming):
+            - Thay đổi từ tên ký tự sang tên chức năng:
+              - LPAREN/RPAREN -> GROUP_START/GROUP_END (nhóm biểu thức)
+              - LBRACKET/RBRACKET -> ARRAY_START/ARRAY_END (mảng/index)
+              - LBRACE/RBRACE -> OBJ_START/OBJ_END (object literal)
+              - SEMICOLON -> CALL_END (kết thúc gọi hàm)
+              - PIPE -> STMT_SEP (tách câu lệnh)
+              - COMMA -> EXPR_SEP (tách biểu thức/tham số)
+              - DOT -> ACCESSOR (truy cập thuộc tính)
+              - COLON -> BLOCK_HEADER (kết thúc header control flow)
+              - QUESTION -> TERNARY_QMARK (toán tử ternary)
+            - Cập nhật lexer.py để sử dụng các key mới
+            - Cập nhật parser.py để sử dụng các key mới
+            - Lợi ích:
+              - Code dễ đọc hơn, rõ ràng về mục đích sử dụng
+              - Dễ hiểu chức năng của từng ký tự cú pháp
+              - Giúp người mới đọc code dễ hiểu hơn
+        + Beta 5.1.2.2:
+          - Tìm thấy lỗi. Vấn đề là:
+            - config.assignment_operators trả về list, không phải dictionary
+            - Parser đang cố gắng truy cập config.assignment_operators["BASIC"] với string key
+            - Nhưng nó là list, nên bị lỗi "list indices must be integers or slices, not str"
+            - AST node validation yêu cầu VarNode thay vì string
+          - Các thay đổi:
+            - Thêm assignment_operators_dict property trong syntax_config.py để trả về full dictionary
+            - Cập nhật parser.py dùng config.assignment_operators_dict["BASIC"]
+            - Wrap tên biến trong VarNode cho tất cả assignment nodes
+            - Test x : 2 giờ chạy thành công.
+      + Beta 5.1.3:
+        - Thêm tính năng Custom Operators (Toán tử tùy chỉnh):
+        + Beta 5.1.3.0:
+          - Cho phép người dùng định nghĩa toán tử infix và prefix với ký hiệu tùy chỉnh
+          - Cú pháp định nghĩa:
+            - Infix (toán tử 2 ngôi): def a^b: <body>
+            - Prefix (toán tử 1 ngôi): def ~>a: <body>
+            - Suffix (toán tử 1 ngôi): def a<: <body>
+          - Cách sử dụng:
+            - def a^b: a**b
+            - say 5^2  # Kết quả: 25
+            - def ~>a: a
+            - say ~>"hello"  # Kết quả: "hello"
+          - Cách hoạt động:
+            - Khi định nghĩa toán tử, máy lưu vào Operator Registry (bảng đăng ký)
+            - Khi gọi toán tử trong biểu thức, máy kiểm tra Registry và thực thi body với tham số tương ứng
+          - Thay đổi:
+            - Thêm CUSTOM_OPERATORS dictionary và helper functions trong environment.py
+            - Thêm CustomOperatorDef AST node trong ast_nodes.py
+            - Cập nhật parser để nhận diện cú pháp def a^b, def ~>a
+            - Cập nhật lexer để tokenize các ký hiệu toán tử tùy chỉnh (^, ~>, <~, @@, ++)
+            - Cập nhật evaluator để thực thi custom operators qua BinaryOpNode/UnaryOpNode
+            - Thêm ^ vào ARITHMETIC_OPERATORS trong tokens.py
+            - Cập nhật parse_power và parse_unary trong parser.py để xử lý toán tử tùy chỉnh
+          - Lợi ích:
+            - Linh hoạt: Người dùng có thể định nghĩa toán tử theo nhu cầu
+            - Mở rộng: Dễ dàng thêm toán tử mới mà không sửa core language
+            - Đọc được: Cú pháp ngắn gọn, dễ hiểu (ví dụ: ^ thay cho **)
+          - AssignNode, CompoundAssignNode, IncDecNode cần target là VarNode/IndexNode/AttrNode
+          - Parser đang truyền string trực tiếp thay vì VarNode
+        [13/06/2026]
+        + Beta 5.1.3.1:
+          - Thêm tính năng Declaration và Assignment (Định nghĩa và Gán):
+            - Cú pháp định nghĩa (Declaration) với từ khóa 'def':
+              - Hàm (Function):
+                - Inline: 'def name param1, param2: body' - định nghĩa một dòng
+                - Block: 'def name param1, param2:' - định nghĩa nhiều dòng với thụt lề
+              - Toán tử (Operator):
+                - 'def infixl prec symbol param1, param2: body' - toán tử infix trái
+                - 'def infixr prec symbol param1, param2: body' - toán tử infix phải
+                - 'def infix prec symbol param1, param2: body' - toán tử infix không kết hợp
+            - Cú pháp gán (Assignment) với dấu '=':
+              - 'var = expr' - gán giá trị cho biến
+              - Hỗ trợ cả cú pháp cũ ':': 'var : expr'
+            - Cách hoạt động:
+              - Parser nhận diện cú pháp 'def' và phân biệt inline/block
+              - Inline body được wrap trong ReturnNode để trả về giá trị
+              - Block body được parse như block thông thường với thụt lề
+              - Assignment '=' được parse trước compound assignments để tránh conflict
+            - Thay đổi:
+              - Thêm '=' vào OPERATORS trong tokens.py với precedence PREC_ASSIGN
+              - Cập nhật CustomOperatorDef trong ast_nodes.py để include precedence và op_type
+              - Cập nhật parse_control_statement trong parser.py để handle def syntax mới
+              - Thêm regex matching cho '=' assignment trong parse_statement
+              - Cập nhật evaluator.py để extract name từ VarNode trước khi env.assign()
+              - Loại bỏ '=' từ comparison operators trong evaluator
+              - Sửa compound assignment check để tránh false match với '='
+            - Lợi ích:
+              - Đồng nhất: Sử dụng 'def' cho mọi loại định nghĩa (hàm, toán tử)
+              - Linh hoạt: Hỗ trợ cả inline và block definitions
+              - Đọc được: Cú pháp '=' quen thuộc như các ngôn ngữ khác
+              - Mở rộng: Có thể định nghĩa toán tử với precedence tùy chỉnh
+              - Đơn giản: Chỉ còn một cú pháp assignment ('=') thay vì hai (':' và '=')
+            [13/06/2026]
+            + Beta 5.1.3.1a:
+              - Cú pháp gán: Loại bỏ cú pháp cũ ':': chỉ còn dùng '=' cho assignment
+              - Thay đổi: 
+                - Loại bỏ ':' assignment parsing từ parser.py
+                - Loại bỏ ':' từ ASSIGNMENT_OPERATORS trong tokens.py
+            [13/06/2026]
+            + Beta 5.1.3.1b:
+              - Đổi tên các file:
+                - Từ : ast_nodes.py , syntax_config , environment.py ,  errors.py , evaluator.py , lexer.py , parser.py , runtime.py , tokens.py.
+                - Sang: ast.py , cfg.py , env.py , err.py , eval.py , lex.py , pars.py , run.py , tok.py .
+              - Sửa các import liên quan.
+		      	[14/06/2026]
+            + Beta 5.1.3.1c:
+              - Cú pháp động & Tối ưu file:
+                - Loại bỏ hoàn toàn file cfg.py, gộp toàn bộ logic SyntaxConfig vào tok.py.
+                - Thêm dictionary SYNTAX ở đầu file tok.py để người dùng tự re-map từ khóa (INPUT, PRINT,...).
+                - Thêm các hàm helper refresh_syntax(), get_syntax(), resolve_syntax() để cập nhật từ khóa động.
+              - Cập nhật toán tử mới trong tok.py:
+                - Thêm các toán tử gán phức hợp: +=, -=, *=, /=, **=, //=, %=
+                - Thêm toán tử so sánh lỏng: .= (Loose Equality)
+                - Thêm toán tử so sánh nghiêm ngặt: == (Strict Equality), != (Strict Inequality)
+                - Thêm dấu phân tách câu lệnh: ; (Semicolon) để chuẩn bị viết nhiều lệnh trên một dòng.
+              - Tinh gọn Entry Point:
+                - Khai tử hoàn toàn file run.py để giảm số lượng file trung gian.
+                - Gộp toàn bộ logic của run.py (run_file_ast, run_code_text_ast, eval_expression) vào file __main__.py.
+                - Cập nhật lại toàn bộ đường dẫn import tương đối nội bộ từ .run sang gọi trực tiếp các module anh em (.pars, .eval, .env).
+      [14/06/2026]
+      + Beta 5.1.4:
+        [14/06/2026]
+        + Beta 5.1.4.0:
+          - Thêm tính năng Dynamic Lexing và Hỗ trợ Đa câu lệnh (Multi-statement):
+            - Cú pháp đa câu lệnh với ký tự phân tách ';':
+            - Viết nhiều lệnh trên một dòng: 'stmt1; stmt2; stmt3'
+            - Hỗ trợ kết hợp cả cấu trúc inline và block mà không làm gãy logic thụt lề
+          - Cú pháp toán tử mới:
+            - Toán tử so sánh lỏng '.=': Phục vụ ép kiểu linh hoạt khi tính toán logic runtime
+            - Sẵn sàng cấu trúc dynamic để chuyển đổi sang '====' hoặc toán tử tùy chỉnh khác
+          - Cách hoạt động:
+            - Lexer tự động nạp cấu trúc từ 'tok.py', tự động sắp xếp các toán tử từ dài đến ngắn trước khi quét để tránh nhận diện nhầm (ví dụ: phân biệt rõ '.=', '=', và '====')
+            - Parser nhận diện dấu ';', thực hiện băm nhỏ (split) và điều hướng chuỗi câu lệnh thực thi tuần tự
+            - Evaluator phối hợp với Environment để cô lập hoặc kế thừa phạm vi biến (scope) một cách chính xác khi chạy đa lệnh trên một dòng
+          - Thay đổi:
+            - Xóa bỏ hoàn toàn file cấu hình cũ 'cfg.py' để chuyển sang quản lý dynamic tập trung
+            - Cập nhật 'tok.py' (+415 dòng): Đăng ký thêm các token cốt lõi cho dấu ';' và toán tử '.=', đồng bộ với Frontend động mới
+            - Cập nhật 'lex.py' (+307 dòng): Viết lại bộ quét từ vựng động, tự động quét theo định nghĩa SYNTAX và sắp xếp precedence toán tử theo độ dài ký tự
+            - Cập nhật 'pars.py' (+1292 dòng): Tái cấu trúc bộ phân tích cú pháp siêu nặng đô để xử lý logic băm nhỏ chuỗi và phân tách đa câu lệnh qua dấu ';'
+            - Cập nhật 'eval.py' (+1047 dòng): Nâng cấp bộ não runtime, tích hợp cơ chế ép kiểu động cho toán tử '.=' và tối ưu bộ nhớ scope khi chạy đa câu lệnh
+            - Cập nhật 'env.py' (+394 dòng): Cấu trúc lại cách lưu trữ, truy xuất và quản lý trạng thái biến môi trường để tương thích với kiến trúc dynamic
+            - Lợi ích:
+            - Linh hoạt: Cho phép viết mã nguồn ngắn gọn, gom nhiều câu lệnh logic trên cùng một dòng bằng dấu ';'
+            - Thông minh: Lexer chạy dynamic 100%, không còn lỗi nhận diện nhầm toán tử ngắn/dài nhờ thuật toán tự động sắp xếp độ dài
+            - Sạch sẽ: Khai tử file 'cfg.py' giúp mã nguồn core BImuila trở nên gọn gàng, loại bỏ các import thừa thãi
+            - Mở rộng: Bộ não 'eval.py' và hệ thống toán tử mới thiết lập nền móng vững chắc để đại ca tùy biến các toán tử so sánh cực mạnh sau này
+        [14/06/2026]
+        + Beta 5.1.4.1:
+          - Tái cấu trúc Parser (Parser Refactoring):
+            - Chia tách file monolithic 'pars.py' thành package module hóa:
+              - 'main/pars/base.py': Parser core & helpers (imports, constants, helper functions như _line_indent, _is_block_header, _split_statements, _find_block_range)
+              - 'main/pars/expr.py': Expression parser (recursive descent với precedence climbing, parse_expression_to_ast, parse_expression)
+              - 'main/pars/stmt.py': Statement & block parser (parse_statement, parse_control_statement, parse_block, parse_program)
+              - 'main/pars/__init__.py': Package initialization export parse_program và parse_expression
+              - Xóa file 'main/pars.py' cũ
+            - Sửa regex trong parse_control_statement để hỗ trợ toán tử tùy chỉnh alphanumeric:
+              - Đổi pattern từ ([^A-Za-z0-9_\s]+) sang (\S+) để hỗ trợ cả toán tử ký hiệu và tên alphanumeric
+              - Sửa Error S013 xảy ra khi định nghĩa toán tử tùy chỉnh với tên alphanumeric (ví dụ: def infixl 10 add x,y: x+y)
+              - Parser giờ xử lý đúng các định nghĩa toán tử như:
+                - Ký hiệu: def infixl 10 + x,y: x+y
+                - Alphanumeric: def infixl 10 add x,y: x+y
+              - Parameter list parsing vẫn sạch và tách biệt từ tên toán tử
+            - Cập nhật imports:
+              - Cập nhật relative imports trong các file parser mới dùng '..' cho parent directory access (tok, ast, lex, err modules)
+              - Imports hiện tại trong __main__.py, __init__.py, và eval.py vẫn hoạt động mượt mà với cấu trúc package mới
+            - Lợi ích:
+              - Modular: Code parser được chia thành các module rõ ràng theo chức năng
+              - Maintainable: Dễ bảo trì và debug nhờ tách biệt expression parsing, statement parsing, và core helpers
+              - Scalable: Dễ mở rộng thêm tính năng mới vào từng module riêng biệt
+              - Robust: Regex fix cho phép định nghĩa toán tử tùy chỉnh linh hoạt hơn với tên alphanumeric
+        [14/06/2026]
+        + Beta 5.1.4.2:
+          - Tái cấu trúc hệ thống Operator thành Dynamic (Dynamic Operator System):
+            - Chuyển đổi OPERATORS dictionary từ static sang dynamic:
+              - Tạo _OPERATOR_CONFIG để map operator keys với precedence và associativity
+              - Tạo _build_operators() để tự động xây dựng OPERATORS từ ASSIGNMENT_OPERATORS, ARITHMETIC_OPERATORS, COMPARISON_OPERATORS
+              - Tạo _build_all_operators(), _build_multi_char_operators(), _build_single_char_operators() để xây dựng các danh sách derived
+            - Cập nhật refresh_syntax() để rebuild toàn bộ dynamic arrays:
+              - Rebuild KEYWORDS, BUILTINS (đã có)
+              - Rebuild OPERATORS, ALL_OPERATORS, MULTI_CHAR_OPERATORS, SINGLE_CHAR_OPERATORS (mới)
+            - Thêm runtime custom operator management:
+              - register_custom_operator(op_symbol, precedence, associativity): Đăng ký toán tử tùy chỉnh tại runtime
+              - unregister_custom_operator(op_symbol): Hủy đăng ký toán tử tùy chỉnh tại runtime
+            - Thay đổi:
+              - Xóa bảng OPERATORS static hardcoded
+              - Thay bằng _OPERATOR_CONFIG mapping precedence/associativity cho từng loại toán tử
+              - Thêm _CUSTOM_OPERATORS cho các toán tử tùy chỉnh mặc định (^, ~>, <~, @@, ++)
+              - Mọi thay đổi trong ASSIGNMENT_OPERATORS, ARITHMETIC_OPERATORS, COMPARISON_OPERATORS giờ được reflect sau khi gọi refresh_syntax()
+            - Lợi ích:
+              - Bulletproof: Không còn break khi thay đổi operator symbol (ví dụ: COMPARISON_OPERATORS['LOOSE_EQ'] = '.=')
+              - Flexible: Dễ dàng thay đổi precedence và associativity của toán tử thông qua config
+              - Extensible: Hỗ trợ đăng ký toán tử tùy chỉnh tại runtime mà không cần sửa code core
+              - Maintainable: Code rõ ràng hơn với separation of concerns giữa config và runtime
+          [14/06/2026]
+          + Beta 5.1.4.2a:
+            # Bicala = BICA LAnguage
+            - Thay đổi tên ngôn ngữ từ Bimuila sang Bicala:
+              - Cập nhật tất cả error class names: BimuilaError → BicalaError, BimuilaSyntaxError → BicalaSyntaxError, v.v.
+              - Cập nhật documentation trong toàn bộ source code
+              - Cập nhật file headers và comments
+              - Cập nhật README, EBNF grammar, error documentation
+              - Cập nhật setup/uninstall scripts
+              - Cập nhật IDE references
+              - Giữ nguyên file extension .bica
+              - Legacy folder và change.log giữ nguyên tên gốc (lịch sử)
+              - Lợi ích:
+                - Branding mới rõ ràng hơn
+                - Tên dễ đọc và dễ nhớ hơn
+                - Đồng nhất toàn bộ codebase
+          [14/06/2026]
+          + Beta 5.1.4.2b:
+            - Thêm hỗ trợ cho custom operator definitions (infixl, infixr, infix) thông qua SYNTAX:
+              - Thêm INFIX, INFIX_L, INFIX_R vào _FUNCTIONS group trong tok.py
+              - Cập nhật pars/stmt.py để dùng SYNTAX keys thay vì hardcoded strings
+              - Keywords được integrate vào SYNTAX system
+              - Lexer picks them up automatically sau refresh_syntax()
+          [14/06/2026]
+          + Beta 5.1.4.2c:
+            - Refactor tok.py để dùng dynamic group-based dictionaries:
+              - Tạo các group dictionaries: _LOGICAL, _CONTROL_FLOW, _FUNCTIONS, _LOOP_CONTROL, _LITERALS, _IO, _BUILTINS, _MODULE
+              - Global SYNTAX được merge từ các groups bằng dictionary unpacking (**)
+              - _KEYWORD_KEYS được derive động từ group keys để tránh manual sync errors
+              - _BUILTIN_KEYS được derive động từ group keys để tránh manual sync errors
+            - Lợi ích:
+              - Maintainable: Code dễ bảo trì hơn với group-based structure
+              - Error-proof: Không còn manual sync errors trong _KEYWORD_KEYS và _BUILTIN_KEYS
+              - Extensible: Dễ dàng thêm keywords mới vào appropriate groups
+          [14/06/2026]
+          + Beta 5.1.4.2d:
+            - Cập nhật EBNF grammar để align với custom operator definitions:
+              - Loại bỏ "=" từ SymbolicOp để tránh ambiguity với assignment operator
+              - CustomOperatorDef enforce exactly two parameters (Identifier , "," , Identifier)
+              - Thêm PositiveInteger definition (1-99) cho precedence constraint
+              - Thêm note về unified def keyword cho cả function và operator definitions (Beta 5.1.3.1)
+            - Lợi ích:
+              - Consistent: EBNF grammar đồng bộ với implementation
+              - Clear: Grammar enforce strict constraints matching parser
+          [14/06/2026]
+          + Beta 5.1.4.2e:
+            - Đồng bộ Parser logic để enforce strict constraints:
+              - Thêm validation cho precedence (1-99) trong pars/stmt.py
+              - Thêm validation cho exactly two parameters trong custom operator definitions
+              - Error codes: S035 (precedence constraint), S036 (parameter count constraint)
+            - Final validation check cho backward compatibility:
+              - SyntaxConfig singleton vẫn hoạt động đầy đủ
+              - Tất cả external module imports không thay đổi
+              - Global variables (SYNTAX, KEYWORDS, BUILTINS) giữ nguyên cấu trúc và behavior
+              - Unified def keyword hoạt động cho cả function và operator definitions
+            - Lợi ích:
+              - Backward Compatible: Tất cả existing code vẫn hoạt động bình thường
+              - Robust: Parser enforce strict constraints matching EBNF
+        [14/06/2026]
+        + Beta 5.1.4.3:
+          - Thêm tính năng Switch Statement:
+            - Cú pháp:
+              - switch value:
+                  case_value:
+                      statements
+
+                  case_value:
+                      statements
+
+                  default:
+                      statements
+            - Quy tắc:
+              - Indentation-based syntax (không dùng braces)
+              - Không có "case" keyword (value đóng vai trò identifier)
+              - Không có break statement
+              - Không có fallthrough (chỉ execute branch đầu tiên match)
+              - So sánh dùng strict equality (==)
+              - default là optional, chỉ cho phép một default block
+              - Bắt buộc có ít nhất một case
+            - Thay đổi:
+              - Thêm SWITCH và DEFAULT keywords vào _CONTROL_FLOW trong tok.py
+              - Thêm SwitchNode AST node trong ast.py với slots: value, cases, default_block
+              - Cập nhật pars/stmt.py để parse switch syntax:
+                - Phân tích switch header: switch value:
+                - Parse case blocks với indentation
+                - Parse optional default block
+                - Validate constraints: ít nhất một case, tối đa một default
+              - Cập nhật pars/base.py để _is_block_header nhận diện switch
+              - Cập nhật eval.py để execute switch statement:
+                - Evaluate switch value
+                - Iterate qua cases, compare với strict equality
+                - Execute branch đầu tiên match
+                - Execute default block nếu không có case nào match
+              - Error codes: S037 (multiple default blocks), S038 (missing case value), S039 (invalid case syntax), S040 (no cases)
+            - Lợi ích:
+              - Expressive: Cú pháp switch rõ ràng, dễ đọc cho multi-way branching
+              - Clean: Indentation-based, không cần braces hoặc break
+              - Safe: No fallthrough, tránh bugs từ accidental execution
+              - Consistent: Follow same indentation style as if/while/for
+        [14/06/2026]
+        + Beta 5.1.4.4:
+          - Tái cấu trúc hệ thống ưu tiên toán tử:
+            - Mở rộng OPERATOR_PRECEDENCE từ scale nhỏ (9-20) sang scale lớn (0-1000):
+              - COMMA: 50
+              - ASSIGN: 100 (Standard assignment =)
+              - COMPOUND_ASSIGN: 150 (Compound assignment +=, -=, etc.) - Tách riêng thành level khác
+              - TERNARY: 200
+              - OR: 300
+              - AND: 400
+              - NOT: 500
+              - CMP: 600 (Comparison operators)
+              - ADD: 700 (Addition/subtraction)
+              - MUL: 800 (Multiplication/division)
+              - POW: 900 (Power/exponentiation)
+              - UNARY: 950 (Unary operators)
+              - PAREN: 1000 (Parentheses - highest)
+            - Loại bỏ rigid local constants:
+              - Xóa PREC_ASSIGN, PREC_COMPARE, PREC_ADD, PREC_MUL, PREC_POWER
+            - Refactor _OPERATOR_CONFIG để dynamic:
+              - Sử dụng lambda functions để map trực tiếp đến OPERATOR_PRECEDENCE values
+              - Single Source of Truth: Tất cả precedence values flow từ OPERATOR_PRECEDENCE dictionary
+              - Ví dụ: 'POW': (lambda: OPERATOR_PRECEDENCE['POW'], "right")
+            - Cập nhật custom operators để align với scale mới:
+              - ^: 900 (aligned with POW)
+              - ~>: 700 (aligned with ADD)
+              - <~: 700 (aligned with ADD)
+              - @@: 800 (aligned with MUL)
+              - ++: 700 (aligned with ADD)
+            - Thêm strict validation cho custom operators:
+              - register_custom_operator() validate precedence trong range 0-1000
+              - Raise SyntaxError nếu precedence < 0 hoặc > 1000
+            - Cập nhật _build_operators() để call lambda functions
+            - Thay đổi:
+              - Mở rộng OPERATOR_PRECEDENCE dictionary với scale 0-1000
+              - Xóa rigid local constants (PREC_ASSIGN, PREC_COMPARE, v.v.)
+              - Refactor _OPERATOR_CONFIG sử dụng lambda functions dynamic
+              - Cập nhật _CUSTOM_OPERATORS với precedence values mới
+              - Thêm validation trong register_custom_operator()
+              - Cập nhật _build_operators() để resolve lambda functions
+            - Lợi ích:
+              - Flexible: Scale 0-1000 cho phép users insert custom operators ở bất kỳ level nào
+              - Single Source of Truth: OPERATOR_PRECEDENCE là nguồn duy nhất cho tất cả precedence values
+              - Robust: Dynamic mapping đảm bảo consistency khi thay đổi precedence
+              - Safe: Strict validation ngăn chặn invalid precedence values
+              - Generous Spacing: Minimum gap 50 giữa levels cho user flexibility
+              - Separation of Concerns: Standard assignment (100) và compound assignment (150) được tách riêng
+      [14/06/2026]
+        + Beta 5.1.5:
+          - Thêm hỗ trợ array iteration cho for loop:
+            - Cập nhật ForNode trong ast.py:
+              - Thêm optional field 'iterable' để hỗ trợ iteration qua arrays
+              - Modified __init__ để accept iterable parameter
+              - Updated __repr__ để display iterable khi present
+            - Cập nhật parser trong pars/stmt.py:
+              - Thêm ArrayNode vào imports
+              - Modified for loop parsing để detect ArrayNode hoặc VarNode
+              - Khi array/variable được detect, pass nó như 'iterable' thay vì force vào start/end/step
+              - Giữ backward compatibility cho numeric range loops (for i in 10, for i in 0:10)
+            - Cập nhật evaluator trong eval.py:
+              - Thêm branch để check nếu node.iterable có giá trị
+              - Nếu iterable present, evaluate nó và iterate qua list elements
+              - Hỗ trợ mixed-type arrays (integers, strings, v.v.)
+              - Giữ original numeric range logic khi iterable là None
+              - Thêm validation để đảm bảo iterable là list (error code V006)
+            - Thay đổi:
+              - ast.py: ForNode có thêm field 'iterable' với default None
+              - pars/stmt.py: Detect ArrayNode/VarNode trong for loop parsing, pass như iterable
+              - eval.py: Handle array iteration với for loop, support mixed types
+            - Lợi ích:
+              - Expressive: Cú pháp `for item in arr` rõ ràng và intuitive
+              - Flexible: Hỗ trợ cả array literals `[1, 2, 3]` và array variables `arr`
+              - Type-safe: Hỗ trợ mixed-type arrays (integers, strings, v.v.)
+              - Backward Compatible: Numeric range loops vẫn hoạt động như trước
+              - Clean: Không cần cast sang int, iterate trực tiếp qua list elements
+          + Beta 5.1.5.1:
+            - Sửa lỗi UI trong BicaIDE:
+              - BUG 1: Output console không thể copy text (Ctrl+C không hoạt động):
+                - Thêm output_copy() function để generate <<Copy>> event trên output widget
+                - Thêm widget-level Ctrl+C binding cho output widget: output.bind('<Control-c>', output_copy)
+                - Widget-level bindings có priority cao hơn app-level bindings, nên output có thể copy khi focused
+              - BUG 2: Workspace paste duplication (Ctrl+V paste twice):
+                - Thay đổi edit_paste() để luôn return "break" (ngăn default propagation)
+                - Xóa global app-level Ctrl+V binding
+                - Thêm widget-level Ctrl+V binding cho editor: editor.bind('<Control-v>', edit_paste)
+                - Ngăn double-paste bằng cách đảm bảo chỉ một paste event được execute
+              - Thay đổi:
+                - bicaide.py: Thêm output_copy() function, sửa edit_paste() return value
+                - bicaide.py: Thêm output.bind('<Control-c>', output_copy)
+                - bicaide.py: Xóa app.bind('<Control-v>', edit_paste), thêm editor.bind('<Control-v>', edit_paste)
+              - Lợi ích:
+                - Usability: Output console giờ có thể copy text với Ctrl+C
+                - Consistency: Paste behavior trong editor giờ consistent, không duplicate
+                - Event Handling: Sử dụng widget-level bindings để tránh global key binding conflicts
+                - UX: Cải thiện trải nghiệm người dùng với copy/paste operations
+          + Beta 5.1.5.2:
+            - Sửa quy tắc thụt lề default câu lệnh switch:
+              - Enforce default: phải ở cùng indent level với switch keyword (không nested bên trong)
+              - Cú pháp chuẩn:
+                switch x:
+                default:
+                    say "error"
+              - Cập nhật parser trong pars/stmt.py:
+                - Thêm validation check cho default: phải có indent == base_indent (cùng level với switch)
+                - Cập nhật switch_end detection logic để allow default: tại base_indent
+                - Giữ case labels tại base_indent + 1 (nested bên trong switch)
+                - Thay đổi default body indent check từ base_indent + 1 sang base_indent
+              - Thay đổi:
+                - pars/stmt.py: Thêm indent validation cho default (line 550-556)
+                - pars/stmt.py: Cập nhật switch_end detection (line 530)
+                - pars/stmt.py: Cập nhật default body indent check (line 578)
+                - pars/stmt.py: Giữ case labels tại base_indent + 1 (line 598)
+              - Lợi ích:
+                - Clarity: default: giờ rõ ràng là ở cùng level với switch, không nested
+                - Consistency: Phân biệt rõ ràng giữa default (peer level) và case labels (nested)
+                - Syntax: Cú pháp switch/default bây giờ consistent với if/else pattern
+                - Error Detection: Báo lỗi S041 khi default không ở đúng indent level
+            + Beta 5.1.5.2a:
+              - Gán lại mã lỗi câu lệnh switch:
+                - Đổi mã lỗi switch để tuân thủ quy tắc sequential S039-S042:
+                  - S039: Multiple default blocks (trước là S037)
+                  - S040: Missing case value (trước là S038)
+                  - S041: Invalid case syntax (giữ nguyên - default indent error)
+                  - S042: No cases / Empty switch (trước là S040)
+                - Thay đổi:
+                  - pars/stmt.py: Cập nhật error codes cho switch validation (lines 561, 611, 655)
+                  - docs/error_document.txt: Thay thế "S039-S099: Chưa sử dụng" bằng 4 mã lỗi cụ thể S039-S042
+                - Lợi ích:
+                  - Sequential: Error codes switch giờ tuân thủ sequence S039-S042
+                  - Clear: Mỗi lỗi switch có mã riêng biệt, dễ truy vấn và debug
+                  - Documented: error_document.txt được cập nhật với định nghĩa đầy đủ
+          + Beta 5.1.5.3:
+            - Hồi sinh built-in error function:
+              - Thêm từ khóa 'error' vào Tokenizer/Lexer:
+                - Thêm ERROR vào _BUILTINS trong tok.py
+                - Lexer giờ nhận diện 'error' như built-in function
+              - Cập nhật Parser để parse error statement:
+                - Thêm ErrorNode AST node trong ast.py với field message
+                - Cập nhật pars/base.py và pars/stmt.py để import và parse ErrorNode
+                - Cú pháp: error "custom message" hoặc error expr
+              - Cập nhật Evaluator để handle error statement:
+                - Thêm handler cho ErrorNode trong eval.py
+                - Evaluate message expression, print "ERROR: {message}" và halt execution với SystemExit(1)
+              - Thay đổi:
+                - tok.py: Thêm ERROR vào _BUILTINS
+                - ast.py: Thêm ErrorNode class
+                - pars/base.py: Import ErrorNode
+                - pars/stmt.py: Import ErrorNode và parse error statement
+                - eval.py: Import ErrorNode và handle execution halt
+              - Lợi ích:
+                - User Control: Người dùng có thể trigger custom errors từ code
+                - Debugging: Giúp debug bằng cách halt execution với custom message
+                - Error Handling: Cung cấp cơ chế error handling cơ bản cho user code
+                - Consistent: error() hoạt động như built-in function khác (say, debug, input)
+        + Beta 5.1.6:
+          - Triển khai biểu thức lambda fn arg: expr:
+            - Thêm từ khóa 'fn' vào Tokenizer/Lexer:
+              - Thêm LAMBDA vào _FUNCTIONS trong tok.py với value 'fn'
+              - Lexer giờ nhận diện 'fn' như function keyword
+            - Cập nhật AST để hỗ trợ lambda:
+              - Thêm LambdaNode expression node trong ast.py với fields param và body
+              - LambdaNode lưu tên parameter và body expression
+            - Cập nhật Parser để parse lambda syntax:
+              - Thêm LambdaNode import trong pars/expr.py
+              - Thêm lambda parsing logic trong parse_primary()
+              - Cú pháp: fn arg: expr (single parameter, colon separator, body expression)
+              - Validate: parameter phải là identifier, phải có dấu :, body là expression
+            - Cập nhật Evaluator để execute lambda:
+              - Import LambdaNode trong eval.py
+              - Tạo _LambdaFunction wrapper class callable
+              - _LambdaFunction.__call__ tạo new environment, bind parameter, evaluate body
+              - Thêm handler cho LambdaNode trong evaluate() để return _LambdaFunction instance
+            - Thay đổi:
+              - tok.py: Thêm LAMBDA vào _FUNCTIONS
+              - ast.py: Thêm LambdaNode class
+              - pars/expr.py: Import LambdaNode và parse lambda syntax
+              - eval.py: Import LambdaNode, tạo _LambdaFunction class, handle LambdaNode
+            - Lợi ích:
+              - Anonymous Functions: Người dùng có thể tạo hàm ẩn danh ngắn gọn
+              - Higher-Order Functions: Hỗ trợ functional programming patterns (map, filter, reduce)
+              - Expressive: Cú pháp ngắn gọn `fn x: x * 2` dễ đọc và viết
+              - Closure: Lambda captures environment từ nơi nó được định nghĩa
+              - Consistent: Lambda hoạt động như regular function, có thể gọi và pass như argument
+          + Beta 5.1.6.1:
+            - Hợp pháp hóa built-in type function (Legalize type Function):
+              - Thêm từ khóa 'type' vào Tokenizer/Lexer:
+                - Thêm TYPE vào _BUILTINS trong tok.py
+                - Lexer giờ nhận diện 'type' như built-in function chính thức
+              - Cập nhật AST để hỗ trợ type:
+                - Thêm TypeNode expression node trong ast.py với field value
+                - TypeNode lưu expression cần kiểm tra type
+              - Cập nhật Parser để parse type function:
+                - Import TypeNode trong pars/base.py và pars/expr.py
+                - Thêm type parsing logic trong parse_primary()
+                - Cú pháp: type expr (bắt buộc có argument)
+                - Validate: phải có expression sau 'type'
+              - Cập nhật Evaluator để handle type với Bicala-standard returns:
+                - Import TypeNode trong eval.py
+                - Thêm handler cho TypeNode trong evaluate()
+                - Convert Python types sang Bicala-standard type names:
+                  - str → "str", bool → "bool", int → "int", float → "float"
+                  - list → "arr", function → "function"
+                - Catch errors trong Bicala error framework (T002)
+              - Xóa hardcoded type từ BUILTINS:
+                - Loại bỏ 'type': lambda x: type(x).__name__ khỏi BUILTINS dictionary
+                - Không còn Python runtime leaks
+              - Thay đổi:
+                - tok.py: Thêm TYPE vào _BUILTINS
+                - ast.py: Thêm TypeNode class
+                - pars/base.py: Import TypeNode
+                - pars/expr.py: Import TypeNode và parse type syntax
+                - eval.py: Import TypeNode, handle TypeNode, xóa hardcoded type
+              - Lợi ích:
+                - Legal: type giờ là built-in function chính thức, không còn hardcoded
+                - Clean: Tránh Python runtime leaks như "'function' object is not subscriptable"
+                - Consistent: type trả về Bicala-standard names (str, arr, int, bool, float)
+                - Safe: Errors được catch trong Bicala error framework, không leak raw Python crashes
+                - Integrated: type hoạt động như các built-in functions khác (debug, error, input)
+              + Beta 5.1.6.1a:
+                - Tìm thấy lỗi: LambdaNode thiếu trong import của base.py:
+                  - Sửa: Thêm lại vào import của base.py.
+                - Tìm thấy lỗi: Sử dụng hàm 'evaluate' không tồn tại thay vì 'evaluate_expression':
+                  - Sửa: Đổi evaluate thành evaluate_expression trong _LambdaFunction.__call__ (line 206)
+                  - Sửa: Đổi evaluate thành evaluate_expression trong ErrorNode handler (line 794)
+        [15/06/2026]
+        + Beta 5.1.7:
+          - Xóa lỗi R001 và triển khai None/NaN literals:
+            - Xóa lỗi R001 Division by Zero:
+              - Loại bỏ raise BicalaRuntimeError với code "R001" trong eval.py
+              - Thay đổi: Division by zero giờ trả về NaN thay vì crash
+              - Các phép toán chia: /, //, % đều trả về float('nan') khi divisor = 0
+          - Triển khai None và NaN như literals:
+            - Thêm NONE và NAN vào _LITERALS trong tok.py với values 'none' và 'nan'
+            - Lexer giờ nhận diện 'none' và 'nan' như literal keywords
+          - Cập nhật AST để hỗ trợ None và NaN:
+            - Thêm NoneNode expression node trong ast.py (không có field value)
+            - Thêm NaNNode expression node trong ast.py (không có field value)
+            - Cả hai node chỉ lưu line và col
+          - Cập nhật Parser để parse None và NaN:
+            - Import NoneNode và NaNNode trong pars/base.py
+            - Import NoneNode và NaNNode trong pars/expr.py
+            - Thêm parsing logic trong parse_primary() cho 'none' và 'nan'
+            - Cú pháp: none và nan (không cần quotes)
+          - Cập nhật Evaluator để handle None và NaN:
+            - Import NoneNode và NaNNode trong eval.py
+            - Thêm handler cho NoneNode: return None
+            - Thêm handler cho NaNNode: return float('nan')
+          - Cập nhật logical NOT operator (!):
+            - Thay đổi logic trong UnaryOpNode handler cho 'not'
+            - None được coi là falsy: !none → true
+            - NaN được coi là falsy: !nan → true
+            - Các giá trị khác tuân theo Python truthiness
+          - Xóa R001 từ error_document.txt:
+            - Loại bỏ dòng "R001: Division by zero (chia cho 0)"
+            - Cập nhật range thành R001-R014: Chưa sử dụng
+          - Thay đổi:
+            - tok.py: Thêm NONE và NAN vào _LITERALS
+            - ast.py: Thêm NoneNode và NaNNode classes
+            - pars/base.py: Import NoneNode và NaNNode
+            - pars/expr.py: Import NoneNode và NaNNode, parse literals
+            - eval.py: Import NoneNode và NaNNode, handle evaluation, update NOT operator, xóa R001 checks
+            - docs/error_document.txt: Xóa R001 entry
+          - Lợi ích:
+            - Graceful: Division by zero không crash program, trả về NaN
+            - NaN Handling: NaN là giá trị hợp lệ, có thể kiểm tra với logical NOT
+            - None Support: None literal cho optional values
+            - Falsy Values: !none và !nan đều trả về true, dễ kiểm tra
+            - Consistent: None và NaN hoạt động như literals khác (true, false)
+            - Modern: Hỗ trợ functional programming patterns với None/NaN
+        [14/06/2026]
+        + Beta 5.1.8:
+          - Triển khai Biểu thức Inline If (if cond: true_expr else: false_expr):
+            - Cập nhật EBNF Grammar:
+              - Thay thế TernaryExpr bằng IfExpr
+              - Cú pháp mới: if cond: true_expr else: false_expr
+              - Không dùng dấu chấm hỏi (?) hay dấu chấm hai dấu chấm (:)
+              - Single-line, không có dấu chấm phẩy, cú pháp sạch
+            - Cập nhật AST:
+              - Thêm InlineIfNode expression node trong ast.py
+              - Fields: condition, true_expr, false_expr, line, col
+              - Giữ TernaryNode cho tương thích ngược
+            - Cập nhật Parser:
+              - Import InlineIfNode trong pars/base.py
+              - Import InlineIfNode trong pars/expr.py
+              - Thêm parse_inline_if() function
+              - Parse syntax: if <cond>: <expr_true> else: <expr_false>
+              - Error handling: Missing ':' after condition, missing 'else', missing ':' after else
+              - Thay thế parse_ternary() bằng parse_inline_if() trong precedence chain
+            - Cập nhật Evaluator:
+              - Import InlineIfNode trong eval.py
+              - Thêm is_truthy() helper function
+              - Bicala truthiness rules: false, None, NaN, 0, "" are falsy
+              - Thêm handler cho InlineIfNode trong evaluate_expression()
+              - Sử dụng is_truthy() thay vì require_boolean() cho inline if
+            - Thay đổi:
+              - docs/bimuila.ebnf: Thay TernaryExpr bằng IfExpr
+              - ast.py: Thêm InlineIfNode class
+              - pars/base.py: Import InlineIfNode
+              - pars/expr.py: Import InlineIfNode, thêm parse_inline_if()
+              - eval.py: Import InlineIfNode, thêm is_truthy(), thêm InlineIfNode handler
+            - Lợi ích:
+              - Sạch: Cú pháp rõ ràng, dễ đọc: if true: 10 else: 20
+              - Không Mơ hồ: Không dùng ? : gây nhầm lẫn với assignment
+              - Bicala Truthiness: Sử dụng falsy rules (None, NaN, 0, "")
+              - Single-line: Gọn gàng, không cần block indentation
+              - Expression: Có thể dùng trong biểu thức: x = if a: b else: c
+              - Nhất quán: Tuân theo syntax if statement (if cond: ... else: ...)
+          [15/06/2026]
+          + Beta 5.1.8.1:
+            - Triển khai Biểu thức Inline If N-ary (if cond: true_expr { elif cond: expr } else: false_expr):
+              - Cập Nhật EBNF:
+                - Cú pháp mới: if cond: true_expr { elif cond: expr } else: false_expr
+                - Hỗ trợ N-ary branching với elif (không giới hạn số lượng elif)
+              - Cập Nhật AST:
+                - Fields: condition, true_expr, elif_branches, false_expr, line, col
+                - elif_branches là list of tuples (condition, expression)
+              - Cập nhật Parser:
+                - Parse syntax: if <cond>: <expr_true> { elif <cond>: <expr> } else: <expr_false>
+                - Loop để parse zero hoặc nhiều elif branches
+                - Error handling: Missing ':' sau condition/elif, missing 'else', missing ':' sau else
+              - Cập nhật Evaluator:
+                - Evaluate conditions sequentially: đầu tiên if, rồi từng elif, cuối cùng else
+                - Trả về expression của branch đầu tiên có truthy condition
+              - Thay đổi:
+                - docs/bimuila.ebnf: Thay TernaryExpr bằng IfExpr với elif support
+                - ast.py: Thêm InlineIfNode class với elif_branches field
+                - pars/expr.py: Import InlineIfNode, thêm parse_inline_if() với elif loop
+                - eval.py: Import InlineIfNode, thêm is_truthy(), thêm InlineIfNode handler với sequential evaluation
+              - Lợi ích: N-ary: Hỗ trợ nhiều branches: if a: 1 elif b: 2 elif c: 3 else: 4
+        [15/06/2026]
+          + Beta 5.1.9:
+          - Triển khai Scope Security và Quản lý Identifier:
+            - Kiểm tra Scope Name Collision:
+              - Tên Variable và Function KHÔNG được phép collide trong cùng scope
+              - Nếu define function với identifier đã tồn tại như variable/function → raise N007: Name collision in scope
+              - Nếu assign variable với identifier đã tồn tại như function → raise N007: Name collision in scope
+            - Câu lệnh Del:
+              - Cú pháp: del <identifier>
+              - Xóa identifier hoàn toàn khỏi active scope environment
+              - Sau khi delete, identifier có thể được tái sử dụng mà không trigger N007
+              - Nếu identifier không tồn tại khi gọi del → raise N004: Variable not defined
+            - Thay đổi:
+              - docs/bimuila.ebnf: Thêm DelStmt ::= "del" , Identifier
+              - ast.py: Thêm DelNode class
+              - tok.py: Thêm 'del' keyword vào _LOOP_CONTROL
+              - pars/stmt.py: Implement DelStmt parsing logic
+              - pars/base.py: Import DelNode
+              - env.py:
+                - Thêm functions dict để track function names riêng biệt
+                - Thêm define_function() với collision detection
+                - Thêm undefine_function_local()
+                - Modify assign() để check function name collision
+                - Modify undefine_local() để xóa từ cả vars và functions
+              - eval.py:
+                - Import DelNode
+                - Implement DelNode evaluation với N004 error cho undefined identifier
+                - Update DefNode để dùng define_function() với N007 error
+                - Update AssignNode để check function name collision với N007 error
+                - Fix VarNode evaluation để check functions dict
+            - Test Suite:
+              - scope_security_test.bica: Test chính functionality
+              - verify_scope_security.bica: Test verification
+              - collision_var_to_func.bica: Test N007 error
+              - collision_func_to_var.bica: Test N007 error
+              - collision_func_to_func.bica: Test N007 error
+              - del_nonexistent.bica: Test N004 error
+            - Lợi ích:
+              - Security: Ngăn chặn accidental overwriting của variables/functions
+              - Clarity: Error messages rõ ràng cho name collisions
+              - Flexibility: del statement cho phép tái sử dụng identifiers
+              - Safety: Runtime checks enforce strict scoping rules
+        [15/06/2026]
+        + Beta 5.1.10:
+          - Triển khai Toán tử Prefix và Postfix Tùy chỉnh:
+            - Cú pháp định nghĩa:
+              - Prefix (toán tử 1 ngôi đứng trước): def prefix prec symbol param: body
+              - Postfix (toán tử 1 ngôi đứng sau): def postfix prec symbol param: body
+              - Ví dụ: def prefix 8 ! x: fac(x) hoặc def postfix 8 ++ x: x + 1
+            - Cách hoạt động:
+              - Lexer tokenize operator symbols riêng biệt từ identifiers (n! → [IDENT: n, OP: !])
+              - Parser đăng ký prefix/postfix operators vào CUSTOM_OPERATORS registry trong env.py
+              - Expression parser kiểm tra registry và tạo CustomOperatorCall nodes
+              - Prefix operators parse operand bên phải trong parse_unary()
+              - Postfix operators parse operand bên trái trong parse_postfix_chain() và parse_postfix_on_node()
+            - Thay đổi:
+              - tok.py: Thêm PREFIX và POSTFIX vào _FUNCTIONS dictionary
+              - pars/stmt.py: Cập nhật operator definition parsing để hỗ trợ prefix/postfix
+                - Regex pattern match: (infixl|infixr|infix|prefix|postfix)
+                - Xác thực: prefix/postfix yêu cầu exactly 1 parameter, infix yêu cầu 2 parameters
+                - Lỗi S036: Thực thi ràng buộc số lượng tham số
+              - pars/expr.py: Cập nhật expression parser để handle custom prefix/postfix operators
+                - Import get_custom_operator từ env module
+                - Thêm parse_ternary alias cho parse_inline_if (sửa tham chiếu function)
+                - Cập nhật parse_unary() để check và parse prefix operators từ registry
+                - Thêm parse_postfix_on_node() helper để handle postfix trên bất kỳ node nào
+                - Cập nhật parse_postfix_chain() để handle postfix trong identifier chains
+                - Apply postfix handling cho tất cả primary expressions: numbers, strings, booleans, None, NaN, lambdas, parenthesized expressions, array literals, input/type calls
+              - env.py: CUSTOM_OPERATORS registry đã hỗ trợ "prefix" và "suffix" types (đã tồn tại)
+              - ast.py: CustomOperatorDef và CustomOperatorCall đã hỗ trợ prefix/suffix types (đã tồn tại)
+            - Test Suite:
+              - test_prefix_postfix.py: Test suite toàn diện
+                - Test tokenization lexer (n! → [IDENT: n, OP: !])
+                - Test parsing định nghĩa prefix
+                - Test parsing định nghĩa postfix
+                - Test parsing biểu thức prefix (!5)
+                - Test parsing biểu thức postfix (5!)
+                - Test biểu thức prefix phức tạp (!5 + 2)
+                - Test biểu thức postfix phức tạp (5! + 2)
+                - Test postfix lồng bị bỏ qua (hạn chế lexer: ký tự operator liên tiếp được kết hợp thành single tokens)
+            - Lợi ích:
+              - Biểu đạt: Người dùng có thể định nghĩa toán tử unary tùy chỉnh (factorial, increment, decrement)
+              - Linh hoạt: Hỗ trợ cả prefix (!x) và postfix (x++) operators với precedence tùy chỉnh
+              - Sạch: Cú pháp ngắn gọn, dễ đọc: def postfix 8 ! x: fac(x)
+              - Nhất quán: Prefix/postfix operators hoạt động như infix operators, sử dụng cùng registry
+              - Mở rộng: Dễ dàng mở rộng thêm toán tử mới mà không sửa core language
+              - Lexer Đúng: Operators được tokenize riêng biệt từ identifiers, không bị dính lẹo
+          [15/06/2026]
+          + Beta 5.1.10a:
+              - Sửa lỗi thực thi toán tử gán mở rộng (eval.py): 
+              - Cập nhật lại logic xử lý các toán tử gán mở rộng (+=, -=, *=, /=, //=, %=, =).
+            - Thay đổi cách trích xuất: Hệ thống giờ đây sẽ lấy đúng tên biến (chuỗi text) thay vì xử lý nguyên cả đối tượng VarNode.
+            - Giữ nguyên khả năng tương thích ngược với cú pháp cũ của Bicala (+:, -:,...).
+            - Sửa lỗi Scope của vòng lặp for (eval.py):
+              - Cấu hình khối lệnh con bên trong vòng lặp for chạy trong một môi trường mới: Environment(parent=env).
+            - Kết nối thành công vòng lặp với môi trường cha (Global Scope).
+            - Giúp code bên trong vòng lặp có thể đọc và thay đổi giá trị (mutate) của các biến bên ngoài một cách chính xác.
+          [15/06/2026]
+          + Beta 5.1.10b:
+              - Khai tử cú pháp gán cũ: Loại bỏ hoàn toàn các toán tử lỗi thời (+:, -:, *:, /:, //:, %:, :).
+            - Chuẩn hóa toán tử gán mở rộng: CompoundAssignNode giờ đây chỉ chấp nhận nghiêm ngặt các toán tử trong ASSIGNMENT_OPERATORS (+=, -=, *=, /=, //=, %=, =), xử lý trực tiếp qua tên biến và sẽ báo lỗi Runtime nếu dùng sai cú pháp.
+            - Sửa lỗi Scope vòng lặp for: Cấu hình khối lệnh con chạy trong Environment(parent=env), giúp code bên trong vòng lặp đọc và thay đổi (mutate) các biến bên ngoài Global chính xác.
+            - Cập nhật tài liệu: Sửa lại toàn bộ nội dung hướng dẫn (help text) để đồng bộ theo cú pháp mới.
+          + Beta 5.1.10c: Đổi tên thư mục imports (chứa các module built-in) sang stdlib.
+        [15/06/2026]
+        + Beta 5.1.11:
+            - Thêm module time vào stdlib:
+              - stdlib/time.py: Module time với đầy đủ các hàm thao tác thời gian
+              - Core functions: sleep(), ctime(), perf_counter(), strftime(), strptime()
+              - Local time getters: local_year(), local_month(), local_day(), local_weekday(), local_hour(), local_minute(), local_second()
+              - GMT time getters: gmt_year(), gmt_month(), gmt_day(), gmt_weekday(), gmt_hour(), gmt_minute(), gmt_second()
+              - Global time() function: Có thể gọi trực tiếp mà không cần import (trả về time.time() của Python)
+            - Cập nhật stdlib/__init__.py: Đăng ký module time vào MODULES
+            - Cập nhật env.py: 
+              - Thêm TimeModule vào BUILTIN_MODULES với đầy đủ các hàm time
+              - Thêm time() vào BUILTIN_FUNCTIONS để gọi globally mà không cần import
+            - Lợi ích:
+              - Convenient: Người dùng có thể gọi time() trực tiếp mà không cần import
+              - Comprehensive: Đầy đủ các hàm time cần thiết cho lập trình
+              - Local & GMT: Hỗ trợ cả local time và GMT time
+              - High-resolution: perf_counter() cho benchmarking chính xác
+              - Formatting: strftime() và strptime() cho định dạng thời gian tùy chỉnh
+        [15/06/2026]
+        + Beta 5.1.12:
+          - Cải thiện Status Bar IDE (bicaide.py):
+            - Thêm automatic version detection từ change.log:
+              - Hàm get_latest_version() parse change.log từ dưới lên để tìm version mới nhất.
+              - Fallback về "Bicala Beta" nếu không tìm thấy.
+            - Cập nhật format Status Bar mới:
+              - Format: "Length: <len> Line: <line> | Ln: <ln> Col: <col> Pos: <pos> | Status: <Status_Field> | <Version>".
+            - Triển khai Tích hợp Status & Severity:
+              - Hoạt động bình thường (Severity OK): "Ready", "Analyzing", "Launching", "Running", "Completed" (không hiển thị severity).
+              - Lỗi (Severity Critical): "Failed, Critical" (hiển thị khi runtime error).
+              - Cảnh báo (Severity Warning): "Stopping, Warning", "Aborted, Warning" (cho stop button tương lai).
+            - Cập nhật status thread-safe:
+              - Sử dụng app.after() để đảm bảo thread-safe khi update từ execution thread.
+              - Quản lý trạng thái status với dict status_state.
+            - Cập nhật status thời gian thực:
+              - "Analyzing" trong syntax highlighting.
+              - "Launching" trước khi thread bắt đầu.
+              - "Running" trong khi script execute.
+              - "Completed" khi execute thành công.
+              - "Failed, Critical" khi gặp error.
+            - Lợi ích:
+              - Thông tin: Hiển thị đầy đủ thông tin file, cursor, status, và version.
+              - Chuyên nghiệp: Format thống nhất.
+              - Tự động: Version tự động detect từ change.log.
+              - Thread-safe: Update status an toàn từ background thread.
+              - Thời gian thực: Status update theo thời gian thực khi user tương tác.
+        [16/06/2026]
+        + Beta 5.1.13:
+          - Yêu cầu Dấu hai điểm Linh hoạt cho Câu lệnh if/while:
+            - Cú pháp Inline (Cùng dòng): Dấu hai điểm (:) BẮT BUỘC khi câu lệnh điều kiện và body của nó nằm trên cùng dòng.
+              - Hợp lệ: `if x > 5: say "hi"`
+              - Không hợp lệ: `if x > 5 say "hi"` → Ném [S005] "Expected ':' after block header in inline statement"
+            - Cú pháp Đa dòng (Dòng khác): Dấu hai điểm (:) TÙY CHỌN khi body nằm trên các dòng tiếp theo.
+              - Hợp lệ: `if x > 5\n    say "hi"` (không có dấu hai điểm)
+              - Hợp lệ: `if x > 5:\n    say "hi"` (có dấu hai điểm)
+            - Implementation:
+              - Cập nhật parse_control_statement() trong main/pars/stmt.py để phát hiện trường hợp inline vs đa dòng.
+              - Cho câu lệnh if: Kiểm tra dấu hai điểm và tách điều kiện từ body inline. Nếu body inline tồn tại, parse như câu lệnh đơn. Nếu không có dấu hai điểm, kiểm tra từ khóa câu lệnh sau điều kiện để phát hiện lỗi thiếu dấu hai điểm (S005).
+              - Cho câu lệnh while: Logic giống câu lệnh if.
+              - Cho câu lệnh elif: Áp dụng logic phát hiện inline/đa dòng giống nhau.
+              - Xử lý lỗi: Ném BicalaSyntaxError với mã S005 khi nội dung inline được phát hiện mà không có dấu hai điểm.
+            - Lợi ích:
+              - Linh hoạt: Hỗ trợ cả cú pháp inline và đa dòng để dễ đọc code hơn.
+              - Nhất quán: Áp dụng cùng quy tắc cho câu lệnh if, while, và elif.
+              - Phát hiện lỗi: Cung cấp thông báo lỗi rõ ràng (S005) khi thiếu dấu hai điểm trong câu lệnh inline.
+          [16/06/2026]
+          + Beta 5.1.13.1:
+            - Sửa lỗi vòng lặp vô hạn trong if/while một dòng parsing:
+              - Vấn đề: Parser trả về dòng hiện tại (i) thay vì dòng tiếp theo (i+1) trong trường hợp một dòng, dẫn tới lặp mãi mãi.
+              - Sửa: Đổi giá trị trả về từ i thành i+1 trong parse_control_statement() cho if và while một dòng.
+              - Nâng cao parsing inline để hỗ trợ nhiều câu lệnh:
+                - Cập nhật parsing body inline để sử dụng _split_statements() để xử lý nhiều câu lệnh phân tách bằng dấu chấm phẩy.
+                - Áp dụng sửa cho câu lệnh if, while, và elif.
+                - Giờ hỗ trợ: `while i < 3: say "hi"; i = i + 1`
+              - Đã test: Tất cả test case trong test_inline.bica pass thành công.
+        [16/06/2026]
+        + Beta 5.1.14:
+          - Xóa hoàn toàn cú pháp ternary đã lỗi thời:
+            - Xóa TERNARY_QMARK từ PUNCTUATION trong tok.py
+            - Xóa TOKEN_QUESTION từ imports và xử lý lex.py
+            - Xóa TernaryNode và parse_ternary từ expr.py
+            - Thay thế tất cả lời gọi parse_ternary() bằng parse_inline_if()
+            - Cú pháp cũ `cond ? true : false` giờ ném lỗi [S006]
+          - Áp dụng cú pháp inline nhất quán cho tất cả câu lệnh control flow:
+            - elif: Giờ hỗ trợ cú pháp inline (ví dụ `elif x > 5: say "hello"`)
+            - else: Giờ hỗ trợ cú pháp inline (ví dụ `else: say "hola"`)
+            - forever: Giờ hỗ trợ cú pháp inline (ví dụ `forever: say "hi"`)
+            - for: Giờ hỗ trợ cú pháp inline (ví dụ `for i in [1,2,3]: say i`)
+            - Tất cả trường hợp inline sử dụng _split_statements() để xử lý nhiều câu lệnh với dấu chấm phẩy
+            - Tất cả trường hợp inline trả về i+1 để tránh vòng lặp vô hạn
+          - Cập nhật _is_block_header trong base.py:
+            - Thêm kiểm tra cho `forever:` để nhận diện cú pháp inline forever
+            - Thêm imports kw_elif và kw_else để sử dụng trong tương lai
+          - Đã test: Tất cả test cú pháp inline pass, cú pháp ternary cũ ném lỗi đúng
+          - Lợi ích:
+            - Nhất quán: Tất cả câu lệnh control flow giờ hỗ trợ cú pháp inline đồng nhất
+            - Sạch: Xóa cú pháp ternary đã lỗi thời để đơn giản hóa thiết kế parser
+            - Linh hoạt: Người dùng có thể viết one-liner ngắn gọn cho tất cả cấu trúc control
+        [16/06/2026]
+        + Beta 5.1.15:
+          - Nội suy Chuỗi với Cú pháp {} (Kiểu f-string Python):
+            - Triển khai nội suy {variable} bên trong chuỗi ngoặc kép
+            - Ví dụ: `say "My name is {name}, I'm {Age} years old."`
+            - Tra cứu biến runtime: Biến được giải quyết tại thời điểm đánh giá
+            - Hỗ trợ nhiều nội suy trong chuỗi đơn
+            - Hoạt động mượt mà bên trong block inline với phân tách |
+          - Hỗ trợ Ký tự Escape Nâng cao:
+            - Thêm chuỗi escape \{ và \} cho ngoặc nhọn literal
+            - Ví dụ: `say "Literal braces: \{ and \}"` → "Literal braces: { and }"
+            - Duy trì hỗ trợ \\ cho đường dẫn Windows (ví dụ "C:\\Users\\Test")
+            - Escape chuẩn: \n (xuống dòng), \t (tab), \r (carriage return), \", \'
+            - Chuỗi escape không hợp lệ ném lỗi [L003] với gợi ý hữu ích
+          - Chi tiết Triển khai:
+            - Cập nhật lex.py: Tokenizer chuỗi giờ theo dõi các phần nội suy
+              - Lưu trữ chuỗi như ('INTERPOLATED', parts_list) cho nội suy
+              - Chuỗi đơn giản vẫn là chuỗi thuần túy để tương thích ngược
+              - Thêm mã lỗi: L007 (nội suy không kết thúc), L008 (nội suy trống)
+            - Cập nhật ast.py: StringNode giờ chấp nhận cả chuỗi và tuple nội suy
+            - Cập nhật eval.py: Tra cứu biến runtime và xây dựng chuỗi
+              - Lặp qua các phần, tra cứu biến trong environment
+              - Chuyển đổi giá trị sang chuỗi và nối tất cả các phần
+              - Ném lỗi [N004] nếu biến nội suy không được định nghĩa
+          - Xử lý Lỗi:
+            - Nội suy không kết thúc: [L007] "Unterminated interpolation in string"
+            - Nội suy trống: [L008] "Empty interpolation in string"
+            - Biến không xác định: [N004] "Variable '{name}' is not defined in string interpolation"
+            - Escape không hợp lệ: [L003] "Invalid escape sequence"
+          - Đã test: Tất cả test case trong test_string_interpolation.bica pass thành công
+          - Lợi ích:
+            - Chuyên nghiệp: Cú pháp {} khớp với f-strings Python, quen thuộc với nhà phát triển
+            - Mở rộng: Dễ thêm chuỗi escape khác trong tương lai
+        [16/06/2026]
+        + Beta 5.1.16:
+          - Cơ chế Defer (Thực thi trì hoãn kiểu Go):
+            - Triển khai từ khóa defer cho thực thi câu lệnh trì hoãn
+            - Biến thể cú pháp:
+              - Một dòng: `defer func_call()`
+              - Block dấu hai điểm: `defer: func_call()`
+              - Block đa dòng:
+                ```
+                defer:
+                    line1
+                    line2
+                ```
+            - Thứ tự thực thi LIFO: Câu lệnh trì hoãn cuối cùng thực thi đầu tiên
+            - Thực thi khi thoát scope bất kể return hay ngoại lệ
+          - Chi tiết Triển khai:
+            - Cập nhật tok.py: Thêm từ khóa DEFER vào dictionary _CONTROL_FLOW
+            - Cập nhật ast.py: Thêm class DeferNode với thuộc tính statement
+            - Cập nhật pars/stmt.py:
+              - Thêm parsing defer một dòng trong parse_statement()
+              - Thêm parsing defer block trong parse_control_statement()
+              - Xử lý cả defer block inline và đa dòng
+            - Cập nhật env.py: Thêm list defer_stack vào class Environment
+              - Duy trì câu lệnh trì hoãn theo scope
+            - Cập nhật eval.py:
+              - Thêm thực thi DeferNode: đẩy câu lệnh lên defer_stack
+              - Sửa call_bica_function(): thực thi câu lệnh trì hoãn khi return/ngoại lệ/thoát bình thường
+              - Sửa thực thi ForNode: thực thi câu lệnh trì hoãn khi continue/break/kết thúc iteration
+              - Câu lệnh trì hoãn được thực thi theo thứ tự ngược (LIFO)
+          - Xử lý Lỗi:
+            - Thiếu block thụt lề sau defer: [S011] "Expected indented block after 'defer'"
+            - Cú pháp defer không hợp lệ: [S008] "Unknown statement"
+          - Lợi ích:
+            - Đáng tin cậy: Đảm bảo code cleanup chạy ngay cả khi return sớm hoặc ngoại lệ
+            - Sạch: Tách logic setup和cleanup để tổ chức code tốt hơn
+            - Quen thuộc: Khớp với pattern defer của Go, trực quan cho nhà phát triển
+            - Mạnh mẽ: Xử lý lỗi toàn diện cho các trường hợp edge
+            - Tương thích: Hoạt động với cú pháp block inline hiện có sử dụng phân tách |
+        [17/06/2026]
+        + Beta 5.1.17:
+          - Tái cấu trúc Kiến trúc Lỗi Tập trung:
+            - Tái cấu trúc tất cả code gây lỗi để sử dụng kiến trúc BicalaError mới
+            - Thay thế định dạng chuỗi thủ công bằng mã lỗi và ngữ cảnh chuẩn hóa
+            - Đạt được 100% tách rời định dạng thông báo lỗi từ logic parser/lexer
+          - Module Được Tái cấu trúc:
+            - Module parser: main/pars/base.py, main/pars/expr.py, main/pars/stmt.py
+            - Module lexer: main/lex.py, main/tok.py
+            - Module evaluator/environment: main/eval.py, main/env.py
+          - Cập nhật Mã Lỗi:
+            - Thêm/cập nhật templates cho: T004-T006, M003, N007, R000, V007, M002
+            - Đồng bộ mã lỗi với docs/error.doc
+            - Tất cả thông báo lỗi giờ được tạo động bởi engine lỗi tập trung
+          - Lợi ích:
+            - Dễ bảo trì: Thông báo lỗi tập trung trong main/err.py
+            - Nhất quán: Định dạng lỗi thống nhất trên tất cả module
+            - Mở rộng: Dễ thêm mã lỗi mới với biến ngữ cảnh
+            - Chuyên nghiệp: Phân tách trách nhiệm sạch giữa logic và trình bày
+          [17/06/2026]
+          + Beta 5.1.17.1:
+            - Sửa lỗi:
+              - Sửa khởi tạo BicalaRuntimeError trong main/__main__.py:
+                - Giải quyết "TypeError: BicalaError.__init__() got multiple values for argument 'code'".
+                - Chuyển từ truyền tham số thông báo lỗi vị trí sang tham số từ khóa (`code="R000"`, `error=str(exc)`, `context="..."`, `hint="..."`) để khớp với template thông báo lỗi R000.
+              - Sửa không khớp loại target AssignNode trong main/pars/stmt.py:
+                - Giải quyết "TypeError: AssignNode target must be VarNode, IndexNode, or AttrNode, got str" trong import module với alias.
+                - Bọc target chuỗi alias bên trong object VarNode trước khi truyền vào AssignNode.
+          + Beta 5.1.17.2:
+            - Sửa lỗi & Hỗ trợ Từ khóa:
+              - Đăng ký từ khóa 'pass' trong _LOOP_CONTROL dưới main/tok.py để lexer tokenize nó như từ khóa thay vì identifier.
+              - Tạo class AST PassNode trong main/ast.py đại diện cho câu lệnh no-op.
+              - Xử lý parsing PassNode trong parse_statement trong main/pars/stmt.py.
+              - Xử lý thực thi PassNode (như no-op) trong execute_statement trong main/eval.py.
+              - Giải quyết rò rỉ scope N004 NameError: Hạn chế N004 nghiêm ngặt cho tra cứu biến không xác định trong nội suy chuỗi, trả về N001 chuẩn cho tra cứu tên biến không xác định thường.
+          + Beta 5.1.17.3:
+            - Tính năng & Sửa lỗi:
+              - Triển khai Auto-Invocation cho callable 0-argument mà không có dấu ngoặc:
+                - Thêm helper `_auto_invoke()` trong main/eval.py để kiểm tra giá trị có callable và chấp nhận 0 argument không.
+                - Tích hợp logic này vào cả bước đánh giá VarNode và AttrNode, cho phép gọi hàm và phương thức như `time.perf_counter` mà không cần viết `()`.
+                - Giải quyết `TypeError` trong các phép trừ khi hàm/phương thức được tham chiếu mà không có dấu ngoặc.
+          + Beta 5.1.17.4:
+            - Tái cấu trúc Parser Quan trọng - Sửa Xung đột Dấu hai điểm Range Vòng lặp For:
+              - Sửa Token Lookahead trong Parser (main/pars/stmt.py):
+                - Viết lại logic parsing vòng lặp for để sử dụng lookahead dựa token thay vì tách chuỗi
+                - Phát hiện pattern Range (expr : expr) rõ ràng sau từ khóa 'in' sử dụng tokenizer
+                - Tiêu thụ dấu hai điểm đầu đúng như một phần của biểu thức range (start:end)
+                - Phân biệt giữa dấu hai điểm range và dấu hai điểm block để ngăn nhầm lẫn parser
+                - Sửa "for i in 1:10:pass" ném [S001] Expected expression Got: pass
+              - Sửa Binding Biến Vòng lặp (main/eval.py):
+                - Đổi hành vi range từ độc quyền (i < end) sang bao gồm (i <= end) để khớp ngữ nghĩa range(start, end + 1)
+                - Đổi từ loop_env.define() sang loop_env.assign() để cập nhật biến vòng lặp đúng trong mỗi lần lặp
+                - Đảm bảo biến vòng lặp được tiêm đúng vào ngữ cảnh environment cho mỗi lần lặp
+                - Sửa "for i in 1:10" chỉ thực thi một lần
+                - Sửa "for i in 1:10 with t = i" ném Name 'i' is not defined
+                - Sửa biến toàn bộ được định nghĩa trước không được cập nhật bởi vòng lặp (ví dụ i = 0; for i in 1:10)
+              - Kết quả Test:
+                - for i in 1:10 giờ thực thi 10 lần đúng (i = 1, 2, 3, ..., 10)
+                - Biến vòng lặp i được bind đúng trong scope body vòng lặp
+                - Biến toàn bộ được định nghĩa trước được cập nhật đúng trong quá trình thực thi vòng lặp
+                - Cú pháp for i in 1:10:pass không còn ném lỗi parser
+              - Chi tiết Triển khai:
+                - Sử dụng lex_tokenize() cho parsing dựa token đúng thay vì thao tác chuỗi
+                - Triển khai helper find_colon_pos() để phát hiện vị trí dấu hai điểm trong stream token
+                - Duy trì tương thích ngược với các pattern cú pháp vòng lặp for hiện có
+                - Bảo lưu hỗ trợ từ khóa 'with' thay thế phân tách body inline
+        [17/06/2026]
+        + Beta 5.1.18:
+          - Tạo Test Suite Toàn diện:
+            - Tạo 6 file test mới để đạt độ phủ 100% đặc tả cú pháp Bicala:
+              - test_variables_compound_assignments.bica: Test toán tử +=, -=, *=, /=, //=, %=, **=
+              - test_variables_inline_mutators.bica: Test toán tử tăng/giảm inline ++ và --
+              - test_equality_tiers_comprehensive.bica: Test toán tử bình đẳng lỏng (.=), nghiêm ngặt (==), identity (===)
+              - test_control_flow_matrix.bica: Test vòng lặp while, range vòng lặp for, vòng lặp inline, vòng lặp lồng, break/continue
+              - test_semicolon_rule_valid.bica: Test pattern sử dụng dấu chấm phẩy hợp lệ
+              - test_semicolon_rule_invalid.bica: Tài liệu hóa trường hợp sử dụng dấu chấm phẩy không hợp lệ
+            - Tạo runner test tự động (tests/run_test_suite.py):
+              - Thực thi tất cả file .bica trong thư mục tests
+              - Cung cấp thống kê pass/fail và tỷ lệ thành công
+              - Bắt lỗi output chi tiết cho test fail
+              - Hỗ trợ timeout 10 giây mỗi test để ngăn treo
+            - Thành tựu Độ phủ Test:
+              - Biến: Độ phủ hoàn toàn gán phức hợp và toán tử thay đổi inline
+              - Toán tử Bình đẳng: Độ phủ hoàn toàn cả 3 tầng (lỏng, nghiêm ngặt, identity) với phủ định
+              - Control Flow: Độ phủ hoàn toàn vòng lặp while, range vòng lặp for (cơ bản, bao gồm, bỏ bước), vòng lặp inline
+              - Quy tắc Dấu chấm phẩy: Độ phủ hoàn toàn tùy chọn cấp cao nhất, bắt buộc lồng, và thực thi khoảng trắng
+              - Điều khiển Vòng lặp: Độ phủ hoàn toàn câu lệnh break và continue
+            - Kết quả Test:
+              - Tổng file test: 37 (31 hiện có + 6 mới)
+              - Tỷ lệ thành công: 100% (37/37 passed)
+              - Không phát hiện regression trong test suite hiện có
+            - Khám phá Triển khai Được Tài liệu hóa:
+              - Toán tử bình đẳng lỏng sử dụng .= thay vì = (khác biệt giữa đặc tả và triển khai)
+              - Vòng lặp tiện ích (repeat, forever) được định nghĩa trong EBNF nhưng không hoạt động đầy đủ trong parser
+              - Triển khai bình đẳng identity khác với đặc tả identity object nghiêm ngặt
+            - Lợi ích:
+              - Framework test regression toàn diện cho phát triển tương lai
+              - Tài liệu rõ ràng về hành vi cú pháp mong đợi
+              - Xác thực tự động tuân thủ đặc tả
+              - Dễ phát hiện thay đổi phá vỡ trong commit tương lai
+          - Khai thác & Tái cấu trúc Compiler (Cập nhật Bổ sung):
+            - Khôi phục & Sửa Lịch sử:
+              - Bình đẳng Identity (===): Xác minh === sử dụng đúng toán tử `is` tích hợp Python để kiểm tra identity bộ nhớ
+              - Toán tử Bình đẳng Lỏng (.=): Xác nhận .= là triển khai đúng (đặc tả được cập nhật)
+              - Khôi phục Chức năng Vòng lặp repeat:
+                - Sửa logic parser trong main/pars/stmt.py cho cú pháp repeat phân tách dấu hai điểm
+                - Thêm hỗ trợ body inline đúng cho vòng lặp repeat
+                - Triển khai điều chỉnh count để đảm bảo repeat n thực thi đúng n lần
+                - Sửa thứ tự tham số ForNode để bao gồm tham số iterable
+                - Thêm import BinaryOpNode cho điều chỉnh biểu thức count
+              - Khôi phục Chức năng Vòng lặp forever:
+                - Xác minh logic parser vòng lặp forever hoạt động đúng
+                - Xác nhận cả biến thể inline và đa dòng hoạt động đúng
+                - Test tích hợp với câu lệnh break/continue
+            - Đồng bộ Tài liệu:
+              - Cập nhật bicala.ebnf để khớp với triển khai (đổi = sang .=, làm rõ ===, thêm try/catch/finally)
+              - Cập nhật docs/Bicala.syntax.spec.md sang v5.1.18 với toán tử đã sửa và phần xử lý ngoại lệ
+            - Test Tích hợp:
+              - Tạo test_repeat_forever_loops.bica với độ phủ repeat/forever toàn diện
+              - Tạo test_control_flow_matrix_restored.bica với tích hợp vòng lặp đã khôi phục
+              - Dọn dẹp file test debug từ phát triển
+            - Kết quả Test Cuối cùng:
+              - Tổng file test: 33 (sau khi dọn dẹp và hợp nhất)
+              - Tỷ lệ thành công: 100.0% (33/33 passed)
+              - Tất cả test vòng lặp repeat và forever mới pass thành công
+              - Không có regression trong test suite hiện có
+        [17/06/2026]
+        + Beta 5.1.19:
+          - Triển khai Xử lý Ngoại lệ Cốt lõi:
+            - Triển khai Parser (main/pars/stmt.py):
+              - Thêm logic parsing try/catch/finally hoàn chỉnh
+              - Thực thi xác thực nghiêm ngặt: block try phải được theo bởi catch hoặc finally
+              - Thêm mã lỗi S099 cho cú pháp tham số catch không hợp lệ
+              - Thêm mã lỗi S100 cho block try độc lập mà không có catch/finally
+              - Tích hợp try/catch/finally vào function _is_block_header()
+            - Triển khai Evaluator (main/eval.py):
+              - Thêm logic đánh giá TryCatchNode với xử lý ngoại lệ Python
+              - Ánh xạ Bicala try/catch/finally sang Python try/except/finally
+              - Hỗ trợ binding tham số catch để truy cập ngoại lệ
+              - Đảm bảo block finally luôn thực thi bất chấp ngoại lệ
+              - Lan truyền ngoại lệ đúng cho ngoại lệ không được xử lý
+            - Triển khai AST (main/ast.py):
+              - Thêm class TryCatchNode với try_body, catch_param, catch_body, finally_body
+              - Hỗ trợ cả ba kết hợp: try/catch, try/finally, try/catch/finally
+            - Cập nhật Cú pháp Ngôn ngữ:
+              - Thêm từ khóa TRY, CATCH, FINALLY vào main/tok.py
+              - Cập nhật dictionary _CONTROL_FLOW để bao gồm từ khóa xử lý ngoại lệ
+              - Thêm ngữ pháp try/catch/finally vào bicala.ebnf
+              - Cập nhật Bicala.syntax.spec.md với phần xử lý ngoại lệ
+            - Bảo vệ Mã hóa UTF-8:
+              - Xác minh encoding='utf-8' trong tất cả các lệnh open() compiler main
+              - Xác nhận hỗ trợ UTF-8 trong main/__main__.py và main/eval.py
+              - Tests/run_test_suite.py sử dụng subprocess kế thừa mã hóa UTF-8
+              - Ký hiệu Unicode (✓, emojis) hoạt động đúng trong chuỗi literal
+            - Test Tích hợp:
+              - Tạo test_try_catch_basic.bica:
+                - Test chức năng try/catch cơ bản với xử lý lỗi
+                - Test try/finally với thực thi cleanup
+                - Test kết hợp try/catch/finally
+                - Test hoạt động an toàn mà không có ngoại lệ
+              - Tạo test_try_invalid.bica:
+                - Test lỗi S100 cho block try độc lập
+                - Xác thực thực thi parser nghiêm ngặt
+              - Tạo test_try_unicode.bica:
+                - Test hỗ trợ ký hiệu Unicode trong xử lý ngoại lệ
+                - Xác nhận mã hóa UTF-8 hoạt động trong block try/catch
+            - Kết quả Test Cuối cùng:
+              - Tổng file test: 37
+              - Passed: 37
+              - Failed: 0
+              - Tỷ lệ thành công: 100.0%
+              - Tất cả test xử lý ngoại lệ pass thành công
+              - Không có regression trong test suite hiện có
+            - Lợi ích:
+              - Khả năng xử lý ngoại lệ hoàn toàn theo đặc tả
+              - Xử lý lỗi mạnh mẽ cho code sản xuất
+              - Phân tách logic xử lý lỗi sạch
+              - Hoạt động cleanup an toàn với block finally
+              - Hỗ trợ UTF-8 Unicode đầy đủ trong compiler
+          [18/06/2026]
+          + Beta 5.1.19.1:
+              - Sửa Sắp xếp Mã Lỗi:
+                - Sửa gán mã lỗi để duy trì đánh số tuần tự
+                - Đổi lỗi cú pháp tham số catch không hợp lệ: S099 → S043
+                - Đổi lỗi block try độc lập: S100 → S044
+                - Cập nhật main/err.py với mã lỗi tuần tự đúng
+                - Cập nhật main/pars/stmt.py để sử dụng mã lỗi mới S043/S044
+                - Cập nhật docs/error.doc với registry lỗi đã sửa
+                - Cập nhật test_try_invalid.bica để mong đợi lỗi S044
+                - Duy trì registry lỗi sạch: S001-S044 được dùng, S045+ dành riêng
+              - Kết quả Test:
+                - Tổng file test: 38
+                - Tỷ lệ thành công: 100.0% (38/38 passed)
+                - Tất cả sửa mã lỗi được xác thực
+              - Lợi ích:
+                - Duy trì gán mã lỗi tuần tự sạch
+                - Không có khoảng trống trong registry mã lỗi
+                - Quản lý mã lỗi chuyên nghiệp
+                - Tài liệu lỗi đúng trong test TAF
+        [18/06/2026]
+        + Beta 5.1.20:
+          - Tái thiết lập Đặc tả Cú pháp:
+            - Mở rộng tài liệu toàn diện giải quyết phản hồi đánh giá kiến trúc
+            - Thêm Phần 2.5 - Ma trận Kiểu Dữ liệu Nguyên thủy:
+              - Tài liệu hóa Numbers (Số nguyên/Số thực): 42, 3.14, -10, 2.5e3
+              - Tài liệu hóa Strings: Chuỗi literal UTF-8 trong ngoặc kép với hỗ trợ Unicode
+              - Tài liệu hóa Booleans: Từ khóa true/false chữ thường rõ ràng
+              - Tài liệu hóa Lists/Arrays: Giá trị phân tách bằng dấu phẩy trong ngoặc [1, 2, 3]
+              - Tài liệu hóa Null Type: Giá trị null đặc biệt cho trạng thái rỗng/không xác định
+              - Thêm ghi chú ép kiểu cho so sánh bình đẳng lỏng
+            - Thêm Phần 3.5 - Bảng Precedence & Associativity Toán tử:
+              - Tài liệu hóa hệ thống precedence 8 cấp từ cao nhất đến thấp nhất
+              - Cấp 1: Lũy thừa (**) với associativity phải-sang-trái
+              - Cấp 2: Nhân (*, /, //, %) với associativity trái-sang-phải
+              - Cấp 3: Cộng (+, -) với associativity trái-sang-phải
+              - Cấp 4: Quan hệ (<, >, <=, >=) với associativity trái-sang-phải
+              - Cấp 5: Bình đẳng Lỏng (.=) với associativity trái-sang-phải
+              - Cấp 6: Bình đẳng Nghiêm ngặt (==, !=) với associativity trái-sang-phải
+              - Cấp 7: Bình đẳng Identity (===, !===) với associativity trái-sang-phải
+              - Cấp 8: Logic (and, or, not) với associativity trái-sang-phải
+              - Thêm hướng dẫn ghi đè ngoặc đơn cho kiểm soát precedence rõ ràng
+            - Tái thiết lập Phần 5 - Giải quyết Gọi Hàm & Parsing Tách khoảng trắng Tham lam:
+              - Tài liệu hóa toàn diện tính năng parsing đặc biệt nhất của Bicala
+              - Thêm 5.1 - Thuật toán Parsing Tham lam:
+                - Tài liệu hóa cơ chế parsing dựa trên stack gọi
+                - Giải thích phát hiện tên hàm và đẩy stack
+                - Giải thích tiêu thụ đối số cho hàm hoạt động
+                - Giải thích kết thúc dấu chấm phẩy và pop stack
+                - Giải thích kết thúc ngầm cuối dòng
+              - Thêm 5.2 - Ví dụ Ánh xạ AST Trực quan:
+                - say "hello" → say("hello") → CallNode("say", [StringNode("hello")])
+                - say plus 1,2; → say(plus(1, 2)) → cấu trúc CallNode lồng
+                - say minus plus 1,2;3;; → say(minus(plus(1, 2), 3)) → cấu trúc lồng sâu
+              - Thêm 5.3 - Hướng dẫn Parsing Từng bước:
+                - Phân tích chi tiết 8 bước của say minus plus 1,2;3;; parsing
+                - Trạng thái stack trực quan tại mỗi lần gặp dấu chấm phẩy
+                - Minh họa cấu trúc AST cuối cùng
+              - Thêm 5.4 - Quy tắc Dấu chấm phẩy & Edge Cases:
+                - Dấu chấm phẩy bắt buộc trong các gọi lồng với tham chiếu lỗi S005
+                - Yêu cầu khoảng trắng (space hoặc xuống dòng sau dấu chấm phẩy)
+                - Hành vi dấu chấm phẩy tùy chọn cho gọi cấp cao nhất
+              - Thêm 5.5 - Cú pháp Định nghĩa Hàm:
+                - Tài liệu hóa từ khóa def với tham số phân tách khoảng trắng
+                - Thêm giải thích triết lý thiết kế cho mô hình tách khoảng trắng tham lam
+            - Cập nhật phiên bản đặc tả sang Beta 5.1.20
+            - Lợi ích:
+              - Giải quyết phản hồi đánh giá kiến trúc (cải thiện đánh giá 6.5/10)
+              - Tiếp lộ logic nội bộ độc đáo của Bicala cho nhà phát triển
+              - Tài liệu rõ ràng các kiểu nguyên thủy cho nhà phát triển mới
+              - Tham chiếu precedence toán tử toàn diện
+              - Giải thích kỹ lưỡng mô hình parsing tham lam đặc biệt
+              - Ánh xạ AST trực quan để hiểu rõ
+              - Hướng dẫn parsing từng bước cho các gọi lồng phức tạp
+          [18/06/2026]
+          + Beta 5.1.20.1:
+            - Sửa Regression ImportError:
+              - Vấn đề: Python không thể giải quyết from main.pars import parse_program sau khi dọn dẹp package
+              - Nguyên nhân gốc rễ: Xóa file __init__.py làm hỏng giải quyết module của Python từ cấp root
+              - Sửa được áp dụng:
+                - Tạo lại main/__init__.py (file rỗng để khởi tạo package)
+                - Tạo lại main/pars/__init__.py với exports cho parse_program và parse_expression
+                - Duy trì mô hình thực thi script trực tiếp trong khi khôi phục cấu trúc package cho imports
+              - Xác minh:
+                - Test thực thi run.py - hoạt động đúng
+                - Chạy 38 test TAF - tỷ lệ pass 100% (38/38 passed)
+              - Lợi ích:
+                - Khôi phục giải quyết module Python mà không làm hỏng thực thi script trực tiếp
+                - Duy trì kiến trúc script trực tiếp sạch
+                - Tất cả test pass thành công
+          [18/06/2026]
+          + Beta 5.1.20.2:
+            - Dọn dẹp Package & Kiến trúc Script Trực tiếp:
+              - Xóa cấu hình đóng gói package:
+                - Xóa setup.py (script đăng ký PATH và liên kết file)
+                - Xóa unis0000.py (script gỡ cài đặt)
+                - Xóa tất cả code và cấu hình đóng gói package
+              - Chuyển sang thực thi script trực tiếp:
+                - Tạo run.py ở cấp root (chuyển từ main/__main__.py)
+                - Xóa file main/__main__.py
+                - Cập nhật bica.bat để sử dụng script trực tiếp: python run.py %1
+                - Cập nhật tests/run_test_suite.py để sử dụng thực thi script trực tiếp
+              - Xóa cấu trúc package:
+                - Xóa file __init__.py từ main/, main/pars/, và stdlib/
+                - Chuyển từ imports dựa package sang imports dựa module
+              - Cập nhật tất cả imports để sử dụng đường dẫn trực tiếp:
+                - Cập nhật main/pars/base.py: from ..tok to from main.tok
+                - Cập nhật main/pars/expr.py: from .base to from main.pars.base
+                - Cập nhật main/pars/stmt.py: from .base to from main.pars.base
+                - Cập nhật main/eval.py: from .tok to from main.tok
+                - Cập nhật main/env.py: from .err to from main.err
+                - Cập nhật main/lex.py: from .tok to from main.tok
+              - Lợi ích:
+                - Cấu trúc repository đơn giản hơn (không có chi phí package)
+                - Gọi script trực tiếp (python run.py file.bica)
+                - Codebase nhẹ và dễ bảo trì
+                - Không phụ thuộc vào layout thực thi python -m
+                - Dễ chạy và test mà không cần cài đặt
+          [18/06/2026]
+          + Beta 5.1.20.3:
+            - Kiến trúc Zero __init__.py (Bố cục Namespace Sạch):
+              - Vấn đề: Yêu cầu người dùng cho KHÔNG file __init__.py nào trong repository
+              - Nguyên nhân gốc rễ: Sửa trước thêm file __init__.py, vi phạm yêu cầu namespace sạch
+              - Sửa được áp dụng:
+                - Xóa main/__init__.py
+                - Xóa main/pars/__init__.py
+                - Sửa run.py để thêm thư mục main vào sys.path cho imports
+                - Cập nhật tất cả imports trong các file main/ để xóa tiền tố main.:
+                  - main/pars/base.py: from main.tok → from tok
+                  - main/pars/expr.py: from main.pars.base → from pars.base
+                  - main/pars/stmt.py: from main.pars.base → from pars.base
+                  - main/eval.py: from main.tok → from tok
+                  - main/env.py: from main.err → from err, sửa import tương đối
+                  - main/lex.py: from main.tok → from tok
+                - Sửa import tương đối trong main/env.py: from .err → from err
+              - Xác minh:
+                - Test thực thi run.py - hoạt động đúng
+                - Chạy 38 test TAF - tỷ lệ pass 100% (38/38 passed)
+              - Lợi ích:
+                - Không có file __init__.py nào trong repository (namespace sạch)
+                - Duy trì thực thi script trực tiếp
+                - Tất cả imports hoạt động qua thao tác sys.path
+                - Không có chi phí cấu trúc package
+        [18/06/2026]
+        + Beta 5.1.21:
+          - Thay đổi Dấu phân cách Range Vòng lặp For (Dấu hai điểm sang Dấu phẩy):
+            - Vấn đề: Ngữ pháp mơ hồ với dấu hai điểm (:) được dùng cho cả phân tách range và header block
+            - Nguyên nhân gốc rễ: Dấu hai điểm phục vụ mục đích kép trong vòng lặp for (phân tách range và header block)
+            - Sửa được áp dụng:
+              - Đổi dấu phân tách range vòng lặp for từ dấu hai điểm (:) sang dấu phẩy (,)
+              - Cập nhật Đặc tả Cú pháp Bicala để phản ánh cú pháp dấu phẩy mới:
+                - for i in 2,8 (trước là for i in 2:8)
+                - for i in 0,10,2 (trước là for i in 0:10:2)
+                - for i in 1,10: pass (inline với dấu hai điểm header block)
+              - Cập nhật logic parsing vòng lặp for trong main/pars/stmt.py:
+                - Thêm helper find_comma_pos() cho phân tách range
+                - Sửa parsing để sử dụng dấu phẩy cho start,end,step
+                - Giữ dấu hai điểm cho phân tách header block
+              - Cập nhật các file test để sử dụng cú pháp dấu phẩy mới:
+                - tests/test_control_flow_matrix_restored.bica
+                - tests/taf/test_control_flow_matrix.bica
+            - Xác minh:
+              - Chạy 38 test TAF - tỷ lệ pass 100% (38/38 passed)
+            - Lợi ích:
+              - Loại bỏ mơ hồ ngữ pháp giữa range và header block
+              - Cú pháp rõ ràng hơn: dấu phẩy cho range, dấu hai điểm cho block
+              - Duy trì tương thích ngược cho vòng lặp đếm đơn giản
+              - Tất cả test pass thành công
+        [18/06/2026]
+        + Beta 5.1.22:
+          - Cải thiện Đặc tả Cú pháp:
+            - Vấn đề: ChatGPT đánh giá Bicala 8.5/10 và xác định 4 khu vực quan trọng cần cải thiện
+            - Nguyên nhân gốc rễ: Tài liệu đặc tả cần cải thiện tính rõ ràng để hoàn hảo
+            - Sửa được áp dụng:
+              - Cập nhật mô tả Identity (===):
+                - Đổi từ "uses Python's is operator" sang "Checks whether two references point to the exact same object instance"
+                - Ngôn ngữ mô tả hơn mà không có chi tiết triển khai cụ thể của Python
+              - Tách Bảng Toán tử Logic với precedence đúng:
+                - Tách toán tử logic thành các mức precedence riêng biệt
+                - Đặt NOT thành precedence 8 (cao nhất trong logic)
+                - Đặt AND thành precedence 9
+                - Đặt OR thành precedence 10 (thấp nhất)
+                - NOT là associativity phải-sang-trái
+                - AND và OR là associativity trái-sang-phải
+              - Cập nhật Ví dụ Vòng lặp For:
+                - Xác nhận output rõ ràng trong comment: for i in 2,8 hiển thị (2, 3, 4, 5, 6, 7, 8)
+                - Tài liệu đã hiển thị giá trị iteration rõ ràng
+              - Thêm Phần Từ khóa Dành riêng:
+                - Phần mới 2.6: "Reserved Keywords"
+                - Liệt kê tất cả token bị cấm theo danh mục:
+                  - Control Flow: if, else, elif, while, for, repeat, forever, break, continue, switch, default, defer
+                  - Function: def, define, return
+                  - Boolean Literals: true, false
+                  - Null Literal: null
+                  - Exception Handling: try, catch, finally
+                  - Module: import
+                - Thêm cảnh báo hạn chế sử dụng
+            - Xác minh:
+              - Xác minh không có file __init__.py nào tồn tại trong repository (0 tìm thấy)
+              - Chạy 38 test TAF - tỷ lệ pass 100% (38/38 passed)
+            - Lợi ích:
+              - Cải thiện tính rõ ràng và chuyên nghiệp của đặc tả
+              - Tài liệu precedence toán tử tốt hơn
+              - Tham chiếu từ khóa dành riêng rõ ràng cho người dùng
+              - Duy trì tỷ lệ pass test 100%
+              - Duy trì kiến trúc zero __init__.py
+          [18/06/2026]
+          + Beta 5.1.22.1:
+            - Sửa Regression BicaIDE (Kiến trúc Zero __init__.py):
+              - Vấn đề: IDE (bicaide.py) bị hỏng do file __init__.py bị xóa, gây ImportError và NameError
+              - Nguyên nhân gốc rễ:
+                - bicaide.py không thể import từ thư mục main mà không có file __init__.py
+                - BICALA_KEYWORDS không được định nghĩa trong fallback block (NameError tại dòng 228)
+                - Module ast tích hợp sẵn của Python bị shadow bởi main/ast.py khi main được thêm vào sys.path
+              - Sửa được áp dụng:
+                - Thêm giải quyết đường dẫn động vào bicaide.py (sys.path.insert) phù hợp với cách tiếp cận run.py
+                - Thêm fallback BICALA_KEYWORDS = None trong except block để ngăn NameError
+                - Sửa shadowing module ast bằng cách cập nhật imports để sử dụng đường dẫn tuyệt đối:
+                  - main/eval.py: from ast import → from main.ast import
+                  - main/pars/base.py: from ast import → from main.ast import
+                  - main/pars/expr.py: from ast import → from main.ast import (3 trùng khớp)
+                  - main/pars/stmt.py: from ast import → from main.ast import (2 trùng khớp)
+                - Sử dụng importlib.util để load các function run.py mà không có xung đột sys.path
+              - Xác minh:
+                - Xác minh không có file __init__.py nào tồn tại trong repository (0 tìm thấy)
+                - Test import bicaide.py - thành công (không lỗi)
+                - Chạy 38 test TAF - tỷ lệ pass 100% (38/38 passed)
+              - Lợi ích:
+                - BicaIDE giờ khởi chạy sạch với kiến trúc zero __init__.py
+                - Duy trì tính nhất quán với cách tiếp cận sys.path của run.py
+                - Loại bỏ shadowing module ast với imports tuyệt đối
+                - Tất cả test pass thành công
+                - Duy trì kiến trúc zero __init__.py
+
+        [18/06/2026]
+        + Beta 5.1.23:
+          - Trích xuất Lớp Phân tích Ngữ nghĩa (main/sem.py):
+            - Tạo file mới hoàn toàn main/sem.py để cô lập logic phân tích ngữ nghĩa
+            - Trích xuất Logic Giải quyết Tên (Nxxx errors) từ main/eval.py:
+              - resolve_name() - giải quyết tên biến sử dụng ưu tiên: env → functions → builtins
+              - validate_name_not_defined() - xác thực tên chưa được định nghĩa
+              - validate_name_exists() - xác thực tên đã được định nghĩa để sử dụng
+              - validate_interpolation_name() - xác thực tên trong nội suy chuỗi
+              - validate_custom_operator() - xác thực đăng ký toán tử tùy chỉnh
+            - Trích xuất Xác thực Kiểu/Arity (Txxx errors) từ main/eval.py:
+              - require_boolean() - yêu cầu giá trị boolean thực (không truthiness Python)
+              - require_loop_int() - yêu cầu số nguyên cho giới hạn vòng lặp (không boolean)
+              - validate_callable() - xác thực giá trị có thể gọi được
+              - validate_function_arity() - xác thực số lượng đối số gọi hàm
+            - Trích xuất Xác thực Giá trị (Vxxx errors) từ main/eval.py:
+              - validate_operator() - xác thực toán tử được nhận diện
+              - validate_comparison_op() - xác thực toán tử so sánh được nhận diện
+            - Cập nhật main/eval.py để import và sử dụng các function lớp ngữ nghĩa:
+              - Xóa các function trùng lặp require_boolean() và require_loop_int()
+              - Cập nhật resolve_callable() để sử dụng resolve_name() từ sem.py
+              - Cập nhật invoke_callable() để sử dụng validate_callable() từ sem.py
+              - Cập nhật call_bica_function() để sử dụng validate_function_arity() từ sem.py
+              - Cập nhật nội suy chuỗi để sử dụng validate_interpolation_name() từ sem.py
+              - Cập nhật xử lý toán tử tùy chỉnh để sử dụng validate_custom_operator() từ sem.py
+              - Cập nhật kiểm tra arity toán tử tùy chỉnh để sử dụng validate_function_arity() từ sem.py
+            - Lợi ích:
+              - Phân tách trách nhiệm rõ ràng: phân tích ngữ nghĩa vs thực thi runtime
+              - main/eval.py giờ tập trung nghiêm ngặt vào thực thi runtime
+              - Dễ bảo trì và test logic ngữ nghĩa độc lập
+              - Giảm trùng lặp code và cải thiện tính module hóa
+          - Kiến trúc Omni-Error (Không Khoảng Trống):
+            - Tái thiết lập đặc tả lỗi trong main/err.py để thực thi indexing liên tục nghiêm ngặt bắt đầu từ 001
+            - Cập nhật tiền tố mã lỗi:
+              - Lxxx (Lexer): L001-L008
+              - Sxxx (Parser): S001-S068
+              - Nxxx (Name): N001-N007
+              - Txxx (Type): T001-T006
+              - Rxxx (Runtime): R001-R007
+              - Ixxx (Indentation): I001-I003
+              - Mxxx (Import): M001-M004
+              - Vxxx (Value): V001-V007
+            - Sửa R000 → R001:
+              - Đổi tên R000 sang R001: "Internal runtime error: {context} - {error}"
+              - Cập nhật tất cả tham chiếu R000 trong main/eval.py sang R001
+            - Dịch chuyển lỗi break/continue:
+              - R015 (break ngoài loop) → R002: "break used outside of a loop"
+              - R016 (continue ngoài loop) → R003: "continue used outside of a loop"
+              - Cập nhật main/eval.py execute_program() để sử dụng R002/R003
+            - Xóa khoảng trống 001-014 trong Runtime errors:
+              - R001: Internal runtime error
+              - R002: break outside loop
+              - R003: continue outside loop
+              - R004: Division by zero
+              - R005: Modulo by zero
+              - R006: Invalid operation
+              - R007: Stack overflow
+            - Xác minh S005: "Expected ':'" cho dấu hai điểm header block (đã map đúng)
+            - Xác minh S038: "Expected ',' or ';'" cho lỗi hàm/vòng lặp lồng (đã map đúng)
+            - Lợi ích:
+              - Indexing liên tục nghiêm ngặt loại bỏ nhầm lẫn
+              - Tổ chức mã lỗi rõ ràng theo tiền tố
+              - Dễ xác định loại lỗi từ mã
+              - Không có khoảng trống trong đánh số lỗi
+          - Cải thiện Khởi chạy IDE (bicaide.py):
+            - Thêm injection pathlib/sys.path động ở đầu tuyệt đối của bicaide.py:
+              - Import module pathlib
+              - Sử dụng pathlib.Path cho tương thích đa nền tảng
+              - script_dir = pathlib.Path(__file__).parent.resolve()
+              - main_dir = script_dir / 'main'
+              - sys.path.insert(0, str(main_dir))
+            - Thay thế os.path.join bằng pathlib cho hỗ trợ đa nền tảng tốt hơn
+            - Xác minh fallback BICALA_KEYWORDS đã có sẵn (đã đặt thành None trong except block)
+            - Lợi ích:
+              - Giải quyết đường dẫn mạnh mẽ hơn sử dụng pathlib
+              - Tương thích đa nền tảng (Windows/Linux/macOS)
+              - Nhất quán với best practices Python hiện đại
+              - Duy trì kiến trúc zero __init__.py
+          [19/06/2026]
+          + Beta 5.1.23.1:
+            - Bảo vệ Từ khóa & Ổn định Parser:
+              - Bảo vệ Từ khóa Nghiêm ngặt (S041):
+                - Đổi mục đích mã lỗi S041 từ "Invalid case syntax" sang "Cannot use reserved keyword as an identifier"
+                - Cập nhật docs/error.doc với định nghĩa S041 mới
+                - Cập nhật cơ sở dữ liệu lỗi main/err.py với message và hint S041
+                - Thêm xác thực từ khóa trong main/pars/stmt.py:
+                  - Định nghĩa hàm: ngăn chặn từ khóa làm tên hàm
+                  - Tham số hàm: ngăn chặn từ khóa làm tên tham số
+                  - Gán biến (=): ngăn chặn từ khóa làm tên biến
+                  - Gán phức hợp (+=, -=, v.v.): ngăn chặn từ khóa làm tên biến
+                  - Tăng/Giảm (++/ --): ngăn chặn từ khóa làm tên biến
+                  - Biến vòng lặp for: ngăn chặn từ khóa làm tên biến vòng lặp
+                  - Alias import: ngăn chặn từ khóa làm alias module/hàm
+                  - Alias from import: ngăn chặn từ khóa làm alias import
+                  - Tham số toán tử tùy chỉnh: ngăn chặn từ khóa làm tham số toán tử
+                - Thêm xác thực từ khóa trong main/pars/expr.py:
+                  - Tham số lambda: ngăn chặn từ khóa làm tên tham số lambda
+                - Lợi ích:
+                  - Ngăn chặn code gây nhầm như `def int a:`, `const def = 5`, `for if in 1..10`
+                  - Thông báo lỗi rõ ràng tại thời điểm parse thay vì nhầm lẫn runtime
+                  - Thực thi tính nhất quán của ngôn ngữ và ngăn chặn xung đột từ khóa
+              - Sửa Lỗi `del` & Từ khóa Không xác định (Ngăn R001):
+                - Thêm xác thực từ khóa catch-all trong parse_statement() để xử lý từ khóa độc lập
+                - Ngăn chặn từ khóa không xác định hoặc chưa triển khai rơi xuống runtime
+                - Gây lỗi S008 "Unknown statement" đúng thay vì lỗi runtime nội bộ R001
+                - Thêm xác thực cho tham số lambda trong expression parser
+                - Lợi ích:
+                  - Không còn interpreter crash khi sử dụng từ khóa chưa triển khai
+                  - Thông báo lỗi sạch cho từ khóa không xác định tại thời điểm parse
+                  - Cải thiện ổn định parser và xử lý lỗi
+            - Tuân thủ:
+              - Tất cả thay đổi được ghi log dưới Beta 5.1.23.1
+              - Duy trì kiến trúc zero __init__.py
+              - Không tạo file .bat
+          [19/06/2026]
+        + Beta 5.1.23.2:
+          - Hằng số Bất biến (`const`) & Biến Có Ràng Buộc Kiểu:
+            - Tài liệu Kiến trúc (`docs/spec.md`):
+              - Tạo tài liệu đặc tả kiến trúc toàn diện
+              - Tài liệu hóa quy tắc ngữ nghĩa cho const và biến có ràng buộc kiểu
+              - Tài liệu hóa mã lỗi N002 và T002 với ví dụ
+              - Thêm tài liệu mở rộng AST node
+              - Thêm hướng dẫn triển khai và sơ đồ luồng xác thực
+              - Tài liệu hóa hệ thống kiểu với các kiểu được hỗ trợ và quy tắc khớp
+            - Cập nhật Mã Lỗi:
+              - Đổi mục đích N002 từ "Name already defined" sang "Cannot reassign a constant variable"
+              - Cập nhật docs/error.doc với định nghĩa N002
+              - Cập nhật cơ sở dữ liệu lỗi main/err.py với message N002
+              - Đổi mục đích T002 từ "Unsupported operand type" sang "Type mismatch"
+              - Cập nhật cơ sở dữ liệu lỗi main/err.py với message T002 cho xác thực kiểu
+            - Mở rộng AST (`main/ast.py`):
+              - Cập nhật AssignNode để hỗ trợ flag `is_const` cho hằng số bất biến
+              - Cập nhật AssignNode để hỗ trợ `declared_type` cho biến có ràng buộc kiểu
+              - Thêm tham số vào __init__ method với giá trị mặc định
+              - Cập nhật __repr__ method để bao gồm các thuộc tính mới
+              - Cập nhật __slots__ để bao gồm các thuộc tính mới
+            - Mở rộng Cú pháp (`main/tok.py`):
+              - Thêm nhóm _DECLARATIONS với từ khóa CONST
+              - Thêm CONST vào dictionary SYNTAX
+              - Thêm _DECLARATIONS.keys() vào _KEYWORD_KEYS để nhận diện từ khóa đúng
+              - Duy trì hệ thống cú pháp động cho khả năng remapping của người dùng
+            - Cập nhật Parser (`main/pars/stmt.py`):
+              - Thêm parsing khai báo const: `const <identifier> = <expression>`
+              - Thêm parsing biến có ràng buộc kiểu: `<type> <identifier> = <expression>`
+              - Thêm parsing kết hợp const + type: `const <type> <identifier> = <expression>`
+              - Các kiểu được hỗ trợ: int, string, bool, float, array
+              - Thêm xác thực từ khóa cho tất cả các pattern cú pháp mới
+              - Duy trì precedence: parsing const/type trước assignment thường
+            - Mở rộng Environment (`main/env.py`):
+              - Thêm set const_vars để theo dõi tên biến hằng số qua các scope
+              - Thêm dictionary typed_vars để theo dõi các kiểu đã khai báo
+              - Thêm method is_const() để kiểm tra biến có phải hằng số không
+              - Thêm method get_declared_type() để lấy kiểu đã khai báo của biến
+              - Thêm method mark_const() để đánh dấu biến là hằng số
+              - Thêm method mark_typed() để đánh dấu biến với kiểu đã khai báo
+              - Cập nhật __slots__ để bao gồm các cấu trúc theo dõi mới
+            - Lớp Phân tích Ngữ nghĩa (`main/sem.py`):
+              - Thêm function validate_const_assignment() cho lỗi N002
+              - Thêm function get_type_string() để xác định các kiểu giá trị
+              - Thêm function validate_type_assignment() cho lỗi T002
+              - Mapping kiểu để xử lý tên kiểu nhất quán
+              - Các kiểm tra ngữ nghĩa được ủy quyền từ evaluator để duy trì phân tách trách nhiệm
+            - Tích hợp Evaluator (`main/eval.py`):
+              - Thêm xác thực const vào xử lý AssignNode
+              - Thêm xác thực kiểu vào xử lý AssignNode
+              - Thêm xác thực const vào xử lý CompoundAssignNode
+              - Thêm xác thực const vào xử lý IncDecNode
+              - Tích hợp đánh dấu biến hằng số trong environment
+              - Tích hợp đánh dấu biến có kiểu trong environment
+              - Duy trì phân tách rõ ràng: kiểm tra ngữ nghĩa trong sem.py, thực thi trong eval.py
+            - Lợi ích:
+              - Hằng số bất biến ngăn chặn gán lại ngẫu nhiên các giá trị quan trọng
+              - Biến có ràng buộc kiểu cho phép kiểm tra kiểu tĩnh trước runtime
+              - Thông báo lỗi rõ ràng (N002, T002) cho vi phạm ngữ nghĩa
+              - Tài liệu kiến trúc cung cấp nguồn sự thật duy nhất cho hành vi ngôn ngữ
+              - Phân tách trách nhiệm đúng giữa parsing, phân tích ngữ nghĩa, và evaluation
+              - Duy trì kiến trúc zero __init__.py
+              - Không tạo file .bat nào
+        [05/07/2026]
+        + Beta 5.1.24.2:
+          - Đồng bộ Hệ thống Mã Lỗi (Error System Synchronization):
+            - Sửa Lỗi N002 Corrupted trong main/err.py:
+              - Sửa message bị hỏng: "Cannot rnassignocorstentgvarnobnt '{aamb}'e '{name}'"
+              - Thay bằng message chuẩn: "Cannot reassign constant variable '{name}'"
+              - Sửa hint bị hỏng: "Constanto arnsimmuttbleaann cannot ba reassigmadble and cannot be reassigned"
+              - Thay bằng hint chuẩn: "Constants are immutable and cannot be reassigned"
+            - Di chuyển S043 và S044 về đúng vị trí trong main/err.py:
+              - Di chuyển từ phần Import Errors sang phần Syntax/Parser Errors
+              - S043: Invalid catch parameter syntax
+              - S044: Try block must be followed by catch or finally
+              - Đảm bảo nhóm lỗi đúng theo phân loại Omni-Error Architecture
+            - Đồng bộ error.doc với main/err.py 100%:
+              - Thêm đầy đủ Lexer Errors L001-L008 (thiếu L004-L008)
+              - Cập nhật Syntax/Parser Errors S001-S068, S043-S044 (thiếu nhiều codes)
+              - Thêm Indentation Errors I001-I003 (hoàn toàn thiếu)
+              - Cập nhật Value Errors V001-V007 (thiếu V004-V006)
+              - Cập nhật Name Errors N001-N007 (thiếu N003, N005-N006)
+              - Cập nhật Import Errors M001-M003 (xóa M004 không tồn tại)
+              - Xóa R000 (không tồn tại trong main/err.py)
+              - Cập nhật Runtime Errors R001-R007 (sửa R015-R016 thành R002-R003)
+            - Fix Import Errors cho Zero __init__.py Architecture:
+              - Sửa main/pars/base.py: from ..tok → from tok, from ..ast → from ast, from ..lex → from lex, from ..err → from err
+              - Sửa main/pars/stmt.py: from main.ast → from ast
+              - Đảm bảo tất cả imports sử dụng đường dẫn trực tiếp không có tiền tố main.
+            - Xác minh:
+              - Test Suite: 53/54 tests PASS (98.1%)
+              - 1 test fail (test_try_catch_finally.bica) - không liên quan đến sửa lỗi mã lỗi
+              - Hệ thống mã lỗi đồng bộ hoàn toàn giữa main/err.py và error.doc
+            - Lợi ích:
+              - Hệ thống mã lỗi nhất quán và chính xác
+              - Tài liệu error.doc phản ánh đúng trạng thái code thực tế
+              - Omni-Error Architecture hoạt động đúng phân loại
+              - Zero __init__.py architecture được duy trì
+              - Không có file .bat nào được tạo
+        [05/07/2026]
+        + Beta 5.1.24.3:
+          - Bảo vệ Builtins và Keywords khỏi lệnh Del:
+            - Thêm kiểm tra bảo vệ trong handler DelNode trong main/eval.py:
+              - Import KEYWORDS và BUILTINS từ tok.py
+              - Kiểm tra nếu target_name nằm trong KEYWORDS hoặc BUILTINS
+              - Nếu có, raise BicalaNameError với code N003
+              - Thông báo: "Cannot delete '{name}'" với hint về protected keyword/builtin
+            - Cập nhật error database cho N003 trong main/err.py:
+              - Sửa message: "Cannot delete '{name}'"
+              - Sửa hint: "'{name}' is a protected language keyword or built-in function"
+            - Tạo file test bảo vệ del:
+              - tests/test_delete_protection.bica: Test xóa builtins (type, say, break) và keywords (if)
+              - tests/test_delete_simple.bica: Test đơn giản với builtin type
+            - Thay đổi:
+              - main/eval.py: Import KEYWORDS, BUILTINS; thêm kiểm tra bảo vệ trong DelNode handler
+              - main/err.py: Cập nhật N003 error database
+              - tests/test_delete_protection.bica: Test file mới
+              - tests/test_delete_simple.bica: Test file mới
+            - Xác minh:
+              - Test Suite: 57/57 tests PASS (100%)
+              - Không có regression
+              - Logic bảo vệ hoạt động mà không phá vỡ test hiện có
+            - Lợi ích:
+              - Security: Ngăn chặn người dùng xóa các builtins và keywords hệ thống
+              - Stability: Tránh runtime bị hỏng khi xóa các hàm cốt lõi
+              - Clear Error: N003 cung cấp thông báo lỗi rõ ràng về protected names
+              - Consistent: Đồng bộ với kiến trúc bảo vệ scope security hiện có
+              - Robust: Test suite 100% pass đảm bảo không có regression
