@@ -929,10 +929,6 @@ def execute_statement(node, env, functions=None):
                 target=type(target_name).__name__
             )
         
-        # Semantic validation: const reassignment check
-        from sem import validate_const_assignment
-        validate_const_assignment(node, env)
-        
         if not env.has(target_name):
             raise BicalaNameError(
                 code="N001",
@@ -985,19 +981,11 @@ def execute_statement(node, env, functions=None):
                 context="increment/decrement",
                 target=type(target_name).__name__
             )
-        
-        # Semantic validation: const reassignment check
-        from sem import validate_const_assignment
-        validate_const_assignment(node, env)
-        
         if not env.has(target_name):
             raise BicalaNameError(
                 code="N001",
                 line=node.line,
-                col=node.col,
-                name=target_name
             )
-        
         old_val = env.get(target_name)
         if node.op == '++':
             env.set(target_name, old_val + 1)
