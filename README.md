@@ -120,12 +120,12 @@ All errors are dynamically generated through a centralized error engine in `main
 
 * [📄 Syntax Specification](docs/bicala.syntax.spec.md) - Complete syntax guide with examples
 * [📄 Semantic & Architecture Specification](docs/bicala.sematic.spec.md) - Type system and validation rules
+* [📄 Structural Specification](docs/bicala.structure.spec.md) - Deep-dive internal architecture and file responsibilities
 * [Error Code Reference](docs/error.doc) - Complete diagnostic lookup table
-* [Formal Grammar](icala.ebnf) - EBNF grammar specification
+* [Formal Grammar](docs/Bicala.ebnf) - EBNF grammar specification
 * [Historical Chronicle](docs/HISTORY.md) - Language evolution from MiniLang to Bicala
 * [Change Log](docs/change.log) - Detailed development history (Vietnamese)
 * [Documentation README](README.md) - Additional documentation resources
-* [📄 Structural Specification](docs/bicala.structure.spec.md) - Deep-dive internal architecture and file responsibilities
 
 ---
 
