@@ -4,7 +4,7 @@
 
 This document defines the semantic rules, type system, and error codes for the Bicala programming language. It serves as the authoritative reference for language behavior and implementation guidelines.
 
-## Version: Beta 5.1.24
+### Version: Beta 5.1.24
 
 ---
 
