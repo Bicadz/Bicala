@@ -1,4 +1,4 @@
-# The Bicala Programming Language (Beta 5.1.24)
+# The Bicala Programming Language (Beta 5.1.24.3)
 
 *An indentation-based dynamic programming language with custom dynamic syntax definitions, implemented in Python.*
 
@@ -8,7 +8,7 @@
 
 ## Project Chronicle
 
-Bicala was a two-month intensive journey into compiler design, spanning from initial conception to a stable Beta 5.1.24 release. The project has reached its end of development, not as a failure, but as a completed learning milestone.
+Bicala was a two-month intensive journey into compiler design, spanning from initial conception to a stable Beta 5.1.24.3 release. The project has reached its end of development, not as a failure, but as a completed learning milestone.
 
 This repository represents the final state of a language that evolved through multiple iterations—from MiniLang to Bimila, and finally to Bicala—culminating in a functional compiler with advanced features including dynamic syntax, custom operators, type constraints, and comprehensive error handling.
 
@@ -44,12 +44,14 @@ Bicala programs use the `.bica` file extension. Execute a Bicala program using t
 
 ```bash
 python run.py filename.bica
+
 ```
 
 The integrated development environment provides syntax highlighting, real-time execution, and debugging capabilities:
 
 ```bash
 python bicaide.py
+
 ```
 
 ---
@@ -77,19 +79,20 @@ Evaluator (eval.py)
 Environment (env.py)
     ↓
 Runtime Output
+
 ```
 
 ### Diagnostic Architecture
 
 Bicala implements a centralized error management system with strict continuous indexing:
 
-- **Lxxx (Lexer)**: L001-L008 - Tokenization errors
-- **Sxxx (Parser)**: S001-S068 - Syntax errors  
-- **Nxxx (Name)**: N001-N007 - Name resolution errors
-- **Txxx (Type)**: T001-T006 - Type errors
-- **Rxxx (Runtime)**: R001-R007 - Runtime exceptions
-- **Mxxx (Import)**: M001-M004 - Module import errors
-- **Vxxx (Value)**: V001-V007 - Value validation errors
+* **Lxxx (Lexer)**: L001-L008 - Tokenization errors
+* **Sxxx (Parser)**: S001-S068 - Syntax errors
+* **Nxxx (Name)**: N001-N007 - Name resolution errors
+* **Txxx (Type)**: T001-T006 - Type errors
+* **Rxxx (Runtime)**: R001-R007 - Runtime exceptions
+* **Mxxx (Import)**: M001-M004 - Module import errors
+* **Vxxx (Value)**: V001-V007 - Value validation errors
 
 All errors are dynamically generated through a centralized error engine in `main/err.py`.
 
@@ -97,20 +100,20 @@ All errors are dynamically generated through a centralized error engine in `main
 
 ## Documentation
 
-- [Syntax Specification](docs/bicala.syntax.spec.md) - Complete syntax guide with examples
-- [Semantic & Architecture Specification](docs/bicala.sematic.spec.md) - Type system and validation rules
-- [Error Code Reference](docs/error.doc) - Complete diagnostic lookup table
-- [Formal Grammar](docs/bicala.ebnf) - EBNF grammar specification
-- [Historical Chronicle](docs/HISTORY.md) - Language evolution from MiniLang to Bicala
-- [Change Log](docs/change.log) - Detailed development history (Vietnamese)
-- [Documentation README](docs/README.md) - Additional documentation resources
+* [📄 Syntax Specification](docs/bicala.syntax.spec.md) - Complete syntax guide with examples
+* [📄 Semantic & Architecture Specification](docs/bicala.sematic.spec.md) - Type system and validation rules
+* [Error Code Reference](docs/error.doc) - Complete diagnostic lookup table
+* [Formal Grammar](icala.ebnf) - EBNF grammar specification
+* [Historical Chronicle](docs/HISTORY.md) - Language evolution from MiniLang to Bicala
+* [Change Log](docs/change.log) - Detailed development history (Vietnamese)
+* [Documentation README](README.md) - Additional documentation resources
 
 ---
 
 ## Repository Structure
 
 ```
-Bimuila/
+Bicala/
 ├── main/                    # Core compiler modules
 │   ├── ast.py              # AST node definitions
 │   ├── eval.py             # Runtime evaluator
@@ -141,24 +144,43 @@ Bimuila/
 ├── bicaide.py              # Built-in IDE
 ├── run.py                  # Main entry point
 └── README.md               # This file
+
 ```
 
 ---
 
-## Language Features (Beta 5.1.24)
+## Language Features (Beta 5.1.24.3)
 
-- **Dynamic Syntax**: User-configurable keywords and operators
-- **Custom Operators**: Define infix, prefix, postfix operators with custom precedence
-- **Type Constraints**: Immutable constants and type-constrained variables
-- **Advanced Control Flow**: Indentation-based switch, defer, try/catch/finally
-- **Functional Programming**: Lambda expressions, higher-order functions
-- **String Interpolation**: Python f-string style with `{variable}` syntax
-- **Three-Tier Equality**: Loose (.=), strict (==), identity (===)
-- **Greedy Parsing**: Space-separated function calls with semicolon closure
-- **Comprehensive Error System**: 44+ error codes with centralized management
-- **Semantic Analysis**: Isolated validation layer for type and name checking
-- **Standard Library**: Math, string, array, and time modules
-- **IDE Integration**: Built-in development environment
+* **Dynamic Syntax**: User-configurable keywords and operators
+* **Custom Operators**: Define infix, prefix, postfix operators with custom precedence
+* **Type Constraints**: Immutable constants and type-constrained variables
+* **Advanced Control Flow**: Indentation-based switch, defer, try/catch/finally
+* **Functional Programming**: Lambda expressions, higher-order functions
+* **String Interpolation**: Python f-string style with `{variable}` syntax
+* **Three-Tier Equality**: Loose (.=), strict (==), identity (===)
+* **Greedy Parsing**: Space-separated function calls with semicolon closure
+* **Comprehensive Error System**: 44+ error codes with centralized management
+* **Semantic Analysis**: Isolated validation layer for type and name checking
+* **Standard Library**: Math, string, array, and time modules
+* **IDE Integration**: Built-in development environment
+
+---
+
+## Future Extensions (Project Archived - No Further Development)
+
+### Potential Type System Enhancements *(Cancelled due to project archive)*
+
+* Type inference for variables without explicit declarations
+* Union types (e.g., `int|string`)
+* Generic types
+* Type aliases
+* Interface/struct types
+
+### Potential Const Enhancements *(Defunct - Frozen at Beta 5.1.24.3)*
+
+* Const expressions (compile-time evaluation)
+* Const propagation (optimization)
+* Const correctness analysis
 
 ---
 
