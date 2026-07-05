@@ -119,7 +119,7 @@ All errors are dynamically generated through a centralized error engine in `main
 ## Documentation
 
 * [📄 Syntax Specification](docs/bicala.syntax.spec.md) - Complete syntax guide with examples
-* [📄 Semantic & Architecture Specification](docs/bicala.semantic.spec.md) - Type system and validation rules
+* [📄 Semantic & Architecture Specification](docs/bicala.sematic.spec.md) - Type system and validation rules
 * [📄 Structural Specification](docs/bicala.structure.spec.md) - Deep-dive internal architecture and file responsibilities
 * [Error Code Reference](docs/error.doc) - Complete diagnostic lookup table
 * [Formal Grammar](docs/Bicala.ebnf) - EBNF grammar specification
@@ -159,7 +159,7 @@ Bicala/
 │   ├── error.doc           # Error reference
 │   ├── bicala.ebnf         # Grammar specification
 │   ├── bicala.syntax.spec.md    # Syntax guide
-│   ├── bicala.semantic.spec.md   # Semantic rules
+│   ├── bicala.sematic.spec.md   # Semantic rules
 │   └── bicala.structure.spec.md # Architectural & component structure
 ├── bicaide.py              # Built-in IDE
 ├── run.py                  # Main entry point
