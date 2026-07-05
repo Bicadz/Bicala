@@ -1,4 +1,4 @@
-# The Bicala Programming Language (Beta 5.1.24.4)
+# The Bicala Programming Language (Beta 5.1.24.5)
 
 *An indentation-based dynamic programming language with custom dynamic syntax definitions, implemented in Python.*
 
@@ -8,7 +8,7 @@
 
 ## Project Chronicle
 
-Bicala was a two-month intensive journey into compiler design, spanning from initial conception to a stable Beta 5.1.24.4 release. The project has reached its end of development, not as a failure, but as a completed learning milestone.
+Bicala was a two-month intensive journey into compiler design, spanning from initial conception to a stable Beta 5.1.24.5 release. The project has reached its end of development, not as a failure, but as a completed learning milestone.
 
 This repository represents the final state of a language that evolved through multiple iterations—from MiniLang to Bimila, and finally to Bicala—culminating in a functional compiler with advanced features including dynamic syntax, custom operators, type constraints, and comprehensive error handling.
 
@@ -169,7 +169,7 @@ Bicala/
 
 ---
 
-## Language Features (Beta 5.1.24.4)
+## Language Features (Beta 5.1.24.5)
 
 * **Dynamic Syntax**: User-configurable keywords and operators
 * **Custom Operators**: Define infix, prefix, postfix operators with custom precedence
@@ -196,7 +196,7 @@ Bicala/
 * Type aliases
 * Interface/struct types
 
-### Potential Const Enhancements *(Defunct - Frozen at Beta 5.1.24.4)*
+### Potential Const Enhancements *(Defunct - Frozen at Beta 5.1.24.5)*
 
 * Const expressions (compile-time evaluation)
 * Const propagation (optimization)
