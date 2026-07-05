@@ -8,7 +8,7 @@
 
 ## Project Chronicle
 
-Bicala was a two-month intensive journey into compiler design, spanning from initial conception to a stable Beta 5.1.24.3 release. The project has reached its end of development, not as a failure, but as a completed learning milestone.
+Bicala was a two-month intensive journey into compiler design, spanning from initial conception to a stable Beta 5.1.24.4 release. The project has reached its end of development, not as a failure, but as a completed learning milestone.
 
 This repository represents the final state of a language that evolved through multiple iterations—from MiniLang to Bimila, and finally to Bicala—culminating in a functional compiler with advanced features including dynamic syntax, custom operators, type constraints, and comprehensive error handling.
 
@@ -169,7 +169,7 @@ Bicala/
 
 ---
 
-## Language Features (Beta 5.1.24.3)
+## Language Features (Beta 5.1.24.4)
 
 * **Dynamic Syntax**: User-configurable keywords and operators
 * **Custom Operators**: Define infix, prefix, postfix operators with custom precedence
@@ -196,7 +196,7 @@ Bicala/
 * Type aliases
 * Interface/struct types
 
-### Potential Const Enhancements *(Defunct - Frozen at Beta 5.1.24.3)*
+### Potential Const Enhancements *(Defunct - Frozen at Beta 5.1.24.4)*
 
 * Const expressions (compile-time evaluation)
 * Const propagation (optimization)
