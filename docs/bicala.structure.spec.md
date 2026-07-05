@@ -837,7 +837,316 @@ Runtime Output
 
 ---
 
-## 7. Error Code Reference
+## 7. Advanced Features Implementation
+
+### 7.1 Three-Tier Equality System
+
+Bicala implements three distinct equality operators with different semantics, providing flexible comparison strategies for different use cases.
+
+**Loose Equality (`.=`) - Dynamic Type Coercion**
+
+Implemented in `eval.py` via `_loose_equals(left, right)` function:
+
+- **None handling**: `None .= None` → True; `None .= anything_else` → False
+- **Boolean ↔ String coercion**: Compares via lowered string form
+  - `true .= "true"` → True
+  - `false .= "FALSE"` → True
+- **String ↔ Number coercion**: Attempts to coerce string to float for numeric comparison
+  - `"42" .= 42` → True
+  - `"3.14" .= 3.14` → True
+  - `"hello" .= 42` → False (ValueError on coercion)
+- **Number ↔ Number coercion**: Compares values directly (int vs float compatible)
+  - `2 .= 2.0` → True
+- **String ↔ String**: Case-insensitive comparison
+  - `"Hello" .= "hello"` → True
+- **Fallback**: Python `==` for unmatched type pairs
+
+**Strict Equality (`==`) - Type and Value Identity**
+
+Implemented in `eval.py` via `_strict_equals(left, right)` function:
+
+- Requires both value AND data type to be identical
+- Uses `type(left) != type(right)` check before value comparison
+- No type coercion performed
+- Examples:
+  - `2 == 2.0` → False (different types)
+  - `"hello" == "hello"` → True
+  - `true == true` → True
+
+**Identity Equality (`===`) - Object Identity**
+
+Implemented directly in `eval.py` CompareNode evaluation:
+
+- Uses Python's `is` operator for object identity check
+- Compares memory addresses, not values
+- Only returns True if both operands reference the exact same object
+- Examples:
+  - `a = [1, 2]; b = a; a === b` → True
+  - `a = [1, 2]; b = [1, 2]; a === b` → False
+
+**Related Inequality Operators**:
+
+- `!=` - Negation of strict equality
+- `!==` - Alias for `!=` (negation of strict equality)
+- `!===` - Identity inequality (negation of `===`)
+
+---
+
+### 7.2 Advanced Control Flow
+
+#### 7.2.1 Go-style Defer Statements
+
+Bicala implements Go-inspired defer statements using a LIFO (Last-In, First-Out) stack mechanism within the `Environment` class.
+
+**Parsing** (`pars/stmt.py`):
+
+- Supports both inline and block syntax:
+  - Inline: `defer: statement`
+  - Block: `defer:` followed by indented block
+- Creates `DeferNode` with the deferred statement or block
+
+**Execution** (`eval.py`):
+
+- `Environment.defer_stack` - List storing deferred statements in LIFO order
+- When `DeferNode` is executed, the statement is appended to `defer_stack`
+- Deferred statements are executed in reverse order when a scope exits:
+  - **Function return**: In `call_bica_function()`, deferred statements execute before returning (lines 769-772)
+  - **Exception**: In `call_bica_function()`, deferred statements execute even on exception (lines 774-779)
+  - **Normal exit**: In `call_bica_function()`, deferred statements execute on normal completion (lines 782-784)
+  - **Loop iterations**: In `ForNode` execution, deferred statements execute after each iteration (lines 1082-1085, 1126-1128)
+  - **Continue/Break**: Deferred statements execute before continue/break (lines 1071-1074, 1077-1080, 1113-1116, 1120-1123)
+
+**LIFO Execution Example**:
+```bica
+defer: say "cleanup 3"
+defer: say "cleanup 2"
+defer: say "cleanup 1"
+say "start"
+# Output: "start", "cleanup 1", "cleanup 2", "cleanup 3"
+```
+
+---
+
+#### 7.2.2 Indentation-based Switch Statement
+
+Bicala's switch statement uses indentation-based case blocks similar to other control structures.
+
+**Parsing** (`pars/stmt.py`, lines 1127-1282):
+
+- Syntax: `switch value:` followed by indented case blocks
+- Case blocks at `base_indent + 1` level: `case value:` followed by indented body
+- Default block at `base_indent` level: `default:` followed by indented body
+- Parser finds switch block end by scanning for lines with indent ≤ base_indent
+- Validates that at least one case is present (S042 error)
+- Validates only one default block is allowed (S039 error)
+- Validates default is at same indent level as switch (S041 error)
+
+**Evaluation** (`eval.py`, lines 1132-1146):
+
+- Evaluates switch value expression once
+- Iterates through cases in order, evaluating each case value
+- Uses strict equality (`_strict_equals`) for comparison (not loose equality)
+- Executes first matching case block and returns immediately (no fallthrough)
+- If no case matches, executes default block if present
+- No implicit fallthrough between cases
+
+---
+
+#### 7.2.3 Try/Catch/Finally Exception Handling
+
+Bicala provides native exception handling mapped to Python's try/except/finally.
+
+**Parsing** (`pars/stmt.py`, lines 836-928):
+
+- Syntax:
+  ```
+  try:
+      # try body
+  catch (error_param):
+      # catch body
+  finally:
+      # finally body
+  ```
+- Enforces that try must be followed by catch or finally (S044 error)
+- Catch parameter is optional but requires `()` syntax: `catch (error_name)`
+- Validates catch parameter is valid identifier (S043 error)
+- Supports try+catch, try+finally, or try+catch+finally combinations
+
+**Evaluation** (`eval.py`, lines 1262-1292):
+
+- Executes try block in Python `try` context
+- If exception occurs:
+  - Stores exception in `caught_exception`
+  - If catch body exists, creates new `catch_env` with parent=env
+  - Defines exception parameter (as string) in catch environment
+  - Executes catch block in catch environment
+- Finally block always executes regardless of exception
+- Re-raises exception if not caught and no finally block to handle it
+- Exception parameter is stored as string representation of Python exception
+
+---
+
+### 7.3 Functional Programming Support
+
+#### 7.3.1 Lambda Expressions
+
+Bicala supports anonymous functions via lambda syntax: `fn param: expr`
+
+**Parsing** (`pars/expr.py`, lines 356-395):
+
+- Syntax: `fn param: body_expression`
+- Parameter must be valid identifier (S002 error)
+- Parameter cannot be reserved keyword (S041 error)
+- Body is parsed as expression (not block)
+- Creates `LambdaNode` with param and body
+
+**Evaluation** (`eval.py`, lines 673-674):
+
+- When `LambdaNode` is evaluated, returns `_LambdaFunction` wrapper
+- Captures current environment for lexical scoping
+
+#### 7.3.2 _LambdaFunction Class
+
+Implemented in `eval.py` (lines 197-223):
+
+```python
+class _LambdaFunction:
+    __slots__ = ['_param', '_body', '_env']
+    
+    def __init__(self, param, body, env):
+        self._param = param
+        self._body = body
+        self._env = env  # Captures environment for lexical scoping
+    
+    def __call__(self, *args):
+        if len(args) != 1:
+            raise BicalaTypeError(code="T005", expected=1, got=len(args))
+        # Create new environment with parameter bound
+        new_env = Environment(parent=self._env)
+        new_env.assign(self._param, args[0])
+        # Evaluate body in new environment
+        return evaluate_expression(self._body, new_env)
+```
+
+**Lexical Scoping**:
+
+- Lambda captures the environment where it was defined (`self._env`)
+- When called, creates child environment with parent=self._env
+- Parameter is bound in child environment
+- Body is evaluated in child environment
+- Allows access to variables from outer scope (closure behavior)
+
+**Example**:
+```bica
+x = 10
+add_x = fn y: y + x
+add_x 5  # Returns 15 (x from captured environment)
+```
+
+---
+
+### 7.4 Greedy Parsing & Space-Separated Call Syntax
+
+Bicala implements a unique space-separated function call syntax that eliminates the need for parentheses in many cases.
+
+**Space-Call Syntax** (`pars/expr.py`, lines 512-537):
+
+- Syntax: `callee arg1, arg2` instead of `callee(arg1, arg2)`
+- Implemented in `parse_postfix_chain()` function
+- Triggered when `is_arg_start(current())` returns true after an identifier
+- Greedily consumes arguments separated by commas
+- Creates `CallNode` with callee and arguments
+
+**Semicolon Terminator** (`pars/expr.py`, lines 518-522, 530-534):
+
+- Optional semicolon `;` can terminate function calls
+- Required for nested function calls to disambiguate boundaries
+- Parser checks for `TOKEN_SEMICOLON` after first argument or after comma
+- When semicolon found, immediately creates `CallNode` and continues parsing
+
+**Nested Function Calls**:
+
+- Without semicolon: `func1 func2 a, b` → ambiguous
+- With semicolon: `func1 func2 a, b; c` → `func1(func2(a, b), c)`
+- Semicolon acts as function terminator, closing inner call
+
+**Traditional Parentheses**:
+
+- Still supported: `callee(arg1, arg2)`
+- Handled in `parse_postfix_chain()` via `TOKEN_LPAREN` branch (lines 457-467)
+- Arguments parsed inside parentheses
+- Closing parenthesis required
+
+**Examples**:
+```bica
+say "hello"              # Space-call, no semicolon needed
+say "hello"; "world"     # Semicolon separates two calls on same line
+math.sqrt 16             # Space-call to module function
+s.join s.split "a,b", ","; "c"  # Nested: s.join(s.split("a,b", ","), "c")
+```
+
+---
+
+### 7.5 String Interpolation Engine
+
+Bicala supports Python f-string style string interpolation with `{variable}` syntax.
+
+**Lexical Analysis** (`lex.py`, lines 140-258):
+
+- During string tokenization, lexer tracks interpolation state
+- When `{` encountered outside escape sequence:
+  - Flushes current literal part to `string_parts` as `(True, literal_string)`
+  - Sets `in_interpolation = True`
+- Characters between `{` and `}` collected as variable name
+- When `}` encountered:
+  - Validates variable name is not empty (L008 error)
+  - Adds `(False, variable_name)` to `string_parts`
+  - Sets `in_interpolation = False`
+- Escape sequence `\{` and `\}` handled to include literal braces
+- If any interpolation found, string stored as tuple: `('INTERPOLATED', parts_list)`
+- If no interpolation, stored as simple string for backward compatibility
+
+**AST Representation**:
+
+- `StringNode.value` can be:
+  - Plain string: `"hello world"`
+  - Interpolated tuple: `('INTERPOLATED', [(True, 'Hello '), (False, 'name'), (True, '!')])`
+
+**Runtime Evaluation** (`eval.py`, lines 383-398):
+
+- When `StringNode` is evaluated:
+  - Checks if value is interpolated tuple
+  - Iterates through parts list
+  - For literal parts (`is_literal=True`): appends string directly
+  - For variable parts (`is_literal=False`):
+    - Validates variable exists via `validate_interpolation_name()` (raises N004 if not found)
+    - Looks up variable value via `env.get(value)`
+    - Converts to string and appends
+  - Joins all parts into final string
+
+**Validation** (`sem.py`, lines 144-152):
+
+- `validate_interpolation_name(name, env, line, col)` checks variable exists
+- Raises N004 error if variable not defined in environment
+- Called during evaluation before variable lookup
+
+**Examples**:
+```bica
+name = "World"
+say "Hello, {name}!"  # Output: "Hello, World!"
+x = 42
+say "Value: {x}"      # Output: "Value: 42"
+```
+
+**Error Handling**:
+
+- L007: Unterminated interpolation (missing closing `}`)
+- L008: Empty interpolation (no variable name between `{}`)
+- N004: Variable not defined in interpolation
+
+---
+
+## 8. Error Code Reference
 
 | Category | Range | Code | Description |
 |----------|-------|------|-------------|
